@@ -4,28 +4,32 @@
 
 label {
     display: block;
-    font-weight: $bold;
+    font-weight: $normal;
     line-height: 1.5;
 }
 
 input, select, textarea {
     -webkit-appearance: none;
+    margin: 1rem 0;
+    font-weight: $light;
 }
 
 input:not([type='button']):not([type='submit']), select, textarea {
     @include transition(all 0.4s ease);
     @extend %default-border-radius;
     width: 100%;
-    margin: 1rem 0;
     padding: 5px 10px;
     border: solid 1px $medium-gray;
-    font: 16px / 1.5 $font-family-open-sans;
-    font-size: 1.6rem;
     opacity: 0.75;
     
     &:focus {
         opacity: 1;
     }
+}
+
+input:not([type='submit']), select, textarea {
+    font: 16px / 1.5 $font-family-open-sans;
+    font-size: 1.6rem;
 }
 
 input:not([type='button']):not([type='submit']), select {
@@ -52,7 +56,6 @@ input {
 
 input[type='button'], input[type='submit'] {
     @extend %button;
-    font-size: 2rem;
     text-transform: uppercase;
     white-space: normal;
     cursor: pointer;
@@ -61,6 +64,7 @@ input[type='button'], input[type='submit'] {
 input[type='submit'] {
     min-width: 150px;
     max-width: 250px;
+    font-size: 2rem;
 }
 
 select {
