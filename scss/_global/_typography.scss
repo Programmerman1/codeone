@@ -5,12 +5,14 @@
 h1, h2, h3, h4, h5, h6, ul, ol {
     margin: 1rem 0;
     font-family: $font-family-open-sans;
-    line-height: 1.5;
+    line-height: 1.75;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 3rem;
-    font-weight: $bold;
+    color: $primary-color;
+    font-weight: $normal;
+    letter-spacing: 0.1rem;
     
     &:first-child {
         margin-top: 1rem;
@@ -21,13 +23,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-h1, h2, h3 {
-    text-transform: uppercase;
-}
-
 h1 {
     font-size: 3.5rem;
-    line-height: 1.25;
 }
 
 h2 {
@@ -51,16 +48,21 @@ h6 {
 }
 
 p, li, th, td {
+    color: $text-color;
     font-size: 1.6rem;
+    line-height: 2;
 }
 
 p, li, td {
-    font-weight: $normal;
+    font-weight: $light;
 }
 
 p {
     margin: 1.5rem 0;
-    line-height: 2;
+}
+
+strong {
+    font-weight: $semibold;
 }
 
 small {

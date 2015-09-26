@@ -183,3 +183,45 @@
         margin-right: 20%;
     }
 }
+
+@media screen and (min-width: $size-xl) {
+    @for $i from 1 through 12 {
+        .column.xl-span#{$i} {
+            width: 100% / 12 * $i;
+        }
+    }
+    
+    @for $i from 0 through 12 {
+        .column.xl-left#{$i} {
+            margin-left: 100% / 12 * $i;
+        }
+
+        .column.xl-right#{$i} {
+            margin-right: 100% / 12 * $i;
+        }
+    }
+    
+    .column.xl-span1point5 {
+        width: 100% / 12 * 1.5;
+    }
+    
+    .column.xl-left1point5 {
+        margin-left: 100% / 12 * 1.5;
+    }
+    
+    .column.xl-right1point5 {
+        margin-right: 100% / 12 * 1.5;
+    }
+
+    .column.xl-span2point4 {
+        width: 20%;
+    }
+    
+    .column.xl-left2point4 {
+        margin-left: 20%;
+    }
+
+    .column.xl-right2point4 {
+        margin-right: 20%;
+    }
+}

@@ -1,0 +1,56 @@
+@font-face {
+	font-family: 'budgetbear';
+	src:url('fonts/budgetbear.eot?-my2m0v');
+	src:url('fonts/budgetbear.eot?#iefix-my2m0v') format('embedded-opentype'),
+		url('fonts/budgetbear.ttf?-my2m0v') format('truetype'),
+		url('fonts/budgetbear.woff?-my2m0v') format('woff'),
+		url('fonts/budgetbear.svg?-my2m0v#budgetbear') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.bb {
+	display: inline-block;
+	font-family: 'budgetbear';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.bb-bill:before {
+	content: "\e600";
+}
+.bb-car:before {
+	content: "\e601";
+}
+.bb-credit-cards:before {
+	content: "\e602";
+}
+.bb-dollar:before {
+	content: "\e603";
+}
+.bb-graduation-cap:before {
+	content: "\e604";
+}
+.bb-house:before {
+	content: "\e605";
+}
+.bb-palm-tree:before {
+	content: "\e606";
+}
+.bb-piggy-bank:before {
+	content: "\e607";
+}
+.bb-sapling:before {
+	content: "\e608";
+}
+.bb-star:before {
+	content: "\e609";
+}

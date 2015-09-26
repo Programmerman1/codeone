@@ -7,15 +7,16 @@
     @extend %default-border-radius;
     display: inline-block;
     padding: 10px 15px;
-    border: solid 1px $medium-gray;
-    background-color: $medium-gray;
+    border: solid 1px $primary-color;
+    background-color: $primary-color;
     color: #fff;
+    font-weight: $normal;
     text-align: center;
     text-decoration: none;
     
     &:hover {
-        border-color: $dark-gray;
-        background-color: $dark-gray;
+        border-color: $dark-primary-color;
+        background-color: $dark-primary-color;
         color: #fff;
     }
 }
@@ -23,18 +24,21 @@
 .button {
     @extend %button;
     
-    &.button-white, &.button-transparent:hover {
-        background-color: #fff;
-        border-color: #fff;
-    }
-    
-    &.button-black {
-        background-color: #000;
-        border-color: #000;
-    }
-    
     &.button-transparent {
         background-color: transparent;
-        border-color: #fff;
+        border-color: $primary-color;
+        color: $primary-color;
+    }
+    
+    &.button-dark-gray {
+        background-color: $dark-gray;
+        border-color: $dark-gray;
+    }
+    
+    &.button-transparent, &.button-black {
+        &:hover {
+            background-color: $primary-color;
+            border-color: #fff;
+        }
     }
 }
