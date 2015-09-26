@@ -14,6 +14,7 @@ var adjustAmount = function (event, targetFieldId) {
 var submitSurvey = function () {
     console.log('submit to the budget bear. SUBMIT!');
     var input = GatherInput();
+    console.log('budget bear picked for you the berry (bear-y) best pick');
     alert(JSON.stringify(input));
     return false;
 };
