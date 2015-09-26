@@ -59,7 +59,21 @@ section {
     }
 }
 
-#submit-survey {
+.survey-questions {
+    padding: 0;
+    
+    .row {
+        padding: 10px 0;
+    }
+    
+    .column {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.submit-survey {
+    padding-top: 60px;
     text-align: center;
     
     button {
