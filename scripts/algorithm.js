@@ -44,6 +44,7 @@ function GetGoalMatrix() {
 function MakeDecision(input) {
     var result = new Decision();
     var finalGoals = GetGoalMatrix();
+    result.EverythingHappy = true;
     //The things you want are the things you want. They get more weight than the things you don't care about.
     input.Goals.map(function (inGoal) {
         finalGoals[Goal[inGoal]].Weight *= 1.5;
@@ -67,12 +68,14 @@ function MakeDecision(input) {
     var monthlyExpenses = input.Home.Payment + input.Car.Payment + input.College.Payment + input.OtherDebts.Payment + input.MandatoryExpenses + input.OtherExpenses;
     if (monthlyExpenses > monthlyIncome) {
         finalGoals["Income"].Weight *= 100;
+        result.EverythingHappy = false;
     }
     //If you have 0 "liquid savings," you need some liquid savings.
     // $1000 is a good starting point. Don't go into debt when you have to call a plumber or a car repair place.
     if (input.OtherSavings < 1000) {
         result.PrimaryGoal = Goal.EmergencyFund;
         finalGoals["EmergencyFund"].Weight *= 20;
+        result.EverythingHappy = false;
     }
     ///#region Car Logic
     //If you don't pay on a car and you don't want to save toward a car, don't let car be a goal.
@@ -84,6 +87,7 @@ function MakeDecision(input) {
     // Why is it *9? Because we're trying to figure out how much off what you should pay you are.
     if (input.Car.Payment * 10 > monthlyIncome) {
         finalGoals["Car"].Weight *= (input.Car.Payment * 9 / monthlyIncome);
+        result.EverythingHappy = false;
     }
     ///#endregion Car Logic
     ///#region House Logic
@@ -93,6 +97,7 @@ function MakeDecision(input) {
     //as the car scenario. Let's log-base-2-index it. it's probably wrong but eh.
     if (input.Home.Payment * 3 > monthlyIncome) {
         finalGoals["Home"].Weight *= Math.log((input.Home.Payment - (monthlyIncome / 3))) / Math.log(2);
+        result.EverythingHappy = false;
     }
     ///#endregion House
     ///#region College
@@ -101,56 +106,43 @@ function MakeDecision(input) {
     //refinance.
     if (input.College.Payment * 5 > monthlyIncome) {
         finalGoals["College"].Weight *= (input.Car.Payment * 4 / monthlyIncome);
+        result.EverythingHappy = false;
     }
     ///#endregion College
     //Your other debt expenses probably shouldn't go over 10%. Like car.
     if (input.OtherDebts.Payment * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= (input.OtherDebts.Payment * 9 / monthlyIncome);
+        result.EverythingHappy = false;
     }
     //Mandatory expenses 10%. But like house. But goes to "Other."
     if (input.MandatoryExpenses * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= Math.log(input.MandatoryExpenses - (monthlyIncome / 10)) / Math.log(2);
+        result.EverythingHappy = false;
     }
     //Other expenses 10%. But like car. But goes to "Other."
     if (input.OtherExpenses * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= (input.OtherExpenses * 9 / monthlyIncome);
+        result.EverythingHappy = false;
+    }
+    //Things are going well! You don't need to reduce the expenses, what do you need to save toward?
+    if (result.EverythingHappy) {
+        //A three-month emergency fund is pretty essential. Weight it by how far off from that you are.
+        if (input.OtherSavings < monthlyIncome * 3) {
+            finalGoals["EmergencyFund"].Weight *= ((monthlyIncome * 3) - input.OtherSavings) / monthlyIncome;
+    }
+        //If you have less than a year's salary in retirement, you probably aren't trying hard enough on retirement.
+        //Unlike the other goals, this one won't really phase out. You're either doing enough or you're not.
+        //By the time you're saving enough, you're auto-piloting your retirement anyway.
+        //If retirement is #1: "Increase your retirement savings. If you contribute a percentage of your paycheck
+        //through work, increase it. You've got the room to work it into your budget, you'll barely notice it."
+        if (input.RetirementSavings < annualIncome) {
+            finalGoals["Retirement"].Weight *= 1.6;
+        }
     }
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight; })
         .map(function (g) { return g.Goal; });
     result.PrimaryGoal = result.GoalOrder[0];
-    return result;
-}
-function SampleInput() {
-    var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1600,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
-        Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
-        },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
-    };
     return result;
 }
 function GatherInput() {
@@ -199,12 +191,4 @@ function GatherInput() {
     }
     return result;
 }
-(function () {
-    var decision = MakeDecision(SampleInput());
-    if (decision.PrimaryGoal != Goal.EmergencyFund) {
-        console.log('fail, primary goal in sample should be emergency fund.');
-    }
-    else if (decision.PrimaryGoal == Goal.EmergencyFund) {
-        console.log('goal chosen correctly');
-    }
-}());
+;
