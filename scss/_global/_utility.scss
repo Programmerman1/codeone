@@ -1,0 +1,38 @@
+/*-----------------*/
+/* Utility Classes */
+/*-----------------*/
+
+%button {
+    @include transition (all 0.4s ease);
+    @extend %default-border-radius;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: $medium-gray;
+    border: solid 1px $medium-gray;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    
+    &:hover {
+        color: #fff;
+    }
+}
+
+.button {
+    @extend %button;
+    
+    &.button-white, &.button-transparent:hover {
+        background-color: #fff;
+        border-color: #fff;
+    }
+    
+    &.button-black {
+        background-color: #000;
+        border-color: #000;
+    }
+    
+    &.button-transparent {
+        background-color: transparent;
+        border-color: #fff;
+    }
+}

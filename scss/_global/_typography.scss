@@ -1,0 +1,78 @@
+/*------------*/
+/* Typography */
+/*------------*/
+
+h1, h2, h3, h4, h5, h6, ul, ol {
+    margin: 1rem 0;
+    font-family: $font-family-open-sans;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 3rem;
+    font-weight: $bold;
+    
+    &:first-child {
+        margin-top: 1rem;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+h5 {
+    font-size: 1.6rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+p, li, th, td {
+    font-size: 1.6rem;
+}
+
+p, li, td {
+    font-weight: $normal;
+}
+
+p {
+    margin: 1.5rem 0;
+    line-height: 2;
+}
+
+small {
+    font-size: 80%;
+}
+
+hr {
+    margin: 2rem 0;
+    border: 0;
+    border-bottom: solid 1px $medium-gray;
+}
+
+a {
+    @include transition(all 0.4s ease);
+}

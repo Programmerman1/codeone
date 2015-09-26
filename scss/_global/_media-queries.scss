@@ -1,0 +1,26 @@
+/*---------------*/
+/* Media Queries */
+/*---------------*/
+
+@media all and (min-width: $size-sm) {
+}
+
+@media all and (min-width: $size-md) {
+    h1 {
+        font-size: 5rem;
+    }
+    
+    h2 {
+        font-size: 4rem;
+    }
+    
+    h3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media all and (min-width: $size-lg) {
+}
+
+@media all and (min-width: $size-xl) {
+}

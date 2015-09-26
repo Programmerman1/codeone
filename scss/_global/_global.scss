@@ -1,0 +1,42 @@
+/*--------*/
+/* Global */
+/*--------*/
+
+html {
+    // Allows for rems to size similar to px
+    font-size: 62.5%;
+}
+
+body {
+    overflow-x: hidden;
+    font: 16px / 1.5 $font-family-open-sans;
+    font-size: 1.6rem;
+}
+
+main {
+    display: block;
+    
+    ul, ol {
+        margin-left: 30px;
+    }
+}
+
+section {
+    position: relative;
+    padding: 30px 0;
+}
+
+iframe {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+a img {
+    border: 0;
+}
