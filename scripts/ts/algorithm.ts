@@ -34,7 +34,8 @@ interface BudgetBearInput {
 }
 class Decision {
 	PrimaryGoal : Goal;
-	GoalOrder : Goal[];
+    GoalOrder: Goal[];
+    EverythingHappy: boolean;
 }
 
 function GetGoalMatrix() : any[] {
@@ -61,6 +62,7 @@ function GetGoalMatrix() : any[] {
 function MakeDecision(input : BudgetBearInput) : Decision {
     var result = new Decision();
     var finalGoals = GetGoalMatrix();
+    result.EverythingHappy = true;
 
     //The things you want are the things you want. They get more weight than the things you don't care about.
     input.Goals.map(function (inGoal) {
@@ -85,6 +87,7 @@ function MakeDecision(input : BudgetBearInput) : Decision {
     var monthlyExpenses = input.Home.Payment + input.Car.Payment + input.College.Payment + input.OtherDebts.Payment + input.MandatoryExpenses + input.OtherExpenses;
     if (monthlyExpenses > monthlyIncome) {
         finalGoals["Income"].Weight *= 100;
+        result.EverythingHappy = false;
     }
 
     //If you have 0 "liquid savings," you need some liquid savings.
@@ -92,6 +95,7 @@ function MakeDecision(input : BudgetBearInput) : Decision {
     if (input.OtherSavings < 1000) {
         result.PrimaryGoal = Goal.EmergencyFund;
         finalGoals["EmergencyFund"].Weight *= 20;
+        result.EverythingHappy = false;
     }
 
     ///#region Car Logic
@@ -104,6 +108,7 @@ function MakeDecision(input : BudgetBearInput) : Decision {
     // Why is it *9? Because we're trying to figure out how much off what you should pay you are.
     if (input.Car.Payment * 10 > monthlyIncome) {
         finalGoals["Car"].Weight *= (input.Car.Payment * 9 / monthlyIncome);
+        result.EverythingHappy = false;
     }
     ///#endregion Car Logic
 
@@ -114,6 +119,7 @@ function MakeDecision(input : BudgetBearInput) : Decision {
     //as the car scenario. Let's log-base-2-index it. it's probably wrong but eh.
     if (input.Home.Payment * 3 > monthlyIncome) {
         finalGoals["Home"].Weight *= Math.log((input.Home.Payment - (monthlyIncome / 3))) / Math.log(2);
+        result.EverythingHappy = false;
     }
     ///#endregion House
 
@@ -123,22 +129,26 @@ function MakeDecision(input : BudgetBearInput) : Decision {
     //refinance.
     if (input.College.Payment * 5 > monthlyIncome) {
         finalGoals["College"].Weight *= (input.Car.Payment * 4 / monthlyIncome);
+        result.EverythingHappy = false;
     }
     ///#endregion College
 
     //Your other debt expenses probably shouldn't go over 10%. Like car.
     if (input.OtherDebts.Payment * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= (input.OtherDebts.Payment * 9 / monthlyIncome);
+        result.EverythingHappy = false;
     }
 
     //Mandatory expenses 10%. But like house. But goes to "Other."
     if (input.MandatoryExpenses * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= Math.log(input.MandatoryExpenses - (monthlyIncome / 10)) / Math.log(2);
+        result.EverythingHappy = false;
     }
 
     //Other expenses 10%. But like car. But goes to "Other."
     if (input.OtherExpenses * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= (input.OtherExpenses * 9 / monthlyIncome);
+        result.EverythingHappy = false;
     }
 
     result.GoalOrder = finalGoals
