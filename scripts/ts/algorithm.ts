@@ -3,7 +3,8 @@ enum Goal {
 	Car,
 	Retirement,
 	Vacation,
-	College,
+    College,
+    EmergencyFund,
 	Other
 }
 enum Frequency {
@@ -18,9 +19,11 @@ interface Loan {
 	IsOwned : boolean;
 }
 interface BudgetBearInput {
-	Goal : Goal;
+	Goals : Goal[];
 	PayAmount : number;
-	PayFrequency : Frequency;
+    PayFrequency: Frequency;
+    RetirementSavings: number;
+    OtherSavings: number;
 	Home : Loan;
 	Car : Loan;
 	College : Loan;
@@ -34,7 +37,13 @@ class Decision {
 }
 
 function MakeDecision(input : BudgetBearInput) : Decision {
-	var result  = new Decision();
-	result.PrimaryGoal = input.Goal;
+    var result = new Decision();
+
+    result.PrimaryGoal = input.Goals[0];
+
+    if (input.OtherSavings < 1000) {
+        result.PrimaryGoal = Goal.EmergencyFund; // You need $1000 in savings before doing anything. Arbitrary number.
+    }
+
 	return result;
 }

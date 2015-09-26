@@ -5,7 +5,8 @@ var Goal;
     Goal[Goal["Retirement"] = 2] = "Retirement";
     Goal[Goal["Vacation"] = 3] = "Vacation";
     Goal[Goal["College"] = 4] = "College";
-    Goal[Goal["Other"] = 5] = "Other";
+    Goal[Goal["EmergencyFund"] = 5] = "EmergencyFund";
+    Goal[Goal["Other"] = 6] = "Other";
 })(Goal || (Goal = {}));
 var Frequency;
 (function (Frequency) {
@@ -21,6 +22,9 @@ var Decision = (function () {
 })();
 function MakeDecision(input) {
     var result = new Decision();
-    result.PrimaryGoal = input.Goal[0];
+    result.PrimaryGoal = input.Goals[0];
+    if (input.OtherSavings < 1000) {
+        result.PrimaryGoal = Goal.EmergencyFund; // You need $1000 in savings before doing anything. Arbitrary number.
+    }
     return result;
 }
