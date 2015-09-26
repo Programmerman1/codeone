@@ -124,6 +124,21 @@ function MakeDecision(input) {
         finalGoals["Other"].Weight *= (input.OtherExpenses * 9 / monthlyIncome);
         result.EverythingHappy = false;
     }
+    //Things are going well! You don't need to reduce the expenses, what do you need to save toward?
+    if (result.EverythingHappy) {
+        //A three-month emergency fund is pretty essential. Weight it by how far off from that you are.
+        if (input.OtherSavings < monthlyIncome * 3) {
+            finalGoals["EmergencyFund"].Weight *= ((monthlyIncome * 3) - input.OtherSavings) / monthlyIncome;
+        }
+        //If you have less than a year's salary in retirement, you probably aren't trying hard enough on retirement.
+        //Unlike the other goals, this one won't really phase out. You're either doing enough or you're not.
+        //By the time you're saving enough, you're auto-piloting your retirement anyway.
+        //If retirement is #1: "Increase your retirement savings. If you contribute a percentage of your paycheck
+        //through work, increase it. You've got the room to work it into your budget, you'll barely notice it."
+        if (input.RetirementSavings < annualIncome) {
+            finalGoals["Retirement"].Weight *= 1.6;
+        }
+    }
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight; })
         .map(function (g) { return g.Goal; });
