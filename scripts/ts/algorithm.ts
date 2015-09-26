@@ -85,5 +85,7 @@ function SampleInput(): BudgetBearInput {
     var decision = MakeDecision(SampleInput());
     if (decision.PrimaryGoal != Goal.EmergencyFund) {
         console.log('fail, primary goal in sample should be emergency fund.');
+    } else if (decision.PrimaryGoal == Goal.EmergencyFund) {
+        console.log('goal chosen correctly');
     }
 } ());
