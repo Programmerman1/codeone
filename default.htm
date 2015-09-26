@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="column xs-span12 md-span6 lg-span8">
+            <div class="column xs-span8">
                 <div class="logo-container">
                     <svg class="logo" version="1.1" preserveAspectRatio="xMidYMin meet" viewBox="0 0 500 285">
                     <!-- BUDGET -->
@@ -52,10 +52,10 @@
                     </svg>
                 </div>
             </div>
-            <div class="column xs-span12 md-span6 lg-span4">
+            <div class="column xs-span4">
                 <div class="bear-container">
                     <svg version="1.1" preserveAspectRatio="xMidYMin meet" viewBox="0 0 480 600">
-                    <g id="color">
+                    <g>
                         <path fill="#AFDBB0" d="M465.2,342.7c-10.4-37.5-29.7-77.2-59.5-102.7c-3.5-3-7.3-5.9-11.3-8.3c-2.2-4.8-5-9.3-8.6-13.1
                             c7.2-7.3,13.3-15.7,17.4-25c14.7-33.3,10.4-74.3-6.9-107c20.2-13.5,18.7-49.2-0.8-66.9c-19.8-17.9-61.8-15.4-76.3,7.3
                             c-19.5-4.7-40.4-5.1-60-0.9c-2.4-3.7-5.6-6.9-9.8-9.3c-9-5.2-20.2-4-30.2-1.4c-4.8,1.2-9.6,2.7-13.9,5.1
@@ -146,19 +146,47 @@
         </div>
     </header>
     <main>
-        <section>
+        <section id="goals">
+            <div class="row section-headline">
+                <div class="column xs-span12">
+                    <h2>Goals</h2>
+                </div>
+            </div>
+            <div class="row section-headline">
+                <div class="column xs-span12">
+                    <h4>What would you like to save for or pay off?</h4>
+                </div>
+            </div>
+            <div class="row section-main-content">
+                <div class="column xs-span6 md-span4 lg-span2point4">
+                    <h4>A Home</h4>
+                    <i class="bb bb-house"></i>
+                    <input type="checkbox" name="Home" />
+                </div>
+                <div class="column xs-span6 md-span4 lg-span2point4">
+                    <h4>A Car</h4>
+                    <i class="bb bb-car"></i>
+                    <input type="checkbox" name="Car" />
+                </div>
+                <div class="column xs-span6 md-span4 lg-span2point4">
+                    <h4>College</h4>
+                    <i class="bb bb-graduation-cap"></i>
+                    <input type="checkbox" name="College" />
+                </div>
+                <div class="column xs-span6 md-span4 md-left2 lg-span2point4 lg-left0">
+                    <h4>Vacation</h4>
+                    <i class="bb bb-palm-tree"></i>
+                    <input type="checkbox" name="Vacation" />
+                </div>
+                <div class="column xs-span6 xs-left3 xs-right3 md-span4 md-left0 md-right2 lg-span2point4 lg-right0">
+                    <h4>Retirement</h4>
+                    <i class="bb bb-sapling"></i>
+                    <input type="checkbox" name="Retirement" />
+                </div>
+            </div>
+        </section>
+        <section id="income">
             <div class="row">
-                <h2>Goals</h2>
-                <div class="row">
-                    <div class="column xs-span12">What would you like to save for or pay off?</div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span3">A Home <input type="checkbox" name="Home" /></div>
-                    <div class="column xs-span3">A Car <input type="checkbox" name="Car" /></div>
-                    <div class="column xs-span2">College <input type="checkbox" name="College" /></div>
-                    <div class="column xs-span2">Vacation <input type="checkbox" name="Vacation" /></div>
-                    <div class="column xs-span2">Retirement <input type="checkbox" name="Retirement" /></div>
-                </div>
                 <h2>Income</h2>
                 <div class="column xs-span4">
                     <label for="ddlFrequency">How often do you get paid?</label>
@@ -189,6 +217,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section id="monthly-expenses">
+            <div class="row">
                 <h2>Monthly Expenses</h2>
                 <h3>Housing</h3>
                 <div class="row">
@@ -455,32 +487,12 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            <section id="submit-survey" class="large-padding-top">
                 <div class="row">
-                    <div class="column xs-span4"></div>
-                    <div class="column xs-span8"></div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span4"></div>
-                    <div class="column xs-span8"></div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span1"></div>
-                    <div class="column xs-span10">
-                        <button id="btnSubmit" type="submit" onclick="submitSurvey()">What should I do Budget Bear?</button>
+                    <div class="column xs-span12">
+                        <button id="btnSubmit" class="button-large button-light" type="submit" onclick="submitSurvey()">What should I do Budget Bear?</button>
                     </div>
-                    <div class="column xs-span1"></div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span1"></div>
-                    <div class="column xs-span10">
-                        <disclaimer>
-                            DISCLAIMER: The Budget Bear is not a real financial analyst; he just plays one on the intenet.
-                            <strong>These recommendations should absolutely not be mistaken for actual, financial advice.</strong>
-                            Take the Budget Bear's overly simple suggestions with a whole shaker of salt.<br />
-                            (But also note: The Budget Bear's best friend is Dr. Corgi, who will probably warn you about your sodium intake.)
-                        </disclaimer>
-                    </div>
-                    <div class="column xs-span1"></div>
                 </div>
             </div>
         </section>
@@ -488,7 +500,13 @@
     <footer class="main-footer">
         <div class="row">
             <div class="column xs-span12">
-                <p>&copy; 2015 Budget Bear</p>
+                <disclaimer>
+                    <h4>Disclaimer</h4>
+                    <p>The Budget Bear is not a real financial analyst; he just plays one on the intenet.
+                    <strong>These recommendations should absolutely not be mistaken for actual, financial advice.</strong>
+                    Take the Budget Bear's overly simple suggestions with a whole shaker of salt.</p>
+                    <p>(But also note: The Budget Bear's best friend is Dr. Corgi, who will probably warn you about your sodium intake.)</p>
+                </disclaimer>
             </div>
         </div>
     </footer>

@@ -14,7 +14,7 @@ input, select, textarea {
     font-weight: $light;
 }
 
-input:not([type='button']):not([type='submit']), select, textarea {
+input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']), select, textarea {
     @include transition(all 0.4s ease);
     @extend %default-border-radius;
     width: 100%;
@@ -32,19 +32,11 @@ input:not([type='submit']), button, select, textarea {
     font-size: 1.6rem;
 }
 
-input:not([type='button']):not([type='submit']), select {
+input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']), select {
     height: 3.8rem;
 }
 
 input {
-    &[type='checkbox'], &[type='radio'], &[type='submit'] {
-        width: auto;
-    }
-    
-    &[type='checkbox'], &[type='radio'] {
-        height: auto;
-    }
-    
     &[type='checkbox'] {
         -webkit-appearance: checkbox;
     }
