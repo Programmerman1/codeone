@@ -18,22 +18,248 @@
     <main>
         <section>
             <div class="row">
-                <div class="column xs-span12">
-                    <p>This will be Budget Bear's den.</p>
-                    <div onclick="adjustAmount('txtMonthlyRent')">
+                <h2>Goals</h2>
+                <div class="row">
+                    <div class="column xs-span12">What would you like to save for or pay off?</div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span3">A Home <input type="checkbox" name="Home" /></div>
+                    <div class="column xs-span3">A Car <input type="checkbox" name="Car" /></div>
+                    <div class="column xs-span2">College <input type="checkbox" name="College" /></div>
+                    <div class="column xs-span2">Vacation <input type="checkbox" name="Vacation" /></div>
+                    <div class="column xs-span2">Retirement <input type="checkbox" name="Retirement" /></div>
+                </div>
+                <h2>Income</h2>
+                <div class="column xs-span4">
+                    <label for="ddlFrequency">How often do you get paid?</label>
+                </div>
+                <div class="column xs-span8">
+                    <select id="ddlFrequency" name="Frequency">
+                        <option value="Weekly">Weekly</option>
+                        <option value="Biweekly">Every 2 weeks</option>
+                        <option value="TwiceAMonth">Twice a month</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="column xs-span4"><label for="numPayAmount">About how much do you take home each time?</label></div>
+                <div class="column xs-span8">
+                    <div onclick="adjustAmount('numPayAmount')">
                         <div>
+                            <input type="button" data-amount="1000" value="+$1000" />
                             <input type="button" data-amount="100" value="+$100" />
                             <input type="button" data-amount="25" value="+$25" />
                             <input type="button" data-amount="5" value="+$5" />
-                            <input type="button" data-amount="1" value="+$1" />
                         </div>
-                        <label for="txtMonthlyRent">Monthly Rent:</label>
-                        <input type="number" id="txtMonthlyRent" value="500" />
+                        <input type="number" id="numPayAmount" value="500" name="PayAmount" />
                         <div>
+                            <input type="button" data-amount="-1000" value="-$1000" />
                             <input type="button" data-amount="-100" value="-$100" />
                             <input type="button" data-amount="-25" value="-$25" />
                             <input type="button" data-amount="-5" value="-$5" />
-                            <input type="button" data-amount="-1" value="-$1" />
+                        </div>
+                    </div>
+                </div>
+                <h2>Monthly Expenses</h2>
+                <h3>Housing</h3>
+                <div class="row">
+                    <div class="column xs-span4"><label>Do you own your own home?</label></div>
+                    <div class="column xs-span8">
+                        <input type="radio" name="Home.IsOwned" value="true" />Yes<br />
+                        <input type="radio" name="Home.IsOwned" value="false" />No
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"><label for="numHousing">About how much do you pay for rent/mortgage?</label></div>
+                    <div class="column xs-span8">
+                        <div onclick="adjustAmount('numHousing')">
+                            <div>
+                                <input type="button" data-amount="1000" value="+$1000" />
+                                <input type="button" data-amount="100" value="+$100" />
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+                            </div>
+                            <input type="number" id="numHousing" value="750" name="HomePayment" />
+                            <div>
+                                <input type="button" data-amount="-1000" value="-$1000" />
+                                <input type="button" data-amount="-100" value="-$100" />
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Car</h3>
+                <div class="row">
+                    <div class="column xs-span4"><label>Do you own a car?</label></div>
+                    <div class="column xs-span8">
+                        <input type="radio" name="Car.IsOwned" value="true" />Yes<br />
+                        <input type="radio" name="Car.IsOwned" value="false" />No
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"><label for="numCar">About how much do you pay for your vehicle?</label></div>
+                    <div class="column xs-span8">
+                        <div onclick="adjustAmount('numCar')">
+                            <div>
+                                <input type="button" data-amount="1000" value="+$1000" />
+                                <input type="button" data-amount="100" value="+$100" />
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+                            </div>
+                            <input type="number" id="numCar" value="200" name="CarPayment" />
+                            <div>
+                                <input type="button" data-amount="-1000" value="-$1000" />
+                                <input type="button" data-amount="-100" value="-$100" />
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"><label for="numCarAmountOwed">About how much do you owe on it?</label></div>
+                    <div class="column xs-span8">
+                        <div onclick="adjustAmount('numCarAmountOwed')">
+                            <div>
+                                <input type="button" data-amount="1000" value="+$1000" />
+                                <input type="button" data-amount="100" value="+$100" />
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+                            </div>
+                            <input type="number" id="numCarAmountOwed" value="5000" name="CarLoanTotal" />
+                            <div>
+                                <input type="button" data-amount="-1000" value="-$1000" />
+                                <input type="button" data-amount="-100" value="-$100" />
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Other Expenses</h3>
+                <div class="row">
+                    <div class="column xs-span2">Gas/Water/Electricity</div>
+                    <div class="column xs-span2">Phone</div>
+                    <div class="column xs-span2">Internet</div>
+                    <div class="column xs-span2">TV</div>
+                    <div class="column xs-span2">Insurance</div>
+                    <div class="column xs-span2">Other Stuff</div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span2">
+                        <div onclick="adjustAmount('numUtilities')">
+                            <div>
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+
+                            </div>
+                            <input type="number" id="numUtilities" value="200" />
+                            <div>
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column xs-span2">
+                        <div onclick="adjustAmount('numPhone')">
+                            <div>
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+
+                            </div>
+                            <input type="number" id="numPhone" value="70" />
+                            <div>
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column xs-span2">
+                        <div onclick="adjustAmount('numInternet')">
+                            <div>
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+
+                            </div>
+                            <input type="number" id="numInternet" value="30" />
+                            <div>
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div><div class="column xs-span2">
+                        <div onclick="adjustAmount('numTV')">
+                            <div>
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+
+                            </div>
+                            <input type="number" id="numTV" value="20" />
+                            <div>
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column xs-span2">
+                        <div onclick="adjustAmount('numInsurance')">
+                            <div>
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+
+                            </div>
+                            <input type="number" id="numInsurance" value="100" />
+                            <div>
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column xs-span2">
+                        <div onclick="adjustAmount('numMisc')">
+                            <div>
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+
+                            </div>
+                            <input type="number" id="numMisc" value="10" />
+                            <div>
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"></div>
+                    <div class="column xs-span8"></div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"></div>
+                    <div class="column xs-span8"></div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"></div>
+                    <div class="column xs-span8"></div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span12">
+                        <p>This will be Budget Bear's den.</p>
+                        <div onclick="adjustAmount('txtMonthlyRent')">
+                            <div>
+                                <input type="button" data-amount="100" value="+$100" />
+                                <input type="button" data-amount="25" value="+$25" />
+                                <input type="button" data-amount="5" value="+$5" />
+                                <input type="button" data-amount="1" value="+$1" />
+                            </div>
+                            <label for="txtMonthlyRent">Monthly Rent:</label>
+                            <input type="number" id="txtMonthlyRent" value="500" />
+                            <div>
+                                <input type="button" data-amount="-100" value="-$100" />
+                                <input type="button" data-amount="-25" value="-$25" />
+                                <input type="button" data-amount="-5" value="-$5" />
+                                <input type="button" data-amount="-1" value="-$1" />
+                            </div>
                         </div>
                     </div>
                 </div>
