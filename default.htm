@@ -147,115 +147,79 @@
     </header>
     <main>
         <form onsubmit="submitSurvey()">
-        <section id="goals">
-            <div class="row section-headline">
-                <div class="column xs-span12">
-                    <h2>Goals</h2>
+            <section id="goals">
+                <div class="row section-headline">
+                    <div class="column xs-span12">
+                        <h2>Goals</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row section-headline">
-                <div class="column xs-span12">
-                    <h4>What would you like to save for or pay off?</h4>
+                <div class="row section-headline">
+                    <div class="column xs-span12">
+                        <h4>What would you like to save for or pay off?</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="row section-main-content">
-                <div class="column xs-span6 md-span4 lg-span2point4">
-                    <div class="column-inner">
-                    <h4>A Home</h4>
-                    <label for="chkHome"><i class="bb bb-house"></i></label>
-                    <input id="chkHome" type="checkbox" name="Home" />
-                </div>
-                </div>
-                <div class="column xs-span6 md-span4 lg-span2point4">
-                    <div class="column-inner">
-                    <h4>A Car</h4>
-                    <label for="chkCar"><i class="bb bb-car"></i></label>
-                    <input id="chkCar" type="checkbox" name="Car" />
-                </div>
-                </div>
-                <div class="column xs-span6 md-span4 lg-span2point4">
-                    <div class="column-inner">
-                    <h4>College</h4>
-                    <label for="chkCollege"><i class="bb bb-graduation-cap"></i></label>
-                    <input id="chkCollege" type="checkbox" name="College" />
-                </div>
-                </div>
-                <div class="column xs-span6 md-span4 md-left2 lg-span2point4 lg-left0">
-                    <div class="column-inner">
-                    <h4>Vacation</h4>
-                    <label for="chkVacation"><i class="bb bb-palm-tree"></i></label>
-                    <input id="chkVacation" type="checkbox" name="Vacation" />
-                </div>
-                </div>
-                <div class="column xs-span6 xs-left3 xs-right3 md-span4 md-left0 md-right2 lg-span2point4 lg-right0">
-                    <div class="column-inner">
-                    <h4>Retirement</h4>
-                    <label for="chkRetirement"><i class="bb bb-sapling"></i></label>
-                    <input id="chkRetirement" type="checkbox" name="Retirement" />
-                </div>
-            </div>
-            </div>
-        </section>
-        <section id="income">
-            <div class="row">
-                <h2>Income</h2>
-                <div class="column xs-span4">
-                    <label for="ddlFrequency">How often do you get paid?</label>
-                </div>
-                <div class="column xs-span8">
-                    <select id="ddlFrequency" name="Frequency">
-                        <option value="Weekly">Weekly</option>
-                        <option value="Biweekly">Every 2 weeks</option>
-                        <option value="TwiceAMonth">Twice a month</option>
-                        <option value="Monthly">Monthly</option>
-                    </select>
-                </div>
-                <div class="column xs-span4"><label for="numPayAmount">About how much do you take home each time?</label></div>
-                <div class="column xs-span8">
-                    <div onclick="adjustAmount(event,'numPayAmount')">
-                        <div>
-                            <input type="button" data-amount="1000" value="+$1000" />
-                            <input type="button" data-amount="100" value="+$100" />
-                            <input type="button" data-amount="25" value="+$25" />
-                            <input type="button" data-amount="5" value="+$5" />
+                <div class="row section-main-content">
+                    <div class="column xs-span6 md-span4 lg-span2point4">
+                        <div class="column-inner">
+                            <h4>A Home</h4>
+                            <label for="chkHome"><i class="bb bb-house"></i></label>
+                            <input id="chkHome" type="checkbox" name="Home" />
                         </div>
-                        <input type="number" id="numPayAmount" value="500" name="PayAmount" />
-                        <div>
-                            <input type="button" data-amount="-1000" value="-$1000" />
-                            <input type="button" data-amount="-100" value="-$100" />
-                            <input type="button" data-amount="-25" value="-$25" />
-                            <input type="button" data-amount="-5" value="-$5" />
+                    </div>
+                    <div class="column xs-span6 md-span4 lg-span2point4">
+                        <div class="column-inner">
+                            <h4>A Car</h4>
+                            <label for="chkCar"><i class="bb bb-car"></i></label>
+                            <input id="chkCar" type="checkbox" name="Car" />
+                        </div>
+                    </div>
+                    <div class="column xs-span6 md-span4 lg-span2point4">
+                        <div class="column-inner">
+                            <h4>College</h4>
+                            <label for="chkCollege"><i class="bb bb-graduation-cap"></i></label>
+                            <input id="chkCollege" type="checkbox" name="College" />
+                        </div>
+                    </div>
+                    <div class="column xs-span6 md-span4 md-left2 lg-span2point4 lg-left0">
+                        <div class="column-inner">
+                            <h4>Vacation</h4>
+                            <label for="chkVacation"><i class="bb bb-palm-tree"></i></label>
+                            <input id="chkVacation" type="checkbox" name="Vacation" />
+                        </div>
+                    </div>
+                    <div class="column xs-span6 xs-left3 xs-right3 md-span4 md-left0 md-right2 lg-span2point4 lg-right0">
+                        <div class="column-inner">
+                            <h4>Retirement</h4>
+                            <label for="chkRetirement"><i class="bb bb-sapling"></i></label>
+                            <input id="chkRetirement" type="checkbox" name="Retirement" />
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section id="monthly-expenses">
-            <div class="row">
-                <h2>Monthly Expenses</h2>
-                <h3>Housing</h3>
+            </section>
+            <section id="income">
                 <div class="row">
-                    <div class="column xs-span4"><label>Do you own your own home?</label></div>
-                    <div class="column xs-span1">
-                        <input type="radio" name="Home.IsOwned" value="true" />
-                        Yes
+                    <h2>Income</h2>
+                    <div class="column xs-span4">
+                        <label for="ddlFrequency">How often do you get paid?</label>
                     </div>
-                    <div class="column xs-span1">
-                        <input type="radio" name="Home.IsOwned" value="false" />
-                        No
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span4"><label for="numHousing">About how much do you pay for rent/mortgage?</label></div>
                     <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numHousing')">
+                        <select id="ddlFrequency" name="Frequency">
+                            <option value="Weekly">Weekly</option>
+                            <option value="Biweekly">Every 2 weeks</option>
+                            <option value="TwiceAMonth">Twice a month</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <div class="column xs-span4"><label for="numPayAmount">About how much do you take home each time?</label></div>
+                    <div class="column xs-span8">
+                        <div onclick="adjustAmount(event,'numPayAmount')">
                             <div>
                                 <input type="button" data-amount="1000" value="+$1000" />
                                 <input type="button" data-amount="100" value="+$100" />
                                 <input type="button" data-amount="25" value="+$25" />
                                 <input type="button" data-amount="5" value="+$5" />
                             </div>
-                            <input type="number" id="numHousing" value="750" name="HomePayment" />
+                            <input type="number" id="numPayAmount" value="500" name="PayAmount" />
                             <div>
                                 <input type="button" data-amount="-1000" value="-$1000" />
                                 <input type="button" data-amount="-100" value="-$100" />
@@ -265,248 +229,284 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            <section id="monthly-expenses">
                 <div class="row">
-                    <div class="column xs-span4"><label for="numMortgageOwed">About how much do you still owe on your home?</label></div>
-                    <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numMortgageOwed')">
-                            <div>
-                                <input type="button" data-amount="10000" value="+$10,000" />
-                                <input type="button" data-amount="5000" value="+$5000" />
-                                <input type="button" data-amount="100" value="+$100" />
-                            </div>
-                            <input type="number" id="numMortgageOwed" value="70000" name="HomeLoanTotal" />
-                            <div>
-                                <input type="button" data-amount="-10000" value="-$10000" />
-                                <input type="button" data-amount="-5000" value="-$5000" />
-                                <input type="button" data-amount="-1000" value="-$1000" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h3>Car</h3>
-                <div class="row">
-                    <div class="column xs-span4"><label>Do you own a car?</label></div>
-                    <div class="column xs-span1">
-                        <input type="radio" name="Car.IsOwned" value="true" />Yes
-                    </div>
-                    <div class="column xs-span1">
-                        <input type="radio" name="Car.IsOwned" value="false" />No
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span4"><label for="numCar">About how much do you pay for your car each month?</label></div>
-                    <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numCar')">
-                            <div>
-                                <input type="button" data-amount="1000" value="+$1000" />
-                                <input type="button" data-amount="100" value="+$100" />
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-                            </div>
-                            <input type="number" id="numCar" value="200" name="CarPayment" />
-                            <div>
-                                <input type="button" data-amount="-1000" value="-$1000" />
-                                <input type="button" data-amount="-100" value="-$100" />
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h3>Education</h3>
-                <div class="row">
-                    <div class="column xs-span4"><label>Do you have college loans?</label></div>
-                    <div class="column xs-span1">
-                        <input type="radio" name="College.IsOwned" value="true" />Yes
-                    </div>
-                    <div class="column xs-span1">
-                        <input type="radio" name="College.IsOwned" value="false" />No
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span4"><label for="numCollege">About how much do you pay on them each month?</label></div>
-                    <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numCollege')">
-                            <div>
-                                <input type="button" data-amount="500" value="+$500" />
-                                <input type="button" data-amount="100" value="+$100" />
-                                <input type="button" data-amount="25" value="+$25" />
-                            </div>
-                            <input type="number" id="numCollege" value="200" name="CollegePayment" />
-                            <div>
-                                <input type="button" data-amount="-500" value="-$500" />
-                                <input type="button" data-amount="-100" value="-$100" />
-                                <input type="button" data-amount="-25" value="-$25" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span4"><label for="numCollegeAmountOwed">About how much do you still owe on them?</label></div>
-                    <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numCollegeAmountOwed')">
-                            <div>
-                                <input type="button" data-amount="5000" value="+$5000" />
-                                <input type="button" data-amount="1000" value="+$1000" />
-                                <input type="button" data-amount="100" value="+$100" />
-                            </div>
-                            <input type="number" id="numCollegeAmountOwed" value="29000" name="CollegeLoanTotal" />
-                            <div>
-                                <input type="button" data-amount="-5000" value="-$5000" />
-                                <input type="button" data-amount="-1000" value="-$1000" />
-                                <input type="button" data-amount="-100" value="-$100" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h3>Other Expenses</h3>
-                <div class="row">
-                    <div class="column xs-span2">Gas/Water/Electricity</div>
-                    <div class="column xs-span2">Phone</div>
-                    <div class="column xs-span2">Internet</div>
-                    <div class="column xs-span2">TV</div>
-                    <div class="column xs-span2">Insurance</div>
-                    <div class="column xs-span2">Other Stuff</div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span2">
-                        <div onclick="adjustAmount(event,'numUtilities')">
-                            <div>
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-
-                            </div>
-                            <input type="number" id="numUtilities" value="200" />
-                            <div>
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column xs-span2">
-                        <div onclick="adjustAmount(event,'numPhone')">
-                            <div>
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-
-                            </div>
-                            <input type="number" id="numPhone" value="70" />
-                            <div>
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column xs-span2">
-                        <div onclick="adjustAmount(event,'numInternet')">
-                            <div>
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-
-                            </div>
-                            <input type="number" id="numInternet" value="30" />
-                            <div>
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div><div class="column xs-span2">
-                        <div onclick="adjustAmount(event,'numTV')">
-                            <div>
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-
-                            </div>
-                            <input type="number" id="numTV" value="20" />
-                            <div>
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column xs-span2">
-                        <div onclick="adjustAmount(event,'numInsurance')">
-                            <div>
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-
-                            </div>
-                            <input type="number" id="numInsurance" value="100" />
-                            <div>
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column xs-span2">
-                        <div onclick="adjustAmount(event,'numMisc')">
-                            <div>
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
-
-                            </div>
-                            <input type="number" id="numMisc" value="10" />
-                            <div>
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column xs-span4"><label>Do you have any other outstanding loans?</label></div>
-                    <div class="column xs-span8">
+                    <h2>Monthly Expenses</h2>
+                    <h3>Housing</h3>
+                    <div class="row">
+                        <div class="column xs-span4"><label>Do you own your own home?</label></div>
                         <div class="column xs-span1">
-                            <input type="radio" name="OtherLoans.IsOwned" value="true" />Yes
+                            <input type="radio" name="Home.IsOwned" value="true" />
+                            Yes
                         </div>
                         <div class="column xs-span1">
-                            <input type="radio" name="OtherLoans.IsOwned" value="false" />No
+                            <input type="radio" name="Home.IsOwned" value="false" />
+                            No
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numHousing">About how much do you pay for rent/mortgage?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numHousing')">
+                                <div>
+                                    <input type="button" data-amount="1000" value="+$1000" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+                                </div>
+                                <input type="number" id="numHousing" value="750" name="HomePayment" />
+                                <div>
+                                    <input type="button" data-amount="-1000" value="-$1000" />
+                                    <input type="button" data-amount="-100" value="-$100" />
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numMortgageOwed">About how much do you still owe on your home?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numMortgageOwed')">
+                                <div>
+                                    <input type="button" data-amount="10000" value="+$10,000" />
+                                    <input type="button" data-amount="5000" value="+$5000" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                </div>
+                                <input type="number" id="numMortgageOwed" value="70000" name="HomeLoanTotal" />
+                                <div>
+                                    <input type="button" data-amount="-10000" value="-$10000" />
+                                    <input type="button" data-amount="-5000" value="-$5000" />
+                                    <input type="button" data-amount="-1000" value="-$1000" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Car</h3>
+                    <div class="row">
+                        <div class="column xs-span4"><label>Do you own a car?</label></div>
+                        <div class="column xs-span1">
+                            <input type="radio" name="Car.IsOwned" value="true" />Yes
+                        </div>
+                        <div class="column xs-span1">
+                            <input type="radio" name="Car.IsOwned" value="false" />No
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numCar">About how much do you pay for your car each month?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numCar')">
+                                <div>
+                                    <input type="button" data-amount="1000" value="+$1000" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+                                </div>
+                                <input type="number" id="numCar" value="200" name="CarPayment" />
+                                <div>
+                                    <input type="button" data-amount="-1000" value="-$1000" />
+                                    <input type="button" data-amount="-100" value="-$100" />
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Education</h3>
+                    <div class="row">
+                        <div class="column xs-span4"><label>Do you have college loans?</label></div>
+                        <div class="column xs-span1">
+                            <input type="radio" name="College.IsOwned" value="true" />Yes
+                        </div>
+                        <div class="column xs-span1">
+                            <input type="radio" name="College.IsOwned" value="false" />No
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numCollege">About how much do you pay on them each month?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numCollege')">
+                                <div>
+                                    <input type="button" data-amount="500" value="+$500" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                    <input type="button" data-amount="25" value="+$25" />
+                                </div>
+                                <input type="number" id="numCollege" value="200" name="CollegePayment" />
+                                <div>
+                                    <input type="button" data-amount="-500" value="-$500" />
+                                    <input type="button" data-amount="-100" value="-$100" />
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numCollegeAmountOwed">About how much do you still owe on them?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numCollegeAmountOwed')">
+                                <div>
+                                    <input type="button" data-amount="5000" value="+$5000" />
+                                    <input type="button" data-amount="1000" value="+$1000" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                </div>
+                                <input type="number" id="numCollegeAmountOwed" value="29000" name="CollegeLoanTotal" />
+                                <div>
+                                    <input type="button" data-amount="-5000" value="-$5000" />
+                                    <input type="button" data-amount="-1000" value="-$1000" />
+                                    <input type="button" data-amount="-100" value="-$100" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Other Expenses</h3>
+                    <div class="row">
+                        <div class="column xs-span2">Gas/Water/Electricity</div>
+                        <div class="column xs-span2">Phone</div>
+                        <div class="column xs-span2">Internet</div>
+                        <div class="column xs-span2">TV</div>
+                        <div class="column xs-span2">Insurance</div>
+                        <div class="column xs-span2">Other Stuff</div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span2">
+                            <div onclick="adjustAmount(event,'numUtilities')">
+                                <div>
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+
+                                </div>
+                                <input type="number" id="numUtilities" value="200" />
+                                <div>
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column xs-span2">
+                            <div onclick="adjustAmount(event,'numPhone')">
+                                <div>
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+
+                                </div>
+                                <input type="number" id="numPhone" value="70" />
+                                <div>
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column xs-span2">
+                            <div onclick="adjustAmount(event,'numInternet')">
+                                <div>
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+
+                                </div>
+                                <input type="number" id="numInternet" value="30" />
+                                <div>
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div><div class="column xs-span2">
+                            <div onclick="adjustAmount(event,'numTV')">
+                                <div>
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+
+                                </div>
+                                <input type="number" id="numTV" value="20" />
+                                <div>
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column xs-span2">
+                            <div onclick="adjustAmount(event,'numInsurance')">
+                                <div>
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+
+                                </div>
+                                <input type="number" id="numInsurance" value="100" />
+                                <div>
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column xs-span2">
+                            <div onclick="adjustAmount(event,'numMisc')">
+                                <div>
+                                    <input type="button" data-amount="25" value="+$25" />
+                                    <input type="button" data-amount="5" value="+$5" />
+
+                                </div>
+                                <input type="number" id="numMisc" value="10" />
+                                <div>
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                    <input type="button" data-amount="-5" value="-$5" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label>Do you have any other outstanding loans?</label></div>
+                        <div class="column xs-span8">
+                            <div class="column xs-span1">
+                                <input type="radio" name="OtherLoans.IsOwned" value="true" />Yes
+                            </div>
+                            <div class="column xs-span1">
+                                <input type="radio" name="OtherLoans.IsOwned" value="false" />No
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numOtherLoans">About how much do you pay on them each month?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numOtherLoans')">
+                                <div>
+                                    <input type="button" data-amount="500" value="+$500" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                    <input type="button" data-amount="25" value="+$25" />
+                                </div>
+                                <input type="number" id="numOtherLoans" value="200" name="OtherLoanPayment" />
+                                <div>
+                                    <input type="button" data-amount="-500" value="-$500" />
+                                    <input type="button" data-amount="-100" value="-$100" />
+                                    <input type="button" data-amount="-25" value="-$25" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column xs-span4"><label for="numOtherLoansAmountOwed">About how much do you still owe on them?</label></div>
+                        <div class="column xs-span8">
+                            <div onclick="adjustAmount(event,'numOtherLoansAmountOwed')">
+                                <div>
+                                    <input type="button" data-amount="1000" value="+$1000" />
+                                    <input type="button" data-amount="100" value="+$100" />
+                                </div>
+                                <input type="number" id="numOtherLoansAmountOwed" value="5000" name="OtherLoanTotal" />
+                                <div>
+                                    <input type="button" data-amount="-1000" value="-$1000" />
+                                    <input type="button" data-amount="-100" value="-$100" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
+            <section id="submit-survey" class="large-padding-top">
                 <div class="row">
-                    <div class="column xs-span4"><label for="numOtherLoans">About how much do you pay on them each month?</label></div>
-                    <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numOtherLoans')">
-                            <div>
-                                <input type="button" data-amount="500" value="+$500" />
-                                <input type="button" data-amount="100" value="+$100" />
-                                <input type="button" data-amount="25" value="+$25" />
-                            </div>
-                            <input type="number" id="numOtherLoans" value="200" name="OtherLoanPayment" />
-                            <div>
-                                <input type="button" data-amount="-500" value="-$500" />
-                                <input type="button" data-amount="-100" value="-$100" />
-                                <input type="button" data-amount="-25" value="-$25" />
-                            </div>
-                        </div>
+                    <div class="column xs-span12">
+                        <button id="btnSubmit" class="button-large button-light" type="submit">What should I do Budget Bear?</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="column xs-span4"><label for="numOtherLoansAmountOwed">About how much do you still owe on them?</label></div>
-                    <div class="column xs-span8">
-                        <div onclick="adjustAmount(event,'numOtherLoansAmountOwed')">
-                            <div>
-                                <input type="button" data-amount="1000" value="+$1000" />
-                                <input type="button" data-amount="100" value="+$100" />
-                            </div>
-                            <input type="number" id="numOtherLoansAmountOwed" value="5000" name="OtherLoanTotal" />
-                            <div>
-                                <input type="button" data-amount="-1000" value="-$1000" />
-                                <input type="button" data-amount="-100" value="-$100" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-        <section id="submit-survey" class="large-padding-top">
-            <div class="row">
-                <div class="column xs-span12">
-                    <button id="btnSubmit" class="button-large button-light" type="submit" onclick="submitSurvey()">What should I do Budget Bear?</button>
-                </div>
-            </div>
-            </div>
-        </section>
+            </section>
         </form>
     </main>
     <footer class="main-footer">
