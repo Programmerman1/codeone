@@ -1,43 +1,43 @@
 enum Goal {
-	Home,
-	Car,
-	Retirement,
-	Vacation,
+    Home,
+    Car,
+    Retirement,
+    Vacation,
     College,
     EmergencyFund,
     Other,
     Income
 }
 enum Frequency {
-	Weekly,
-	Biweekly,
-	TwiceAMonth,
-	Monthly
+    Weekly,
+    Biweekly,
+    TwiceAMonth,
+    Monthly
 }
 interface Loan {
-	Payment : number;
-	TotalOwed : number;
-	IsOwned : boolean;
+    Payment: number;
+    TotalOwed: number;
+    IsOwned: boolean;
 }
 interface BudgetBearInput {
-	Goals : Goal[];
-	PayAmount : number;
+    Goals: Goal[];
+    PayAmount: number;
     PayFrequency: Frequency;
     RetirementSavings: number;
     OtherSavings: number;
-	Home : Loan;
-	Car : Loan;
-	College : Loan;
-	OtherDebts : Loan;
-	MandatoryExpenses : number;
-	OtherExpenses : number;
+    Home: Loan;
+    Car: Loan;
+    College: Loan;
+    OtherDebts: Loan;
+    MandatoryExpenses: number;
+    OtherExpenses: number;
 }
 class Decision {
-	PrimaryGoal : Goal;
-	GoalOrder : Goal[];
+    PrimaryGoal: Goal;
+    GoalOrder: Goal[];
 }
 
-function GetGoalMatrix() : any[] {
+function GetGoalMatrix(): any[] {
     var matrix = [];
     matrix["Home"] = { Goal: Goal.Home, Weight: 1.0 };
     matrix.push(matrix["Home"]);
@@ -58,7 +58,7 @@ function GetGoalMatrix() : any[] {
     return matrix;
 }
 
-function MakeDecision(input : BudgetBearInput) : Decision {
+function MakeDecision(input: BudgetBearInput): Decision {
     var result = new Decision();
     var finalGoals = GetGoalMatrix();
 
@@ -144,10 +144,10 @@ function MakeDecision(input : BudgetBearInput) : Decision {
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight })
         .map(function (g) { return g.Goal });
-    
+
     result.PrimaryGoal = result.GoalOrder[0];
 
-	return result;
+    return result;
 }
 
 function SampleInput(): BudgetBearInput {
@@ -183,38 +183,54 @@ function SampleInput(): BudgetBearInput {
     return result;
 }
 
-function GatherInput() {
+function GatherInput(): BudgetBearInput {
+    var form = document.forms[0];
     var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1000,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
+        Goals: [],
+        PayAmount: form.PayAmount.value * 1.0,
+        PayFrequency: Frequency[form.Frequency.value],
+        RetirementSavings: form.RetirementSavings.value * 1.0,
+        OtherSavings: form.OtherSavings.value * 1.0,
         Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
+            Payment: form.HomePayment.value * 1.0,
+            IsOwned: $('input[name="HomeIsOwned"]:checked').val()
         },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
+        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() },
+        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() },
+        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() },
+        MandatoryExpenses: (form.Utilities.value * 1.0 + form.Internet.value * 1.0 + form.TV.value * 1.0 + form.Phone.value * 1.0 + form.Insurance.value * 1.0),
+        OtherExpenses: form.OtherStuff.value * 1.0
     };
+    if (form.Home.checked)
+        result.Goals.push(Goal.Home);
+    if (form.Car.checked)
+        result.Goals.push(Goal.Car);
+    if (form.College.checked)
+        result.Goals.push(Goal.College);
+    if (form.Vacation.checked)
+        result.Goals.push(Goal.Vacation);
+    if (form.Retirement.checked)
+        result.Goals.push(Goal.Retirement);
+    if (result.Home.IsOwned == true) {
+        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
+        result.Home.IsOwned = true;
+    }
+
+    if (result.Car.IsOwned) {
+        result.Car.Payment = form.CarPayment.value * 1.0;
+        result.Car.TotalOwed = form.CarTotalOwed.value * 1.0;
+    }
+    if (result.College.IsOwned) {
+        result.College.Payment = form.CollegePayment.value * 1.0;
+        result.College.TotalOwed = form.CollegeTotalOwed.value * 1.0;
+    }
+    if (result.OtherDebts.IsOwned == true) {
+        result.OtherDebts.Payment = form.OtherLoansPayment.value * 1.0;
+        result.OtherDebts.TotalOwed = form.OtherLoansTotalOwed.value * 1.0;
+    }
+
     return result;
-};
+}
 
 (function () {
     var decision = MakeDecision(SampleInput());
