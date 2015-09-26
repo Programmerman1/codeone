@@ -92,7 +92,7 @@ function MakeDecision(input) {
     //substantially worse for your situation than paying 10%. Paying 50% for your home isn't nearly as bad
     //as the car scenario. Let's log-base-2-index it. it's probably wrong but eh.
     if (input.Home.Payment * 3 > monthlyIncome) {
-        finalGoals["House"].Weight *= Math.log((input.Home.Payment - (monthlyIncome / 3))) / Math.log(2);
+        finalGoals["Home"].Weight *= Math.log((input.Home.Payment - (monthlyIncome / 3))) / Math.log(2);
     }
     ///#endregion House
     ///#region College
