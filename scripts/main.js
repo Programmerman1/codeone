@@ -8,3 +8,7 @@ var adjustAmount = function (targetFieldId) {
     if (field.value < 0) field.value = 0;
     event.stopPropagation();
 };
+
+var submitSurvey = function () {
+    console.log('submit to the budget bear. SUBMIT!');
+};
