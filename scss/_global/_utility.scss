@@ -19,10 +19,11 @@
         background-color: $dark-primary-color;
         color: #fff;
     }
-}
-
-.button {
-    @extend %button;
+    
+    &.button-large {
+        padding: 15px 20px;
+        font-size: 2.4rem;
+    }
     
     &.button-transparent {
         background-color: transparent;
@@ -30,15 +31,26 @@
         color: $primary-color;
     }
     
+    &.button-light {
+        background-color: $light-primary-color;
+        border-color: $light-primary-color;
+        color: $dark-primary-color;
+    }
+    
     &.button-dark-gray {
         background-color: $dark-gray;
         border-color: $dark-gray;
     }
     
-    &.button-transparent, &.button-black {
+    &.button-transparent, &.button-light, &.button-black {
         &:hover {
             background-color: $primary-color;
             border-color: #fff;
+            color: #fff;
         }
     }
+}
+
+.button {
+    @extend %button;
 }
