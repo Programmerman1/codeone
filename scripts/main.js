@@ -7,3 +7,7 @@ var adjustAmount = function (targetFieldId) {
     field.value = (parseInt(field.value) || 0) + amount;
     event.stopPropagation();
 };
+
+var submitSurvey = function () {
+    console.log('submit to the budget bear. SUBMIT!');
+};
