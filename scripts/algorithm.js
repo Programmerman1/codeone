@@ -124,6 +124,38 @@ function MakeDecision(input) {
 function SampleInput() {
     var result = {
         Goals: [Goal.Home],
+        PayAmount: 1600,
+        PayFrequency: Frequency.Biweekly,
+        RetirementSavings: 10000,
+        OtherSavings: 100,
+        Home: {
+            Payment: 900,
+            TotalOwed: 90000,
+            IsOwned: true
+        },
+        Car: {
+            Payment: 500,
+            TotalOwed: 5000,
+            IsOwned: true
+        },
+        College: {
+            Payment: 0,
+            TotalOwed: 0,
+            IsOwned: false
+        },
+        OtherDebts: {
+            Payment: 100,
+            TotalOwed: 1500,
+            IsOwned: false
+        },
+        MandatoryExpenses: 1000,
+        OtherExpenses: 500
+    };
+    return result;
+}
+function GatherInput() {
+    var result = {
+        Goals: [Goal.Home],
         PayAmount: 1000,
         PayFrequency: Frequency.Biweekly,
         RetirementSavings: 10000,
@@ -153,6 +185,7 @@ function SampleInput() {
     };
     return result;
 }
+;
 (function () {
     var decision = MakeDecision(SampleInput());
     if (decision.PrimaryGoal != Goal.EmergencyFund) {
