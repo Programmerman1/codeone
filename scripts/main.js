@@ -11,4 +11,6 @@ var adjustAmount = function (targetFieldId) {
 
 var submitSurvey = function () {
     console.log('submit to the budget bear. SUBMIT!');
+    GatherInput();
+    return false;
 };
