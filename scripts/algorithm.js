@@ -145,38 +145,6 @@ function MakeDecision(input) {
     result.PrimaryGoal = result.GoalOrder[0];
     return result;
 }
-function SampleInput() {
-    var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1600,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
-        Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
-        },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
-    };
-    return result;
-}
 function GatherInput() {
     var result = {
         Goals: [Goal.Home],
@@ -210,12 +178,3 @@ function GatherInput() {
     return result;
 }
 ;
-(function () {
-    var decision = MakeDecision(SampleInput());
-    if (decision.PrimaryGoal != Goal.EmergencyFund) {
-        console.log('fail, primary goal in sample should be emergency fund.');
-    }
-    else if (decision.PrimaryGoal == Goal.EmergencyFund) {
-        console.log('goal chosen correctly');
-    }
-}());
