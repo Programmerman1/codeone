@@ -124,7 +124,7 @@ function MakeDecision(input) {
 function SampleInput() {
     var result = {
         Goals: [Goal.Home],
-        PayAmount: 1000,
+        PayAmount: 1600,
         PayFrequency: Frequency.Biweekly,
         RetirementSavings: 10000,
         OtherSavings: 100,

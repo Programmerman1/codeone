@@ -153,7 +153,7 @@ function MakeDecision(input : BudgetBearInput) : Decision {
 function SampleInput(): BudgetBearInput {
     var result = {
         Goals: [Goal.Home],
-        PayAmount: 1000,
+        PayAmount: 1600,
         PayFrequency: Frequency.Biweekly,
         RetirementSavings: 10000,
         OtherSavings: 100,
