@@ -1,8 +1,10 @@
 ﻿var load = function () {
     console.log('hi folks');
 }();
-var adjustAmount = function (targetFieldId) {
+var adjustAmount = function (event, targetFieldId) {
+    event = event || window.event;
     var field = document.getElementById(targetFieldId);
+    //get button value
     var amount = parseInt((event.target || event.srcElement).dataset.amount);
     field.value = (parseInt(field.value) || 0) + amount;
     if (field.value < 0) field.value = 0;
