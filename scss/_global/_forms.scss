@@ -27,7 +27,7 @@ input:not([type='button']):not([type='submit']), select, textarea {
     }
 }
 
-input:not([type='submit']), select, textarea {
+input:not([type='submit']), button, select, textarea {
     font: 16px / 1.5 $font-family-open-sans;
     font-size: 1.6rem;
 }
@@ -54,7 +54,7 @@ input {
     }
 }
 
-input[type='button'], input[type='submit'] {
+input[type='button'], input[type='submit'], button {
     @extend %button;
     text-transform: uppercase;
     white-space: normal;

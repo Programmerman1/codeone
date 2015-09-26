@@ -3,7 +3,15 @@
 /*------*/
 
 .bear-container {
+    position: relative;
     overflow: hidden;
     height: 0;
     padding-bottom: (100% * 600 / 480);
+    
+    svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
 }

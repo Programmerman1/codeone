@@ -52,7 +52,7 @@
   display: table;
   content: " "; }
 
-.button, input[type='button'], input[type='submit'], input:not([type='button']):not([type='submit']), select, textarea {
+.button, input[type='button'], input[type='submit'], button, input:not([type='button']):not([type='submit']), select, textarea {
   border-radius: 3px; }
 
 .row {
@@ -106,7 +106,7 @@ a img {
 /*-----------------*/
 /* Utility Classes */
 /*-----------------*/
-.button, input[type='button'], input[type='submit'] {
+.button, input[type='button'], input[type='submit'], button {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   display: inline-block;
@@ -117,7 +117,7 @@ a img {
   font-weight: 400;
   text-align: center;
   text-decoration: none; }
-  .button:hover, input[type='button']:hover, input[type='submit']:hover {
+  .button:hover, input[type='button']:hover, input[type='submit']:hover, button:hover {
     border-color: #2e5630;
     background-color: #2e5630;
     color: #fff; }
@@ -889,7 +889,7 @@ input:not([type='button']):not([type='submit']), select, textarea {
   input:not([type='button']):not([type='submit']):focus, select:focus, textarea:focus {
     opacity: 1; }
 
-input:not([type='submit']), select, textarea {
+input:not([type='submit']), button, select, textarea {
   font: 16px/1.5 "Open Sans", sans-serif;
   font-size: 1.6rem; }
 
@@ -905,7 +905,7 @@ input[type='checkbox'] {
 input[type='radio'] {
   -webkit-appearance: radio; }
 
-input[type='button'], input[type='submit'] {
+input[type='button'], input[type='submit'], button {
   text-transform: uppercase;
   white-space: normal;
   cursor: pointer; }
@@ -956,17 +956,29 @@ td, th {
     color: #777c79; }
 
 .logo-container {
+  position: relative;
   overflow: hidden;
   height: 0;
   padding-bottom: 60%; }
+  .logo-container svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0; }
 
 /*------*/
 /* Bear */
 /*------*/
 .bear-container {
+  position: relative;
   overflow: hidden;
   height: 0;
   padding-bottom: 125%; }
+  .bear-container svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0; }
 
 /*--------*/
 /* Footer */
