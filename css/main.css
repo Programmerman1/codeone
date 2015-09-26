@@ -60,12 +60,14 @@ a img {
   transition: all 0.4s ease;
   display: inline-block;
   padding: 10px 15px;
-  background-color: #aaa;
   border: solid 1px #aaa;
+  background-color: #aaa;
   color: #fff;
   text-align: center;
   text-decoration: none; }
   .button:hover, input[type='button']:hover, input[type='submit']:hover {
+    border-color: #555;
+    background-color: #555;
     color: #fff; }
 
 .button.button-white, .button.button-transparent:hover {
@@ -692,8 +694,7 @@ input:not([type='button']):not([type='submit']), select, textarea {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   width: 100%;
-  margin: 2px 0 10px 0;
-  margin: 0.2rem 0 1rem 0;
+  margin: 1rem 0;
   padding: 5px 10px;
   border: solid 1px #aaa;
   font: 16px/1.5 "Open Sans", sans-serif;
@@ -715,7 +716,6 @@ input[type='radio'] {
   -webkit-appearance: radio; }
 
 input[type='button'], input[type='submit'] {
-  float: right;
   font-size: 2rem;
   text-transform: uppercase;
   white-space: normal;

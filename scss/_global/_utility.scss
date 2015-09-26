@@ -7,13 +7,15 @@
     @extend %default-border-radius;
     display: inline-block;
     padding: 10px 15px;
-    background-color: $medium-gray;
     border: solid 1px $medium-gray;
+    background-color: $medium-gray;
     color: #fff;
     text-align: center;
     text-decoration: none;
     
     &:hover {
+        border-color: $dark-gray;
+        background-color: $dark-gray;
         color: #fff;
     }
 }
