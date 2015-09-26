@@ -63,9 +63,13 @@
                 <h3>Housing</h3>
                 <div class="row">
                     <div class="column xs-span4"><label>Do you own your own home?</label></div>
-                    <div class="column xs-span8">
-                        <input type="radio" name="Home.IsOwned" value="true" />Yes<br />
-                        <input type="radio" name="Home.IsOwned" value="false" />No
+                    <div class="column xs-span1">
+                        <input type="radio" name="Home.IsOwned" value="true" />
+                        Yes
+                    </div>
+                    <div class="column xs-span1">
+                        <input type="radio" name="Home.IsOwned" value="false" />
+                        No
                     </div>
                 </div>
                 <div class="row">
@@ -91,8 +95,10 @@
                 <h3>Car</h3>
                 <div class="row">
                     <div class="column xs-span4"><label>Do you own a car?</label></div>
-                    <div class="column xs-span8">
-                        <input type="radio" name="Car.IsOwned" value="true" />Yes<br />
+                    <div class="column xs-span1">
+                        <input type="radio" name="Car.IsOwned" value="true" />Yes
+                    </div>
+                    <div class="column xs-span1">
                         <input type="radio" name="Car.IsOwned" value="false" />No
                     </div>
                 </div>
@@ -116,22 +122,46 @@
                         </div>
                     </div>
                 </div>
+                <h3>Education</h3>
                 <div class="row">
-                    <div class="column xs-span4"><label for="numCarAmountOwed">About how much do you owe on it?</label></div>
+                    <div class="column xs-span4"><label>Do you have college loans?</label></div>
+                    <div class="column xs-span1">
+                        <input type="radio" name="College.IsOwned" value="true" />Yes
+                    </div>
+                    <div class="column xs-span1">
+                        <input type="radio" name="College.IsOwned" value="false" />No
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"><label for="numCar">About how much do you pay on them each month?</label></div>
                     <div class="column xs-span8">
-                        <div onclick="adjustAmount('numCarAmountOwed')">
+                        <div onclick="adjustAmount('numCollege')">
+                            <div>
+                                <input type="button" data-amount="500" value="+$500" />
+                                <input type="button" data-amount="100" value="+$100" />
+                                <input type="button" data-amount="25" value="+$25" />
+                            </div>
+                            <input type="number" id="numCollege" value="200" name="CollegePayment" />
+                            <div>
+                                <input type="button" data-amount="-500" value="-$500" />
+                                <input type="button" data-amount="-100" value="-$100" />
+                                <input type="button" data-amount="-25" value="-$25" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span4"><label for="numCollegeAmountOwed">About how much do you still owe on them?</label></div>
+                    <div class="column xs-span8">
+                        <div onclick="adjustAmount('numCollegeAmountOwed')">
                             <div>
                                 <input type="button" data-amount="1000" value="+$1000" />
                                 <input type="button" data-amount="100" value="+$100" />
-                                <input type="button" data-amount="25" value="+$25" />
-                                <input type="button" data-amount="5" value="+$5" />
                             </div>
-                            <input type="number" id="numCarAmountOwed" value="5000" name="CarLoanTotal" />
+                            <input type="number" id="numCollegeAmountOwed" value="5000" name="CollegeLoanTotal" />
                             <div>
                                 <input type="button" data-amount="-1000" value="-$1000" />
                                 <input type="button" data-amount="-100" value="-$100" />
-                                <input type="button" data-amount="-25" value="-$25" />
-                                <input type="button" data-amount="-5" value="-$5" />
                             </div>
                         </div>
                     </div>
