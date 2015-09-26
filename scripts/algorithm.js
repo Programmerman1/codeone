@@ -20,12 +20,38 @@ var Decision = (function () {
     }
     return Decision;
 })();
+function GetGoalMatrix() {
+    var matrix = [];
+    matrix["Home"] = { Goal: Goal.Home, Weight: 1.0 };
+    matrix.push(matrix["Home"]);
+    matrix["Car"] = { Goal: Goal.Car, Weight: 1.0 };
+    matrix.push(matrix["Car"]);
+    matrix["Retirement"] = { Goal: Goal.Retirement, Weight: 1.0 };
+    matrix.push(matrix["Retirement"]);
+    matrix["Vacation"] = { Goal: Goal.Vacation, Weight: 1.0 };
+    matrix.push(matrix["Vacation"]);
+    matrix["College"] = { Goal: Goal.College, Weight: 1.0 };
+    matrix.push(matrix["College"]);
+    matrix["EmergencyFund"] = { Goal: Goal.EmergencyFund, Weight: 1.0 };
+    matrix.push(matrix["EmergencyFund"]);
+    matrix["Other"] = { Goal: Goal.Other, Weight: 1.0 };
+    matrix.push(matrix["Other"]);
+    return matrix;
+}
 function MakeDecision(input) {
     var result = new Decision();
-    result.PrimaryGoal = input.Goals[0];
+    var finalGoals = GetGoalMatrix();
+    input.Goals.map(function (inGoal) {
+        finalGoals[Goal[inGoal]].Weight *= 1.5;
+    });
     if (input.OtherSavings < 1000) {
         result.PrimaryGoal = Goal.EmergencyFund; // You need $1000 in savings before doing anything. Arbitrary number.
+        finalGoals["EmergencyFund"].Weight *= 20;
     }
+    result.GoalOrder = finalGoals
+        .sort(function (left, right) { return right.Weight - left.Weight; })
+        .map(function (g) { return g.Goal; });
+    result.PrimaryGoal = result.GoalOrder[0];
     return result;
 }
 function SampleInput() {
@@ -64,7 +90,8 @@ function SampleInput() {
     var decision = MakeDecision(SampleInput());
     if (decision.PrimaryGoal != Goal.EmergencyFund) {
         console.log('fail, primary goal in sample should be emergency fund.');
-    } else if (decision.PrimaryGoal == Goal.EmergencyFund) {
+    }
+    else if (decision.PrimaryGoal == Goal.EmergencyFund) {
         console.log('goal chosen correctly');
     }
 }());
