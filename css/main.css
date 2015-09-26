@@ -1014,9 +1014,18 @@ section {
 #goals input {
   display: none; }
 
-#submit-survey {
+.survey-questions {
+  padding: 0; }
+  .survey-questions .row {
+    padding: 10px 0; }
+  .survey-questions .column {
+    padding-top: 0;
+    padding-bottom: 0; }
+
+.submit-survey {
+  padding-top: 60px;
   text-align: center; }
-  #submit-survey button {
+  .submit-survey button {
     padding: 15px 20px;
     font-size: 2.4rem; }
 
