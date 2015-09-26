@@ -129,7 +129,7 @@ function MakeDecision(input) {
         //A three-month emergency fund is pretty essential. Weight it by how far off from that you are.
         if (input.OtherSavings < monthlyIncome * 3) {
             finalGoals["EmergencyFund"].Weight *= ((monthlyIncome * 3) - input.OtherSavings) / monthlyIncome;
-    }
+        }
         //If you have less than a year's salary in retirement, you probably aren't trying hard enough on retirement.
         //Unlike the other goals, this one won't really phase out. You're either doing enough or you're not.
         //By the time you're saving enough, you're auto-piloting your retirement anyway.
@@ -155,11 +155,11 @@ function GatherInput() {
         OtherSavings: form.OtherSavings.value * 1.0,
         Home: {
             Payment: form.HomePayment.value * 1.0,
-            IsOwned: $('input[name="HomeIsOwned"]:checked').val()
+            IsOwned: $('input[name="HomeIsOwned"]:checked').val() == "true"
         },
-        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() },
-        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() },
-        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() },
+        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() == "true" },
+        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() == "true" },
+        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() == "true" },
         MandatoryExpenses: (form.Utilities.value * 1.0 + form.Internet.value * 1.0 + form.TV.value * 1.0 + form.Phone.value * 1.0 + form.Insurance.value * 1.0),
         OtherExpenses: form.OtherStuff.value * 1.0
     };
@@ -173,9 +173,8 @@ function GatherInput() {
         result.Goals.push(Goal.Vacation);
     if (form.Retirement.checked)
         result.Goals.push(Goal.Retirement);
-    if (result.Home.IsOwned == true) {
+    if (result.Home.IsOwned) {
         result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
-        result.Home.IsOwned = true;
     }
     if (result.Car.IsOwned) {
         result.Car.Payment = form.CarPayment.value * 1.0;
@@ -191,4 +190,3 @@ function GatherInput() {
     }
     return result;
 }
-;

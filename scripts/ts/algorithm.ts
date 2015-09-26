@@ -190,11 +190,11 @@ function GatherInput(): BudgetBearInput {
         OtherSavings: form.OtherSavings.value * 1.0,
         Home: {
             Payment: form.HomePayment.value * 1.0,
-            IsOwned: $('input[name="HomeIsOwned"]:checked').val()
+            IsOwned: $('input[name="HomeIsOwned"]:checked').val() == "true"
         },
-        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() },
-        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() },
-        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() },
+        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() == "true" },
+        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() == "true"},
+        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() == "true" },
         MandatoryExpenses: (form.Utilities.value * 1.0 + form.Internet.value * 1.0 + form.TV.value * 1.0 + form.Phone.value * 1.0 + form.Insurance.value * 1.0),
         OtherExpenses: form.OtherStuff.value * 1.0
     };
@@ -208,11 +208,10 @@ function GatherInput(): BudgetBearInput {
         result.Goals.push(Goal.Vacation);
     if (form.Retirement.checked)
         result.Goals.push(Goal.Retirement);
-    if (result.Home.IsOwned == true) {
-        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
-        result.Home.IsOwned = true;
-    }
 
+    if (result.Home.IsOwned) {
+        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
+    }
     if (result.Car.IsOwned) {
         result.Car.Payment = form.CarPayment.value * 1.0;
         result.Car.TotalOwed = form.CarTotalOwed.value * 1.0;
