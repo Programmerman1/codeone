@@ -19,6 +19,27 @@ section {
 #goals {
     .section-main-content {
         text-align: center;
+        
+        h4 {
+            margin-top: 0;
+        }
+    }
+    
+    .column-inner, .section-main-content h4, .bb {
+        @include transition(all 0.4s ease);
+    }
+    
+    .column-inner {
+        padding-top: 20px;
+        padding-bottom: 35px;
+        
+        &.active {
+            background-color: rgba($light-primary-color, 0.5);
+            
+            h4, .bb {
+                color: $dark-primary-color;
+            }
+        }
     }
     
     .bb {
@@ -26,6 +47,15 @@ section {
         margin: 0 auto;
         color: $light-primary-color;
         font-size: 100px;
+        cursor: pointer;
+        
+        &:hover {
+            @include transform(scale(1.2));
+        }
+    }
+    
+    input {
+        display: none;
     }
 }
 
