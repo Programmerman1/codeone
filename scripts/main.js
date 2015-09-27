@@ -26,10 +26,10 @@ var submitSurvey = function () {
     $('#primaryRecommendation').removeClass().addClass(getRecommendationClass(decide.PrimaryGoal));
     
     $('#lblPrimaryGoal').text(Goal[decide.PrimaryGoal]);
-    $('#lblPrimaryGoalExplanation').text(getExplanation(decide).PrimaryGoalExplanation);
+    $('#lblPrimaryGoalExplanation').empty().append(getExplanation(decide).PrimaryGoalExplanation);
 
     $('#secondRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[1]));
-    $('#lblSecondaryGoalExplanation').text(getExplanation(decide).SecondaryGoalExplanation);
+    $('#lblSecondaryGoalExplanation').empty().append(getExplanation(decide).SecondaryGoalExplanation);
 
     $('#thirdRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[2]));
     $('#fourthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[3]));
