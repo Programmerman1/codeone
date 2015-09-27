@@ -65,6 +65,41 @@
                 logTestResult("fail: empty goal array threw exception");
             }
         }());
+
+        //Weird Rich Person
+        (function () {
+            try {
+                var input = SampleInput();
+                input.Goals = [Goal.Vacation, Goal.Retirement];
+                input.PayAmount = 12000;
+                input.PayFrequency = Frequency.Monthly;
+                input.RetirementSavings = 70000000000;
+                input.OtherSavings = 80000000;
+                input.Home.Payment = 0;
+                input.Home.IsOwned = true;
+                input.Home.TotalOwed = 0;
+                input.Car.Payment = 0;
+                input.Car.IsOwned = true;
+                input.Car.TotalOwed = 0;
+                input.College.Payment = 0;
+                input.College.IsOwned = true;
+                input.College.TotalOwed = 0;
+                input.OtherDebts.Payment = 0;
+                input.OtherDebts.IsOwned = true;
+                input.OtherDebts.TotalOwed = 0;
+                input.OtherExpenses = 420;
+                input.MandatoryExpenses = 0;
+
+                var decision = MakeDecision(input);
+                if (decision.PrimaryGoal == Goal.Retirement || decision.PrimaryGoal == Goal.Vacation) {
+                    logTestResult("pass: weird rich person, primary goal is " + Goal[decision.PrimaryGoal]);
+                } else {
+                    logTestResult("fail: weird rich person's primary goal is " + Goal[decision.PrimaryGoal]);
+                }
+            } catch (e) {
+                logTestResult("fail: empty goal array threw exception");
+            }
+        }());
     </script>
 </body>
 </html>
