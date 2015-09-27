@@ -3,7 +3,7 @@
         case "Home":
             var housePaymentPercent = decision.OriginalInput.Home.Payment / decision.MonthlyIncome * 100;
             
-            return "<p>Budget Bear is concerned about how much you spend on your living situation. Your rent or mortgage should only be <strong>30&ndash;40%</strong> of your income at the most (20% would be fantastic), and your rent is " + housePaymentPercent + "% of your income. Budget Bear suggests that you consider moving to a location more within your means, having roommates and dividing rent, or perhaps refinance your home if you are going to be there for a while. You may also want to look for a secondary source of income or a higher paying job.</p>";
+            return "<p>Budget Bear is concerned about how much you spend on your living situation. Your rent or mortgage should only be <strong>30&ndash;40%</strong> of your income at the most (20% would be fantastic), and your rent is " + housePaymentPercent + "% of your income" + (housePaymentPercent <= 40 ? ', which is on the high end' : '') + ". Budget Bear suggests that you consider moving to a location more within your means, having roommates and dividing rent, or perhaps refinance your home if you are going to be there for a while. You may also want to look for a secondary source of income or a higher paying job.</p>";
             break;
         case "Car":
             var carPaymentPercent = decision.OriginalInput.Car.Payment / decision.MonthlyIncome * 100;
@@ -26,7 +26,7 @@
             return "<p>Budget Bear highly recommends that you prepare for retirement. Retirement is a long-term goal and the sooner you start, the better shape you'll be in. Having a percent or two set aside automatically will get you started and you'll hardly notice it. Ask your workplace about retirement savings options such as a 401k.</p>";
             break;
         case "Vacation":
-            return "Budget Bear approves of saving for that vacation. Afraid you'll tap into the funds for other expenses? Open a savings account just for your vacation fund and have your employer deposit a portion of your check straight into that account. You'll get your vacation funded in no time!";
+            return "<p>Budget Bear approves of saving for that vacation. Afraid you'll tap into the funds for other expenses? Open a savings account just for your vacation fund and have your employer deposit a portion of your check straight into that account. You'll get your vacation funded in no time!</p>";
             break;
         case "College":
             var collegePaymentPercent = decision.OriginalInput.College.Payment / decision.MonthlyIncome * 100;

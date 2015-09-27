@@ -4,13 +4,11 @@
 
 table {
     width: 100%;
-    border: solid 1px $light-gray;
+    border: solid 1px rgba($medium-gray, 0.5);
     border-collapse: collapse;
-    border-color: rgba($medium-gray, 0.5);
 }
 
 tr:nth-child(even) {
-    background-color: $light-gray;
     background-color: rgba($medium-gray, 0.2);
 }
 

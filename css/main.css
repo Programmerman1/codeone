@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'budgetbear';
-  src: url("../fonts/budgetbear.eot?-my2m0v");
-  src: url("../fonts/budgetbear.eot?#iefix-my2m0v") format("embedded-opentype"), url("../fonts/budgetbear.ttf?-my2m0v") format("truetype"), url("../fonts/budgetbear.woff?-my2m0v") format("woff"), url("../fonts/budgetbear.svg?-my2m0v#budgetbear") format("svg");
+  src: url("../fonts/budgetbear.eot?b59eu3");
+  src: url("../fonts/budgetbear.eot?#iefixb59eu3") format("embedded-opentype"), url("../fonts/budgetbear.ttf?b59eu3") format("truetype"), url("../fonts/budgetbear.woff?b59eu3") format("woff"), url("../fonts/budgetbear.svg?b59eu3#budgetbear") format("svg");
   font-weight: normal;
   font-style: normal; }
 .bb {
@@ -17,6 +17,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.bb-suitcase:before {
+  content: "\e60a"; }
+
+.bb-dollar:before {
+  content: "\e603"; }
+
 .bb-bill:before {
   content: "\e600"; }
 
@@ -25,9 +31,6 @@
 
 .bb-credit-cards:before {
   content: "\e602"; }
-
-.bb-dollar:before {
-  content: "\e603"; }
 
 .bb-graduation-cap:before {
   content: "\e604"; }
@@ -980,12 +983,10 @@ textarea {
 /*--------*/
 table {
   width: 100%;
-  border: solid 1px #eee;
-  border-collapse: collapse;
-  border-color: rgba(170, 170, 170, 0.5); }
+  border: solid 1px rgba(170, 170, 170, 0.5);
+  border-collapse: collapse; }
 
 tr:nth-child(even) {
-  background-color: #eee;
   background-color: rgba(170, 170, 170, 0.2); }
 
 th {
