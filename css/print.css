@@ -702,12 +702,27 @@ body, p, label {
 .main-header > .row:first-child {
   display: none; }
 .main-header > .row:last-child {
-  width: 30%;
-  margin: 0 auto; }
+  width: 2in; }
 
 .main-footer {
   display: none; }
 
 section {
   padding: 0; }
+
+#btnBack, #btnPrint {
+  display: none; }
+
+th, td {
+  padding: 0 5px 0 5px;
+  margin: 0;
+  font-size: 10pt;
+  border: solid 1px black; }
+
+#resultTable {
+  page-break-before: always; }
+
+.primary-recommendation .bb, .secondary-recommendation .bb {
+  font-size: 150px; }
+
 /*# sourceMappingURL=print.css.map */

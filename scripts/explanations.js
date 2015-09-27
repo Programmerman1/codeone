@@ -36,7 +36,7 @@
         case "EmergencyFund":
             var idealSavingsAmount = decision.MonthlyIncome * 3;
             
-            var output = "<p>Uh oh! It looks like your savings account is pretty low. Budget Bear highly recommends that you have <strong>3 months of paychecks</strong> stowed away for emergencies. In your case, that would be <strong>$" + idealSavingsAmount + "</strong>, but you only have <strong>$" + decision.OriginalInput.OtherSavings + "</strong>.</p><p>Budget Bear is worried about your livelihood and wants you to be safe if you ever have an emergency that threatens your job, health, car, home, or anything else important to you. He wants you to not have to rely on your credit cards or loans if something happens. You can start by looking at your expenses and seeing what you can cut. Do your best to put <strong>10&ndash;15%</strong> of every paycheck into savings.";
+            var output = "<p>Uh oh! It looks like your savings account is very low. Budget Bear highly recommends that you have <strong>3 months of paychecks</strong> stowed away for emergencies. In your case, that would be <strong>$" + idealSavingsAmount + "</strong>, but you only have <strong>$" + decision.OriginalInput.OtherSavings + "</strong>.</p><p>Budget Bear is worried about your livelihood and wants you to be safe if you ever have an emergency that threatens your job, health, car, home, or anything else important to you. He wants you to not have to rely on your credit cards or loans if something happens. You can start by looking at your expenses and seeing what you can cut. Do your best to put <strong>10&ndash;15%</strong> of every paycheck into savings.";
             
             if (decision.OriginalInput.OtherExpenses > 100) {
                 output += " It looks like you have $" + decision.OriginalInput.OtherExpenses + " in other expenses. If any of those expenses aren't mandatory, consider putting that money in savings instead.";
@@ -47,18 +47,26 @@
             return output;
             break;
         case "Other":
-            return "<p>Budget Bear is worried about your other expenses. While you may feel like your home or car payments are a burden, it seems as though these other expenses such as monthly bills and miscellaneous debt are particularly overwhelming. Focus on paying off debts, cut up credit cards, cut services you don't use (Netflix and Hulu are a lot cheaper than cable and you probably don't really use both), and you'll open up funds to focus on other goals.</p>";
+            return "<p>Budget Bear is worried about your expenses in general. It seems as though expenses such as monthly bills and miscellaneous debt are particularly overwhelming. Focus on paying off debts, cut up credit cards, cut services you don't use (Netflix and Hulu are a lot cheaper than cable and you probably don't really use all of those), and you'll open up funds to focus on other goals.</p>";
             break;
         case "Income":
             var monthlyExpensesPercent = decision.MonthlyExpenses / decision.MonthlyIncome * 100 - 100;
             
-            var output = "<p>Budget Bear is very worried about you! Your cost of living is " + monthlyExpensesPercent + "% higher than your income, and that's not sustainable. Consider looking for secondary income, looking for a better paying job, or if you really love your work, ask for a raise. Work to reduce your expenses.";
+            var output = "<p>Budget Bear is very worried about you!";
             
-            if (decision.OriginalInput.OtherExpenses > 50) {
-                output += " It looks like you have $" + decision.OriginalInput.OtherExpenses + " in other expenses. If any of those expenses aren't mandatory, cut them.";
+            if (decision.MonthlyIncome > 0) {
+                output += " Your cost of living is " + monthlyExpensesPercent + "% higher than your income, and that's not sustainable. Consider looking for secondary income, looking for a better paying job, or if you really love your work, ask for a raise. Work to reduce your expenses.";
+            } else {
+                output += " You don't have any income to support yourself. Hopefully you are looking for a source of income.";
             }
             
-            output += " Cut services that you don't use, or look for more affordable alternatives such as Netflix or Hulu instead of cable TV. Look for more affordable living.";
+            output += "</p><p>";
+            
+            if (decision.OriginalInput.OtherExpenses > 50) {
+                output += "It looks like you have $" + decision.OriginalInput.OtherExpenses + " in other expenses. If any of those expenses aren't mandatory, cut them.";
+            }
+            
+            output += " Cut services that you don't use, or look for more affordable alternatives such as Netflix or Hulu instead of cable TV. Look for more affordable housing.";
             
             if (decision.OriginalInput.Car.IsOwned) {
                 output += " If things are drastic, consider selling your car and researching your area's public transportation system.";
