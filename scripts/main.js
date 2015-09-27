@@ -5,6 +5,7 @@
     $('.toggleCollege').hide();
     $('.toggleLoans').hide();
     $('#results').hide();
+    adviceLink = '';
 }();
 var adjustAmount = function (event, targetFieldId) {
     event = event || window.event;
@@ -96,9 +97,16 @@ var submitSurvey = function () {
     $('#goals').hide();
     $('#survey').hide();
     $('#results').show();
+    
+    adviceLink = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.', 'http://budgetbear.azurewebsites.net/', 'CodeOneOmaha,DontArgueWithTheBear');
+
     location.hash = "#results";
     return false;
 };
+
+function getTweetLink(message, url, hashtags) {
+    return "https://twitter.com/intent/tweet?text=" + encodeURI(message) + "&url=" + encodeURI(url) + "&hashtags=" + encodeURI(hashtags);
+}
 
 var prettyGoal = function (goal) {
     switch (goal)
@@ -106,7 +114,7 @@ var prettyGoal = function (goal) {
         case Goal.EmergencyFund:
             return "Emergency Fund";
         case Goal.Other:
-            return "Other Expenses";
+            return "General Expenses";
         default:
             return Goal[goal];
     }
@@ -125,7 +133,10 @@ $('#btnBack').click(function () {
 $('#btnPrint').click(function () {
     window.print();
 });
-
+$('#btnTweet').click(function () {
+    window.open(adviceLink, '_blank');
+    return false;
+})
 $('input[type="radio"]').click(function () {
     var controlClass = this.dataset.toggle;
     if (controlClass != null) {
