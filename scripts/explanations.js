@@ -11,7 +11,7 @@
 
 function getExplanation(decision) { //results: Decision
     return {
-        PrimaryGoalExplantion: negativeExplanations[Goal[decision.PrimaryGoal]],
+        PrimaryGoalExplanation: negativeExplanations[Goal[decision.PrimaryGoal]],
         SecondaryGoalExplanation: negativeExplanations[Goal[decision.GoalOrder[1]]]
     };
 }
