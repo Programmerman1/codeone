@@ -144,7 +144,7 @@
         <section id="introduction">
             <div class="row">
                 <div class="column">
-                    <p>Budget Bear is here to help you create and reach your financial goals.</p>
+                    <h3>Budget Bear is here to help you create and reach your financial goals.</h3>
                     <p>As a young adult new to the world of adulting, figuring out your budget can be difficult and intimidating. How can you balance goals like going to college, paying off student loans, acquiring a car or home, saving money for emergencies, and fun things like going on vacation?</p>
                     <p>Budget Bear wants to help you discover what's important. Just enter some basic information about yourself and how you spend your money, and Budget Bear will make recommendations on where to focus, based on what you like and your life situation.</p>
                     <p>You can be completely honest with Budget Bear&ndash; the whole budgeting algorithm runs entirely within your web browser. Your information is NEVER sent to our servers.</p>
@@ -240,8 +240,13 @@
                                         <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
-                            </div><div class="column xs-span4"><label for="numRetirementAmount">About how much do you have saved for retirement?</label></div>
-                            <div class="column xs-span8">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="column xs-span12 lg-span4">
+                                <label for="numRetirementAmount">About how much do you have saved for retirement?</label>
+                            </div>
+                            <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numRetirementAmount')">
                                     <div>
                                         <input type="button" data-amount="10000" value="+$10000" />
@@ -256,8 +261,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="column xs-span4"><label for="numSavingsAmount">About how much do you have in your savings accounts?</label></div>
-                            <div class="column xs-span8">
+                        </div>
+                        <div class="row">
+                            <div class="column xs-span12 lg-span4">
+                                <label for="numSavingsAmount">About how much do you have in your savings accounts?</label>
+                            </div>
+                            <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numSavingsAmount')">
                                     <div>
                                         <input type="button" data-amount="1000" value="+$1000" />
@@ -375,8 +384,8 @@
                             </div>
                         </div>
                         <div class="row toggleCar">
-                            <div class="column xs-span4"><label for="numCarOwed">About how much do you still owe on your car?</label></div>
-                            <div class="column xs-span8">
+                            <div class="column xs-span12 lg-span4"><label for="numCarOwed">About how much do you still owe on your car?</label></div>
+                            <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numCarOwed')">
                                     <div>
                                         <input type="button" data-amount="5000" value="+$5000" />
