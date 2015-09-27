@@ -63,7 +63,15 @@ section {
     padding: 0;
     
     .row {
-        padding: 10px 0;
+        padding: 20px 0;
+        
+        &.section-subhead {
+            padding-bottom: 0;
+    
+            .column > *:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
     
     .column {
