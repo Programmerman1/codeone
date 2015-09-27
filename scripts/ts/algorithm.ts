@@ -228,3 +228,30 @@ function GatherInput(): BudgetBearInput {
     return result;
 }
 
+var getRecommendationClass = function (goal: Goal) {
+    switch (goal) {
+        case 0:
+            return 'bb-house';
+        case Goal.Car:
+            return 'bb-car';
+            break;
+        case Goal.Retirement:
+            return 'bb-sapling';
+            break;
+        case Goal.Vacation:
+            return 'bb-palm-tree';
+            break;
+        case Goal.College:
+            return 'bb-graduation-cap';
+            break;
+        case Goal.EmergencyFund:
+            return 'bb-piggy-bank';
+            break;
+        case Goal.Other:
+            return 'bb-credit-cards';
+            break;
+        case Goal.Income:
+            return 'bb-dollar';
+            break;
+    }
+}; 
