@@ -15,3 +15,105 @@
         left: 0;
     }
 }
+
+.calculating-bear {
+    display: none;
+    
+    &.fixed-bear {
+        position: fixed;
+        top: 30px;
+        right: 0;
+        left: 0;
+        
+        .calculating-bear-inner {
+            @extend %page-max-width;
+            position: relative;
+        }
+        
+        .calculating-bear-inner-inner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            left: calc((100% * 2/3) + 10px);
+        }
+        
+        h4 {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .calculation-plus, .calculation-minus, .calculation-multiply, .calculation-divide {
+            @include transform-origin(center center);
+        }
+        
+        .calculation-plus {
+            @include animation(pluswiggle 1s infinite steps(1));
+        }
+        
+        .calculation-minus {
+            @include animation(minuswiggle 1s infinite steps(1));
+        }
+        
+        .calculation-multiply {
+            @include animation(multiplywiggle 1s infinite steps(1));
+        }
+        
+        .calculation-divide {
+            @include animation(dividewiggle 1s infinite steps(1));
+        }
+        
+        .calculating-bear-eyes {
+            @include animation(moveeyes 1s infinite steps(1));
+        }
+    }
+    
+    h4 {
+        @include transition(all 2s ease);
+        visibility: hidden;
+        margin-top: 0.5rem;
+        text-align: center;
+        opacity: 0;
+    }
+}
+
+@mixin make-keyframes($name, $start-transform, $end-transform) {
+    @-webkit-keyframes #{$name} {
+        0%  {
+            -webkit-transform: $start-transform;
+            transform: $start-transform;
+        }
+        
+        50% {
+            -webkit-transform: $end-transform;
+            transform: $end-transform;
+        }
+    }
+
+    @-moz-keyframes #{$name} {
+        0%  {
+            transform: $start-transform;
+        }
+        
+        50% {
+            transform: $end-transform;
+        }
+    }
+
+    @keyframes #{$name} {
+        0%  {
+            -webkit-transform: $start-transform;
+            transform: $start-transform;
+        }
+        
+        50% {
+            -webkit-transform: $end-transform;
+            transform: $end-transform;
+        }
+    }
+}
+
+@include make-keyframes(pluswiggle, translate(0,0) rotate(0deg), translate(-10%, -10%) rotate(10deg));
+@include make-keyframes(minuswiggle, translate(0,0) rotate(0deg), translate(10%, 10%) rotate(-10deg));
+@include make-keyframes(multiplywiggle, translate(0,0) rotate(0deg), translate(10%, -10%) rotate(10deg));
+@include make-keyframes(dividewiggle, translate(0,0) rotate(0deg), translate(-10%, -10%) rotate(-10deg));
+@include make-keyframes(moveeyes, translate(0, 0), translate(5%, 0));

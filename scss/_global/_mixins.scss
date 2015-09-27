@@ -2,6 +2,12 @@
 // Mixins //
 //--------//
 
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+       -moz-animation: $animation;
+            animation: $animation;
+}
+
 @mixin box-shadow($shadow...) {
     -webkit-box-shadow: $shadow;
     -moz-box-shadow:    $shadow;
@@ -32,9 +38,13 @@
 
 @mixin transform($property) {
     -webkit-transform: $property;
-    -moz-transform: $property;
     -ms-transform: $property;
     transform: $property;
+}
+
+@mixin transform-origin($origin) {
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
 }
 
 @mixin transition($property...) {

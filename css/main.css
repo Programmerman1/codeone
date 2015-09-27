@@ -55,7 +55,7 @@
 .button, input[type='button'], input[type='submit'], button, .column-inner, input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']), select, textarea {
   border-radius: 3px; }
 
-.row {
+.row, .calculating-bear.fixed-bear .calculating-bear-inner {
   max-width: 1000px;
   margin: 0 auto; }
 
@@ -1008,7 +1008,6 @@ section {
   cursor: pointer; }
   #goals .bb:hover {
     -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2); }
 #goals input {
@@ -1043,6 +1042,149 @@ section {
     right: 0;
     left: 0; }
 
+.calculating-bear {
+  display: none; }
+  .calculating-bear.fixed-bear {
+    position: fixed;
+    top: 30px;
+    right: 0;
+    left: 0; }
+    .calculating-bear.fixed-bear .calculating-bear-inner {
+      position: relative; }
+    .calculating-bear.fixed-bear .calculating-bear-inner-inner {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      left: calc((100% * 2/3) + 10px); }
+    .calculating-bear.fixed-bear h4 {
+      visibility: visible;
+      opacity: 1; }
+    .calculating-bear.fixed-bear .calculation-plus, .calculating-bear.fixed-bear .calculation-minus, .calculating-bear.fixed-bear .calculation-multiply, .calculating-bear.fixed-bear .calculation-divide {
+      -webkit-transform-origin: center center;
+      transform-origin: center center; }
+    .calculating-bear.fixed-bear .calculation-plus {
+      -webkit-animation: pluswiggle 1s infinite steps(1);
+      -moz-animation: pluswiggle 1s infinite steps(1);
+      animation: pluswiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculation-minus {
+      -webkit-animation: minuswiggle 1s infinite steps(1);
+      -moz-animation: minuswiggle 1s infinite steps(1);
+      animation: minuswiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculation-multiply {
+      -webkit-animation: multiplywiggle 1s infinite steps(1);
+      -moz-animation: multiplywiggle 1s infinite steps(1);
+      animation: multiplywiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculation-divide {
+      -webkit-animation: dividewiggle 1s infinite steps(1);
+      -moz-animation: dividewiggle 1s infinite steps(1);
+      animation: dividewiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculating-bear-eyes {
+      -webkit-animation: moveeyes 1s infinite steps(1);
+      -moz-animation: moveeyes 1s infinite steps(1);
+      animation: moveeyes 1s infinite steps(1); }
+  .calculating-bear h4 {
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+    visibility: hidden;
+    margin-top: 0.5rem;
+    text-align: center;
+    opacity: 0; }
+
+@-webkit-keyframes pluswiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(-10%, -10%) rotate(10deg);
+    transform: translate(-10%, -10%) rotate(10deg); } }
+@-moz-keyframes pluswiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    transform: translate(-10%, -10%) rotate(10deg); } }
+@keyframes pluswiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(-10%, -10%) rotate(10deg);
+    transform: translate(-10%, -10%) rotate(10deg); } }
+@-webkit-keyframes minuswiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(10%, 10%) rotate(-10deg);
+    transform: translate(10%, 10%) rotate(-10deg); } }
+@-moz-keyframes minuswiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    transform: translate(10%, 10%) rotate(-10deg); } }
+@keyframes minuswiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(10%, 10%) rotate(-10deg);
+    transform: translate(10%, 10%) rotate(-10deg); } }
+@-webkit-keyframes multiplywiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(10%, -10%) rotate(10deg);
+    transform: translate(10%, -10%) rotate(10deg); } }
+@-moz-keyframes multiplywiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    transform: translate(10%, -10%) rotate(10deg); } }
+@keyframes multiplywiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(10%, -10%) rotate(10deg);
+    transform: translate(10%, -10%) rotate(10deg); } }
+@-webkit-keyframes dividewiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(-10%, -10%) rotate(-10deg);
+    transform: translate(-10%, -10%) rotate(-10deg); } }
+@-moz-keyframes dividewiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    transform: translate(-10%, -10%) rotate(-10deg); } }
+@keyframes dividewiggle {
+  0% {
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg); }
+  50% {
+    -webkit-transform: translate(-10%, -10%) rotate(-10deg);
+    transform: translate(-10%, -10%) rotate(-10deg); } }
+@-webkit-keyframes moveeyes {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0); }
+  50% {
+    -webkit-transform: translate(5%, 0);
+    transform: translate(5%, 0); } }
+@-moz-keyframes moveeyes {
+  0% {
+    transform: translate(0, 0); }
+  50% {
+    transform: translate(5%, 0); } }
+@keyframes moveeyes {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0); }
+  50% {
+    -webkit-transform: translate(5%, 0);
+    transform: translate(5%, 0); } }
 /*--------*/
 /* Footer */
 /*--------*/
@@ -1067,6 +1209,9 @@ section {
     font-size: 4rem; }
 
   h3 {
-    font-size: 2.5rem; } }
+    font-size: 2.5rem; }
+
+  .calculating-bear {
+    display: block; } }
 
 /*# sourceMappingURL=main.css.map */
