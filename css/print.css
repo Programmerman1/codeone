@@ -711,4 +711,15 @@ body, p, label {
 section {
   padding: 0; }
 
+#btnBack, #btnPrint {
+    display: none;
+}
+
+th, td {
+    padding:  0 5px 0 5px;
+    margin: 0;
+    font-size: 10pt;
+    border: solid 1px black;
+}
+
 /*# sourceMappingURL=print.css.map */
