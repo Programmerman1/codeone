@@ -689,6 +689,11 @@
                                     <input type="number" id="numOtherLoansAmountOwed" value="5000" name="OtherLoansTotalOwed" />
                                     <div class="up-and-down-buttons">
                                         <div class="button-area">
+                                            <input type="button" data-amount="5000" value="+" />
+                                            <p>$5000</p>
+                                            <input type="button" data-amount="-5000" value="-" />
+                                        </div>
+                                        <div class="button-area">
                                             <input type="button" data-amount="1000" value="+" />
                                             <p>$1000</p>
                                             <input type="button" data-amount="-1000" value="-" />
@@ -920,26 +925,26 @@
                                         <div class="row">
                                             <div class="column xs-span6 md-span4 lg-span2point4">
                                                 <div class="column-inner">
-                                                    <i class="bb bb-house"></i>
+                                                    <i class="bb bb-house" id="resultGoalHome"></i>
                                                 </div>
                                             </div>
                                             <div class="column xs-span6 md-span4 lg-span2point4">
                                                 <div class="column-inner">
-                                                    <i class="bb bb-car"></i>
+                                                    <i class="bb bb-car" id="resultGoalCar"></i>
                                                 </div>
                                             </div>
                                             <div class="column xs-span6 md-span4 lg-span2point4">
-                                                <div class="column-inner">
+                                                <div class="column-inner" id="resultGoalCollege">
                                                     <i class="bb bb-graduation-cap"></i>
                                                 </div>
                                             </div>
                                             <div class="column xs-span6 md-span4 md-left2 lg-span2point4 lg-left0">
-                                                <div class="column-inner">
+                                                <div class="column-inner" id="resultGoalVacation">
                                                     <i class="bb bb-palm-tree"></i>
                                                 </div>
                                             </div>
                                             <div class="column xs-span6 xs-left3 xs-right3 md-span4 md-left0 md-right2 lg-span2point4 lg-right0">
-                                                <div class="column-inner">
+                                                <div class="column-inner" id="resultGoalRetirement">
                                                     <i class="bb bb-sapling"></i>
                                                 </div>
                                             </div>
@@ -1006,14 +1011,13 @@
                                 <td id="resultInsuranceMonth"></td>
                                 <td id="resultMiscMonth"></td>
                             </tr>
-                        </tbody>
-                        <tfoot>
+
                             <tr>
                                 <th colspan="2">Total of All Your Recurring Expenses</th>
                                 <td colspan="2" id="resultMonthExp"></td>
                                 <td colspan="2">&infin;</td>
                             </tr>
-                        </tfoot>
+                        </tbody>
                     </table>
                 </div>
                 <div class="row">

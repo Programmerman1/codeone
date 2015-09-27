@@ -41,10 +41,10 @@ var submitSurvey = function () {
     $('#resultMonthly').text('$' + decide.MonthlyIncome);
     $('#resultRetirement').text('$' + decide.OriginalInput.RetirementSavings);
     $('#resultSavings').text('$' + decide.OriginalInput.OtherSavings);
-    $('#resultHomeMonth').text('$' + decide.OriginalInput.Home.Payment + ' / ' + (decide.OriginalInput.Home.Payment / decide.MonthlyIncome * 100.0) + '%');
+    $('#resultHomeMonth').text('$' + decide.OriginalInput.Home.Payment + ' / ' + (decide.OriginalInput.Home.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
     $('#resultHomeTotal').text((decide.OriginalInput.Home.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.Home.TotalOwed : 'N/A');
     if (decide.OriginalInput.Car.IsOwned) {
-        $('#resultCarMonth').text('$' + decide.OriginalInput.Car.Payment + ' / ' + (decide.OriginalInput.Car.Payment / decide.MonthlyIncome * 100.0) + '%');
+        $('#resultCarMonth').text('$' + decide.OriginalInput.Car.Payment + ' / ' + (decide.OriginalInput.Car.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
         $('#resultCarTotal').text((decide.OriginalInput.Car.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.Car.TotalOwed : 'N/A');
     }
     else {
@@ -52,7 +52,7 @@ var submitSurvey = function () {
         $('#resultCarTotal').text('N/A');
     }
     if (decide.OriginalInput.College.IsOwned) {
-        $('#resultCollegeMonth').text('$' + decide.OriginalInput.College.Payment + ' / ' + (decide.OriginalInput.College.Payment / decide.MonthlyIncome * 100.0) + '%');
+        $('#resultCollegeMonth').text('$' + decide.OriginalInput.College.Payment + ' / ' + (decide.OriginalInput.College.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
         $('#resultCollegeTotal').text((decide.OriginalInput.College.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.College.TotalOwed : 'N/A');
     }
     else {
@@ -60,14 +60,14 @@ var submitSurvey = function () {
         $('#resultCollegeTotal').text('N/A');
     }
     if (decide.OriginalInput.OtherDebts.IsOwned) {
-        $('#resultLoansMonth').text('$' + decide.OriginalInput.OtherDebts.Payment + ' / ' + (decide.OriginalInput.OtherDebts.Payment / decide.MonthlyIncome * 100.0) + '%');
+        $('#resultLoansMonth').text('$' + decide.OriginalInput.OtherDebts.Payment + ' / ' + (decide.OriginalInput.OtherDebts.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
         $('#resultLoansTotal').text((decide.OriginalInput.OtherDebts.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.OtherDebts.TotalOwed : 'N/A');
     }
     else {
         $('#resultLoansMonth').text('N/A');
         $('#resultLoansTotal').text('N/A');
     }
-    $('#resultMonthExp').text('$' + decide.MonthlyExpenses + ' / ' + (decide.MonthlyExpenses / decide.MonthlyIncome) * 100.0 + '%');
+    $('#resultMonthExp').text('$' + decide.MonthlyExpenses + ' / ' + ((decide.MonthlyExpenses / decide.MonthlyIncome) * 100.0).toFixed(2) + '%');
 
     $('#resultUtilityMonth').text('$' + $('#numUtilities').val());
     $('#resultPhoneMonth').text('$' + $('#numPhone').val());
