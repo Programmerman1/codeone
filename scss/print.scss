@@ -35,8 +35,7 @@ body, p, label {
         }
         
         &:last-child {
-            width: 30%;
-            margin: 0 auto;
+            width: 2in;
         }
     }
 }
@@ -63,5 +62,7 @@ th, td {
 #resultTable {
     page-break-before: always;
 }
+
 .primary-recommendation .bb, .secondary-recommendation .bb {
-    font-size: 150px; }
+    font-size: 150px;
+}

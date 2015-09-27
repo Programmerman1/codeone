@@ -90,7 +90,8 @@ var submitSurvey = function () {
     $('#resultTVMonth').text('$' + $('#numTV').val());
     $('#resultInsuranceMonth').text('$' + $('#numInsurance').val());
     $('#resultMiscMonth').text('$' + $('#numMisc').val());
-
+    
+    $('.main-header').addClass('results-header');
     $('#introduction').hide();
     $('#goals').hide();
     $('#survey').hide();
@@ -112,6 +113,7 @@ var prettyGoal = function (goal) {
 }
 
 $('#btnBack').click(function () {
+    $('.main-header').removeClass('results-header');
     $('#introduction').show();
     $('#goals').show();
     $('#survey').show();

@@ -8,6 +8,20 @@
     h1, h2, h3 {
         color: $text-color;
     }
+    
+    &.results-header {
+        max-width: 300px;
+        margin: 0 auto;
+        padding-bottom: 0;
+
+        .row:first-child {
+            display: none;
+        }
+        
+        h2 {
+            display: none;
+        }
+    }
 }
 
 .logo-container {
