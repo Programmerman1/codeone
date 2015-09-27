@@ -95,9 +95,16 @@ var submitSurvey = function () {
     $('#goals').hide();
     $('#survey').hide();
     $('#results').show();
+
+    document.getElementById('tweetLink').href = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.');
+
     location.hash = "#results";
     return false;
 };
+
+function getTweetLink(message) {
+    return "https://twitter.com/intent/tweet?text=" + encodeURI(message);
+}
 
 var prettyGoal = function (goal) {
     switch (goal)
