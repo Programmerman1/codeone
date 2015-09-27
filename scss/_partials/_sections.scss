@@ -95,3 +95,43 @@ section {
         font-size: 2.4rem;
     }
 }
+
+.primary-recommendation, .secondary-recommendation {
+    text-align: center;
+    
+    .bb {
+        color: $primary-color;
+        font-size: 200px;
+    }
+}
+
+.primary-recommendation h1, .secondary-recommendation h3 {
+    margin: 0;
+    color: $light-primary-color;
+    line-height: 1.25;
+}
+
+.primary-recommendation-content, .secondary-recommendation {
+    padding-bottom: 30px;
+}
+
+.secondary-recommendation {
+    .column:last-child {
+        text-align: left;
+    }
+    
+    .bb {
+        color: $light-primary-color;
+    }
+}
+
+.tertiary-recommendations {
+    padding-bottom: 60px;
+    text-align: center;
+    
+    .bb {
+        display: block;
+        color: $light-primary-color;
+        font-size: 50px;
+    }
+}

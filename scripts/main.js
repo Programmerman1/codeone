@@ -29,6 +29,7 @@ var submitSurvey = function () {
     $('#lblPrimaryGoalExplanation').empty().append(getExplanation(decide).PrimaryGoalExplanation);
 
     $('#secondRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[1]));
+    $('#lblSecondaryGoal').text(Goal[decide.GoalOrder[1]]);
     $('#lblSecondaryGoalExplanation').empty().append(getExplanation(decide).SecondaryGoalExplanation);
 
     $('#thirdRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[2]));

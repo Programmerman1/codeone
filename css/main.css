@@ -1076,6 +1076,33 @@ section {
     padding: 15px 20px;
     font-size: 2.4rem; }
 
+.primary-recommendation, .secondary-recommendation {
+  text-align: center; }
+  .primary-recommendation .bb, .secondary-recommendation .bb {
+    color: #4e8452;
+    font-size: 200px; }
+
+.primary-recommendation h1, .secondary-recommendation h3 {
+  margin: 0;
+  color: #afdbb0;
+  line-height: 1.25; }
+
+.primary-recommendation-content, .secondary-recommendation {
+  padding-bottom: 30px; }
+
+.secondary-recommendation .column:last-child {
+  text-align: left; }
+.secondary-recommendation .bb {
+  color: #afdbb0; }
+
+.tertiary-recommendations {
+  padding-bottom: 60px;
+  text-align: center; }
+  .tertiary-recommendations .bb {
+    display: block;
+    color: #afdbb0;
+    font-size: 50px; }
+
 /*------*/
 /* Bear */
 /*------*/
