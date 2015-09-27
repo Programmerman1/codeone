@@ -24,15 +24,17 @@ var submitSurvey = function () {
     if (decide.EverythingHappy)
         $('#primaryRecommendation')
 
-    $('#primaryRecommendation').addClass(getRecommendationClass(decide.PrimaryGoal));
+    $('#primaryRecommendation').removeClass().addClass(getRecommendationClass(decide.PrimaryGoal));
     $('#lblPrimaryGoal').text(Goal[decide.PrimaryGoal]);
-    $('#lblPrimaryGoalExplanation').text(Goal[decide.PrimaryGoal]);
-    $('#secondRecommendation').addClass(getRecommendationClass(decide.GoalOrder[1]));
-    $('#lblSecondaryGoalExplanation').text(Goal[decide.GoalOrder[1]]);
-    $('#thirdRecommendation').addClass(getRecommendationClass(decide.GoalOrder[2]));
-    $('#fourthRecommendation').addClass(getRecommendationClass(decide.GoalOrder[3]));
-    $('#fifthRecommendation').addClass(getRecommendationClass(decide.GoalOrder[4]));
-    $('#sixthRecommendation').addClass(getRecommendationClass(decide.GoalOrder[5]));
+    $('#lblPrimaryGoalExplanation').text(getExplanation(decide).PrimaryGoalExplanation);
+
+    $('#secondRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[1]));
+    $('#lblSecondaryGoalExplanation').text(getExplanation(decide).SecondaryGoalExplanation);
+
+    $('#thirdRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[2]));
+    $('#fourthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[3]));
+    $('#fifthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[4]));
+    $('#sixthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[5]));
     return false;
 };
 

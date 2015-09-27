@@ -7,7 +7,9 @@
 <body>
     <pre id="testresults"></pre>
     <script type="text/javascript" src="scripts/algorithm.js"></script>
+    <script type="text/javascript" src="scripts/explanations.js"></script>
     <script type="text/javascript">
+
         function SampleInput() {
             var result = {
                 Goals: [Goal.Home],
@@ -99,6 +101,14 @@
             } catch (e) {
                 logTestResult("fail: empty goal array threw exception");
             }
+        }());
+
+        //make sure explanation works
+        (function () {
+            var input = SampleInput();
+            var decision = MakeDecision(input);
+            logTestResult(getExplanation(decision).PrimaryGoalExplanation);
+            logTestResult(getExplanation(decision).SecondaryGoalExplanation);
         }());
     </script>
 </body>

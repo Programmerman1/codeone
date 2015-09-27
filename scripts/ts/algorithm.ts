@@ -231,27 +231,28 @@ function GatherInput(): BudgetBearInput {
 var getRecommendationClass = function (goal: Goal) {
     switch (goal) {
         case 0:
-            return 'bb-house';
+            return 'bb bb-house';
+            break;
         case Goal.Car:
-            return 'bb-car';
+            return 'bb bb-car';
             break;
         case Goal.Retirement:
-            return 'bb-sapling';
+            return 'bb bb-sapling';
             break;
         case Goal.Vacation:
-            return 'bb-palm-tree';
+            return 'bb bb-palm-tree';
             break;
         case Goal.College:
-            return 'bb-graduation-cap';
+            return 'bb bb-graduation-cap';
             break;
         case Goal.EmergencyFund:
-            return 'bb-piggy-bank';
+            return 'bb bb-piggy-bank';
             break;
         case Goal.Other:
-            return 'bb-credit-cards';
+            return 'bb bb-credit-cards';
             break;
         case Goal.Income:
-            return 'bb-dollar';
+            return 'bb bb-dollar';
             break;
     }
 }; 
