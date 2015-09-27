@@ -96,7 +96,7 @@ var submitSurvey = function () {
     $('#survey').hide();
     $('#results').show();
 
-    document.getElementById('tweetLink').href = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.');
+    document.getElementById('tweetLink').href = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '. http://budgetbear.azurewebsites.net/');
 
     location.hash = "#results";
     return false;
