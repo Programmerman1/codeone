@@ -36,6 +36,8 @@ class Decision {
 	PrimaryGoal : Goal;
     GoalOrder: Goal[];
     EverythingHappy: boolean;
+    OriginalInput: BudgetBearInput;
+    GoalMatrix: any[];
 }
 
 function GetGoalMatrix(): any[] {
@@ -176,6 +178,8 @@ function MakeDecision(input: BudgetBearInput): Decision {
     
     result.PrimaryGoal = result.GoalOrder[0];
 
+    result.OriginalInput = input;
+    result.GoalMatrix = finalGoals;
 	return result;
 }
 

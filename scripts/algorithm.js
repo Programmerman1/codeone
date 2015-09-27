@@ -143,6 +143,8 @@ function MakeDecision(input) {
         .sort(function (left, right) { return right.Weight - left.Weight; })
         .map(function (g) { return g.Goal; });
     result.PrimaryGoal = result.GoalOrder[0];
+    result.OriginalInput = input;
+    result.GoalMatrix = finalGoals;
     return result;
 }
 function GatherInput() {
