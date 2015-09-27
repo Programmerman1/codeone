@@ -1,0 +1,50 @@
+$size-sm: 3in;
+$size-md: 4in;
+$size-lg: 5in;
+$size-xl: 6in;
+
+$max-width: none;
+
+@import '_global/_mixins';
+@import '_global/_grid';
+
+h1 {
+    font-size: 20pt;
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+h3 {
+    font-size: 16pt;
+}
+
+h4, h5, h6 {
+    font-size: 14pt;
+}
+
+body, p, label {
+    font-size: 12pt;
+}
+
+.main-header {
+    > .row {
+        &:first-child {
+            display: none;
+        }
+        
+        &:last-child {
+            width: 30%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.main-footer {
+    display: none;
+}
+
+section {
+    padding: 0;
+}

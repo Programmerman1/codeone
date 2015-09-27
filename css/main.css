@@ -323,7 +323,7 @@ a img {
 .column.xs-right2point4 {
   margin-right: 20%; }
 
-@media screen and (min-width: 480px) {
+@media all and (min-width: 480px) {
   .column.sm-span1 {
     width: 8.33333%; }
 
@@ -455,7 +455,7 @@ a img {
 
   .column.sm-right2point4 {
     margin-right: 20%; } }
-@media screen and (min-width: 660px) {
+@media all and (min-width: 660px) {
   .column.md-span1 {
     width: 8.33333%; }
 
@@ -587,7 +587,7 @@ a img {
 
   .column.md-right2point4 {
     margin-right: 20%; } }
-@media screen and (min-width: 850px) {
+@media all and (min-width: 850px) {
   .column.lg-span1 {
     width: 8.33333%; }
 
@@ -719,7 +719,7 @@ a img {
 
   .column.lg-right2point4 {
     margin-right: 20%; } }
-@media screen and (min-width: 1024px) {
+@media all and (min-width: 1024px) {
   .column.xl-span1 {
     width: 8.33333%; }
 
@@ -1053,6 +1053,9 @@ section {
     transform: scale(1.2); }
 #goals input {
   display: none; }
+
+#survey > .row {
+  position: relative; }
 
 .survey-questions {
   padding: 0; }

@@ -63,7 +63,7 @@
     margin-right: 20%;
 }
 
-@media screen and (min-width: $size-sm) {
+@media all and (min-width: $size-sm) {
     @for $i from 1 through 12 {
         .column.sm-span#{$i} {
             width: 100% / 12 * $i;
@@ -105,7 +105,7 @@
     }
 }
 
-@media screen and (min-width: $size-md) {
+@media all and (min-width: $size-md) {
     @for $i from 1 through 12 {
         .column.md-span#{$i} {
             width: 100% / 12 * $i;
@@ -147,7 +147,7 @@
     }
 }
 
-@media screen and (min-width: $size-lg) {
+@media all and (min-width: $size-lg) {
     @for $i from 1 through 12 {
         .column.lg-span#{$i} {
             width: 100% / 12 * $i;
@@ -189,7 +189,7 @@
     }
 }
 
-@media screen and (min-width: $size-xl) {
+@media all and (min-width: $size-xl) {
     @for $i from 1 through 12 {
         .column.xl-span#{$i} {
             width: 100% / 12 * $i;
