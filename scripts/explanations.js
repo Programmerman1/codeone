@@ -10,5 +10,8 @@
 };
 
 function getExplanation(decision) { //results: Decision
-    return negativeExplanations[Goal[decision.PrimaryGoal]];
+    return {
+        PrimaryGoalExplantion: negativeExplanations[Goal[decision.PrimaryGoal]],
+        SecondaryGoalExplanation: negativeExplanations[Goal[decision.GoalOrder[1]]]
+    };
 }
