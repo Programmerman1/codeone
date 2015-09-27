@@ -9,23 +9,23 @@ $max-width: none;
 @import '_global/_grid';
 
 h1 {
-    font-size: 20pt;
-}
-
-h2 {
     font-size: 18pt;
 }
 
-h3 {
+h2 {
     font-size: 16pt;
 }
 
-h4, h5, h6 {
+h3 {
     font-size: 14pt;
 }
 
-body, p, label {
+h4, h5, h6 {
     font-size: 12pt;
+}
+
+body, p, label {
+    font-size: 10pt;
 }
 
 .main-header {
