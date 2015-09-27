@@ -707,22 +707,22 @@ body, p, label {
 .main-footer {
   display: none; }
 
-section {
-  padding: 0; }
+.primary-recommendation-content, .secondary-recommendation, .tertiary-recommendations {
+  padding-bottom: 0px; }
 
-#btnBack, #btnPrint {
+#btnBack, #btnPrint, #btnTweet {
   display: none; }
 
 th, td {
   padding: 0 5px 0 5px;
   margin: 0;
   font-size: 10pt;
-  border: solid 1px black; }
-
-#resultTable {
-  page-break-before: always; }
+  border: solid 1px #ddd; }
 
 .primary-recommendation .bb, .secondary-recommendation .bb {
-  font-size: 150px; }
+  font-size: 100px; }
+
+.primary-recommendation-content .column {
+  width: 100%; }
 
 /*# sourceMappingURL=print.css.map */

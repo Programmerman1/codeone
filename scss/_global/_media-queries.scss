@@ -3,6 +3,9 @@
 /*---------------*/
 
 @media all and (min-width: $size-sm) {
+    th, td {
+        font-size: 1.4rem;
+    }
 }
 
 @media all and (min-width: $size-md) {
@@ -24,6 +27,11 @@
 }
 
 @media all and (min-width: $size-lg) {
+    th, td {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 2rem;
+    }
 }
 
 @media all and (min-width: $size-xl) {

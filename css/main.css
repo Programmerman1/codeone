@@ -893,7 +893,7 @@ h5 {
 h6 {
   font-size: 2rem; }
 
-p, li, th, td {
+p, li {
   font-size: 2rem;
   line-height: 2; }
 
@@ -982,19 +982,31 @@ textarea {
 /* Tables */
 /*--------*/
 table {
+  table-layout: fixed;
   width: 100%;
-  border: solid 1px rgba(170, 170, 170, 0.5);
+  margin: 1rem 0;
+  border: solid 1px #d5d5d5;
   border-collapse: collapse; }
 
+thead {
+  background-color: #d5d5d5; }
+
 tr:nth-child(even) {
-  background-color: rgba(170, 170, 170, 0.2); }
+  background-color: #eee; }
 
 th {
-  font-weight: 600; }
+  font-weight: 600;
+  text-align: left; }
 
 td, th {
-  vertical-align: top;
-  padding: 5px; }
+  padding: 5px;
+  font-size: 1rem; }
+  td > *:first-child, th > *:first-child {
+    margin-top: 0; }
+  td > *:last-child, th > *:last-child {
+    margin-bottom: 0; }
+  td, td h1, td h2, td h3, td h4, td h5, td h6, td p, td li, th, th h1, th h2, th h3, th h4, th h5, th h6, th p, th li {
+    line-height: 1.5; }
 
 /*--------*/
 /* Header */
@@ -1035,82 +1047,6 @@ section {
   .section-headline .column {
     padding-top: 0;
     padding-bottom: 0; }
-
-#goals .section-main-content {
-  text-align: center; }
-  #goals .section-main-content h4 {
-    margin-top: 0; }
-#goals .column-inner, #goals .section-main-content h4, #goals .bb {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease; }
-#goals .column-inner {
-  padding-top: 20px;
-  padding-bottom: 35px; }
-  #goals .column-inner.active {
-    background-color: rgba(175, 219, 176, 0.5); }
-    #goals .column-inner.active h4, #goals .column-inner.active .bb {
-      color: #2e5630; }
-#goals .bb {
-  display: block;
-  margin: 0 auto;
-  color: #afdbb0;
-  font-size: 100px;
-  cursor: pointer; }
-  #goals .bb:hover {
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
-#goals input {
-  display: none; }
-
-#survey > .row {
-  position: relative; }
-
-.survey-questions {
-  padding: 0; }
-  .survey-questions .row {
-    padding: 20px 0; }
-    .survey-questions .row.section-subhead {
-      padding-bottom: 0; }
-      .survey-questions .row.section-subhead .column > *:last-child {
-        margin-bottom: 0; }
-  .survey-questions .column {
-    padding-top: 0;
-    padding-bottom: 0; }
-
-.submit-survey {
-  padding-top: 60px;
-  text-align: center; }
-  .submit-survey button {
-    padding: 15px 20px;
-    font-size: 2.4rem; }
-
-.primary-recommendation, .secondary-recommendation {
-  text-align: center; }
-  .primary-recommendation .bb, .secondary-recommendation .bb {
-    color: #4e8452;
-    font-size: 200px; }
-
-.primary-recommendation h1, .secondary-recommendation h3 {
-  margin: 0;
-  color: #afdbb0;
-  line-height: 1.25; }
-
-.primary-recommendation-content, .secondary-recommendation {
-  padding-bottom: 30px; }
-
-.secondary-recommendation .column:last-child {
-  text-align: left; }
-.secondary-recommendation .bb {
-  color: #afdbb0; }
-
-.tertiary-recommendations {
-  padding-bottom: 60px;
-  text-align: center; }
-  .tertiary-recommendations .bb {
-    display: block;
-    color: #afdbb0;
-    font-size: 50px; }
 
 /*------*/
 /* Bear */
@@ -1270,6 +1206,98 @@ section {
     -webkit-transform: translate(5%, 0);
     transform: translate(5%, 0); } }
 /*--------*/
+/* Survey */
+/*--------*/
+#goals .section-main-content {
+  text-align: center; }
+  #goals .section-main-content h4 {
+    margin-top: 0; }
+#goals .column-inner, #goals .section-main-content h4, #goals .bb {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease; }
+#goals .column-inner {
+  padding-top: 20px;
+  padding-bottom: 35px; }
+  #goals .column-inner.active {
+    background-color: rgba(175, 219, 176, 0.5); }
+    #goals .column-inner.active h4, #goals .column-inner.active .bb {
+      color: #2e5630; }
+#goals .bb {
+  display: block;
+  margin: 0 auto;
+  color: #afdbb0;
+  font-size: 100px;
+  cursor: pointer; }
+  #goals .bb:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2); }
+#goals input {
+  display: none; }
+
+#survey > .row {
+  position: relative; }
+
+.survey-questions {
+  padding: 0; }
+  .survey-questions .row {
+    padding: 20px 0; }
+    .survey-questions .row.section-subhead {
+      padding-bottom: 0; }
+      .survey-questions .row.section-subhead .column > *:last-child {
+        margin-bottom: 0; }
+  .survey-questions .column {
+    padding-top: 0;
+    padding-bottom: 0; }
+
+.submit-survey {
+  padding-top: 60px;
+  text-align: center; }
+  .submit-survey button {
+    padding: 15px 20px;
+    font-size: 2.4rem; }
+
+/*---------*/
+/* Results */
+/*---------*/
+.primary-recommendation, .secondary-recommendation {
+  text-align: center; }
+  .primary-recommendation .bb, .secondary-recommendation .bb {
+    color: #4e8452;
+    font-size: 200px; }
+
+.primary-recommendation h1, .secondary-recommendation h3 {
+  margin: 0;
+  color: #afdbb0;
+  line-height: 1.25; }
+
+.primary-recommendation-content, .secondary-recommendation {
+  padding-bottom: 30px; }
+
+.secondary-recommendation .column:last-child {
+  text-align: left; }
+.secondary-recommendation .bb {
+  color: #afdbb0; }
+
+.tertiary-recommendations {
+  padding-bottom: 60px;
+  text-align: center; }
+  .tertiary-recommendations .bb {
+    display: block;
+    color: #afdbb0;
+    font-size: 50px; }
+
+#resultGoals {
+  text-align: center; }
+  #resultGoals .bb {
+    padding: 3px;
+    border-radius: 50%;
+    color: #aaa; }
+  #resultGoals .active .bb {
+    background-color: rgba(175, 219, 176, 0.5);
+    color: #4e8452; }
+
+/*--------*/
 /* Footer */
 /*--------*/
 .main-footer {
@@ -1285,6 +1313,9 @@ section {
 /*---------------*/
 /* Media Queries */
 /*---------------*/
+@media all and (min-width: 480px) {
+  th, td {
+    font-size: 1.4rem; } }
 @media all and (min-width: 660px) {
   h1 {
     font-size: 5rem; }
@@ -1297,5 +1328,10 @@ section {
 
   .calculating-bear {
     display: block; } }
+@media all and (min-width: 850px) {
+  th, td {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2rem; } }
 
 /*# sourceMappingURL=main.css.map */

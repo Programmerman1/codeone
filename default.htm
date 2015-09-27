@@ -913,102 +913,117 @@
                     </div>
                 </div>
                 <div id="resultTable" class="row">
-                    <table>
-                        <thead>
-                            <tr><th colspan="6"><h3>How Budget Bear came to this recommendation</h3></th></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="3"><h4>Your Goals</h4></td>
-                                <td colspan="3">
-                                    <div id="resultGoals">
-                                        <div class="row">
-                                            <div id="resultGoalHome" class="column xs-span6 md-span4 lg-span2point4">
-                                                <i class="bb bb-house"></i>
-                                            </div>
-                                            <div id="resultGoalCar" class="column xs-span6 md-span4 lg-span2point4">
-                                                <i class="bb bb-car"></i>
-                                            </div>
-                                            <div id="resultGoalCollege" class="column xs-span6 md-span4 lg-span2point4">
-                                                <i class="bb bb-graduation-cap"></i>
-                                            </div>
-                                            <div id="resultGoalRetirement" class="column xs-span6 xs-left3 xs-right3 md-span4 md-left0 md-right2 lg-span2point4 lg-right0">
-                                                <i class="bb bb-suitcase"></i>
-                                            </div>
-                                            <div id="resultGoalVacation" class="column xs-span6 md-span4 md-left2 lg-span2point4 lg-left0">
-                                                <i class="bb bb-palm-tree"></i>
+                    <div class="column xs-span12">
+                        <h3>How Budget Bear came to this recommendation</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Your Goals</td>
+                                    <td>
+                                        <div id="resultGoals">
+                                            <div class="row">
+                                                <div id="resultGoalHome" class="column xs-span2point4">
+                                                    <i class="bb bb-house"></i>
+                                                </div>
+                                                <div id="resultGoalCar" class="column xs-span2point4">
+                                                    <i class="bb bb-car"></i>
+                                                </div>
+                                                <div id="resultGoalCollege" class="column xs-span2point4">
+                                                    <i class="bb bb-graduation-cap"></i>
+                                                </div>
+                                                <div id="resultGoalRetirement" class="column xs-span2point4">
+                                                    <i class="bb bb-suitcase"></i>
+                                                </div>
+                                                <div id="resultGoalVacation" class="column xs-span2point4">
+                                                    <i class="bb bb-palm-tree"></i>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr><td colspan="6"><h4>Your Income</h4></td></tr>
-                            <tr>
-                                <td colspan="3">Annual Income</td>
-                                <td colspan="3" id="resultAnnual"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">Monthly Income</td>
-                                <td colspan="3" id="resultMonthly"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">Retirement Balance</td>
-                                <td colspan="3" id="resultRetirement"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">Savings Balance</td>
-                                <td colspan="3" id="resultSavings"></td>
-                            </tr>
-                            <tr><td colspan="6"><h4>Your Monthly Expenses</h4></td></tr>
-                            <tr>
-                                <th colspan="2">Asset</th>
-                                <th colspan="2">Per Month / % of Income</th>
-                                <th colspan="2">Total Remaining</th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Home</th>
-                                <td colspan="2" id="resultHomeMonth"></td>
-                                <td colspan="2" id="resultHomeTotal"></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Car</th>
-                                <td colspan="2" id="resultCarMonth"></td>
-                                <td colspan="2" id="resultCarTotal"></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2">College</th>
-                                <td colspan="2" id="resultCollegeMonth"></td>
-                                <td colspan="2" id="resultCollegeTotal"></td>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Other Loans</th>
-                                <td colspan="2" id="resultLoansMonth"></td>
-                                <td colspan="2" id="resultLoansTotal"></td>
-                            </tr>
-                            <tr>
-                                <th>Utilities</th>
-                                <th>Phone</th>
-                                <th>Internet</th>
-                                <th>TV</th>
-                                <th>Insurance</th>
-                                <th>Stuff</th>
-                            </tr>
-                            <tr>
-                                <td id="resultUtilityMonth"></td>
-                                <td id="resultPhoneMonth"></td>
-                                <td id="resultInternetMonth"></td>
-                                <td id="resultTVMonth"></td>
-                                <td id="resultInsuranceMonth"></td>
-                                <td id="resultMiscMonth"></td>
-                            </tr>
-
-                            <tr>
-                                <th colspan="2">Total of All Your Recurring Expenses</th>
-                                <td colspan="2" id="resultMonthExp"></td>
-                                <td colspan="2">&infin;</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <thead>
+                                <tr><th colspan="2"><h4>Your Income</h4></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Annual Income</td>
+                                    <td id="resultAnnual"></td>
+                                </tr>
+                                <tr>
+                                    <td>Monthly Income</td>
+                                    <td id="resultMonthly"></td>
+                                </tr>
+                                <tr>
+                                    <td>Retirement Balance</td>
+                                    <td id="resultRetirement"></td>
+                                </tr>
+                                <tr>
+                                    <td>Savings Balance</td>
+                                    <td id="resultSavings"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <thead>
+                                <tr><th colspan="6"><h4>Your Monthly Expenses</h4></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th colspan="2">Asset</th>
+                                    <th colspan="2">Per Month / % of Income</th>
+                                    <th colspan="2">Total Remaining</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Home</th>
+                                    <td colspan="2" id="resultHomeMonth"></td>
+                                    <td colspan="2" id="resultHomeTotal"></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Car</th>
+                                    <td colspan="2" id="resultCarMonth"></td>
+                                    <td colspan="2" id="resultCarTotal"></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">College</th>
+                                    <td colspan="2" id="resultCollegeMonth"></td>
+                                    <td colspan="2" id="resultCollegeTotal"></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Other Loans</th>
+                                    <td colspan="2" id="resultLoansMonth"></td>
+                                    <td colspan="2" id="resultLoansTotal"></td>
+                                </tr>
+                                <tr>
+                                    <th>Utilities</th>
+                                    <th>Phone</th>
+                                    <th>Internet</th>
+                                    <th>TV</th>
+                                    <th>Insurance</th>
+                                    <th>Stuff</th>
+                                </tr>
+                                <tr>
+                                    <td id="resultUtilityMonth"></td>
+                                    <td id="resultPhoneMonth"></td>
+                                    <td id="resultInternetMonth"></td>
+                                    <td id="resultTVMonth"></td>
+                                    <td id="resultInsuranceMonth"></td>
+                                    <td id="resultMiscMonth"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Total of All Your Recurring Expenses</th>
+                                    <td id="resultMonthExp"></td>
+                                    <td>&infin;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="column xs-span12">

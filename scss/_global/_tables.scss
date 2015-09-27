@@ -3,20 +3,39 @@
 /*--------*/
 
 table {
+    table-layout: fixed;
     width: 100%;
-    border: solid 1px rgba($medium-gray, 0.5);
+    margin: 1rem 0;
+    border: solid 1px darken($light-gray, 10%);
     border-collapse: collapse;
 }
 
+thead {
+    background-color: darken($light-gray, 10%);
+}
+
 tr:nth-child(even) {
-    background-color: rgba($medium-gray, 0.2);
+    background-color: $light-gray;
 }
 
 th {
     font-weight: $semibold;
+    text-align: left;
 }
 
 td, th {
-    vertical-align: top;
     padding: 5px;
+    font-size: 1rem;
+    
+    > *:first-child {
+        margin-top: 0;
+    }
+    
+    > *:last-child {
+        margin-bottom: 0;
+    }
+    
+    &, h1, h2, h3, h4, h5, h6, p, li {
+        line-height: 1.5;
+    }
 }
