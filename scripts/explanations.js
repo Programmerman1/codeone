@@ -21,6 +21,13 @@ var positiveExplanations = {
 };
 
 function getExplanation(decision) { //results: Decision
+    /*
+    var primaryGoal = decision.PrimaryGoal; // If Home, then primaryGoal = 0;
+    var primaryGoalString = Goal[decision.PrimaryGoal]; // If Home, then primaryGoalString = "Home";
+    var originalFirstGoalString = Goal[decision.OriginalInput.Goals[0]];
+    var housePayment = decision.OriginalInput.Home.Payment;
+    */
+
     if (decision.EverythingHappy) {
         return {
             PrimaryGoalExplanation: positiveExplanations[Goal[decision.PrimaryGoal]],
