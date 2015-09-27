@@ -402,7 +402,7 @@
                                 <input type="radio" name="CollegeIsOwned" value="true" />Yes
                             </div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="CollegeIsOwned" value="false" />No
+                                <input type="radio" name="CollegeIsOwned" value="false" onclick="$('#numCollege').val(0); $('#numCollegeAmountOwed').val(0);" />No
                             </div>
                         </div>
                         <div class="row">
@@ -543,7 +543,7 @@
                                 <input type="radio" name="OtherLoansIsOwned" value="true" />Yes
                             </div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="OtherLoansIsOwned" value="false" />No
+                                <input type="radio" name="OtherLoansIsOwned" value="false" onclick="$('#numOtherLoans').val(0); $('#numOtherLoansAmountOwed').val(0);" />No
                             </div>
                         </div>
                         <div class="row">
