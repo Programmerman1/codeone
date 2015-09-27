@@ -35,6 +35,8 @@ var submitSurvey = function () {
     $('#fourthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[3]));
     $('#fifthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[4]));
     $('#sixthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[5]));
+
+    $('#resultGoals').
     $('#introduction').hide();
     $('#goals').hide();
     $('#survey').hide();
