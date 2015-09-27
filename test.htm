@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <pre id="testresults"></pre>
+    <script type="text/javascript" src="scripts/algorithm.js"></script>
+    <script type="text/javascript">
+        function SampleInput() {
+            var result = {
+                Goals: [Goal.Home],
+                PayAmount: 1600,
+                PayFrequency: Frequency.Biweekly,
+                RetirementSavings: 10000,
+                OtherSavings: 100,
+                Home: {
+                    Payment: 900,
+                    TotalOwed: 90000,
+                    IsOwned: true
+                },
+                Car: {
+                    Payment: 500,
+                    TotalOwed: 5000,
+                    IsOwned: true
+                },
+                College: {
+                    Payment: 0,
+                    TotalOwed: 0,
+                    IsOwned: false
+                },
+                OtherDebts: {
+                    Payment: 100,
+                    TotalOwed: 1500,
+                    IsOwned: false
+                },
+                MandatoryExpenses: 1000,
+                OtherExpenses: 500
+            };
+            return result;
+        }
+
+        function logTestResult(message) {
+            document.getElementById('testresults').appendChild(document.createTextNode(message + '\r\n'));
+        }
+        //Basic test:
+        (function () {
+            var decision = MakeDecision(SampleInput());
+            if (decision.PrimaryGoal != Goal.EmergencyFund) {
+                logTestResult('fail: basic test did not return emergency fund goal, returned ' + Goal[decision.PrimaryGoal] + '.');
+            } else if (decision.PrimaryGoal == Goal.EmergencyFund) {
+                logTestResult('pass: sample test returned emergency fund goal');
+            }
+        }());
+
+        //Empty selected goal array doesn't break anything.
+        (function () {
+            try {
+                var input = SampleInput();
+                input.Goals = [];
+                var decision = MakeDecision(input);
+                logTestResult("pass: empty array test");
+            } catch (e) {
+                logTestResult("fail: empty goal array threw exception");
+            }
+        }());
+    </script>
+</body>
+</html>

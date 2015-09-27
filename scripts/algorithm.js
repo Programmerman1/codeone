@@ -145,77 +145,48 @@ function MakeDecision(input) {
     result.PrimaryGoal = result.GoalOrder[0];
     return result;
 }
-function SampleInput() {
-    var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1600,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
-        Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
-        },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
-    };
-    return result;
-}
 function GatherInput() {
+    var form = document.forms[0];
     var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1000,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
+        Goals: [],
+        PayAmount: form.PayAmount.value * 1.0,
+        PayFrequency: Frequency[form.Frequency.value],
+        RetirementSavings: form.RetirementSavings.value * 1.0,
+        OtherSavings: form.OtherSavings.value * 1.0,
         Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
+            Payment: form.HomePayment.value * 1.0,
+            IsOwned: $('input[name="HomeIsOwned"]:checked').val() == "true"
         },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
+        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() == "true" },
+        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() == "true" },
+        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() == "true" },
+        MandatoryExpenses: (form.Utilities.value * 1.0 + form.Internet.value * 1.0 + form.TV.value * 1.0 + form.Phone.value * 1.0 + form.Insurance.value * 1.0),
+        OtherExpenses: form.OtherStuff.value * 1.0
     };
+    if (form.Home.checked)
+        result.Goals.push(Goal.Home);
+    if (form.Car.checked)
+        result.Goals.push(Goal.Car);
+    if (form.College.checked)
+        result.Goals.push(Goal.College);
+    if (form.Vacation.checked)
+        result.Goals.push(Goal.Vacation);
+    if (form.Retirement.checked)
+        result.Goals.push(Goal.Retirement);
+    if (result.Home.IsOwned) {
+        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
+    }
+    if (result.Car.IsOwned) {
+        result.Car.Payment = form.CarPayment.value * 1.0;
+        result.Car.TotalOwed = form.CarTotalOwed.value * 1.0;
+    }
+    if (result.College.IsOwned) {
+        result.College.Payment = form.CollegePayment.value * 1.0;
+        result.College.TotalOwed = form.CollegeTotalOwed.value * 1.0;
+    }
+    if (result.OtherDebts.IsOwned == true) {
+        result.OtherDebts.Payment = form.OtherLoansPayment.value * 1.0;
+        result.OtherDebts.TotalOwed = form.OtherLoansTotalOwed.value * 1.0;
+    }
     return result;
 }
-;
-(function () {
-    var decision = MakeDecision(SampleInput());
-    if (decision.PrimaryGoal != Goal.EmergencyFund) {
-        console.log('fail, primary goal in sample should be emergency fund.');
-    }
-    else if (decision.PrimaryGoal == Goal.EmergencyFund) {
-        console.log('goal chosen correctly');
-    }
-}());

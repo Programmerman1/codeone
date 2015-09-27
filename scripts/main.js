@@ -1,5 +1,9 @@
 ﻿var load = function () {
     console.log('hi folks');
+    $('.toggleMortgage').hide();
+    $('.toggleCar').hide();
+    $('.toggleCollege').hide();
+    $('.toggleLoans').hide();
 }();
 var adjustAmount = function (event, targetFieldId) {
     event = event || window.event;
@@ -14,6 +18,18 @@ var adjustAmount = function (event, targetFieldId) {
 var submitSurvey = function () {
     console.log('submit to the budget bear. SUBMIT!');
     var input = GatherInput();
-    alert(JSON.stringify(input));
+    var decide = MakeDecision(input);
+    console.log('budget bear picked for you the berry (bear-y) best pick');
+    alert(JSON.stringify(decide));
     return false;
 };
+
+$('input[type="radio"]').click(function () {
+    var controlClass = this.dataset.toggle;
+    if (controlClass != null) {
+        if ($(this).val() == "true")
+            $('.' + controlClass).show("slow");
+        else
+            $('.' + controlClass).hide("slow");
+    }
+});

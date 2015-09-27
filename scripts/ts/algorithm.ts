@@ -15,22 +15,22 @@ enum Frequency {
 	Monthly
 }
 interface Loan {
-	Payment : number;
-	TotalOwed : number;
-	IsOwned : boolean;
+    Payment: number;
+    TotalOwed: number;
+    IsOwned: boolean;
 }
 interface BudgetBearInput {
-	Goals : Goal[];
-	PayAmount : number;
+    Goals: Goal[];
+    PayAmount: number;
     PayFrequency: Frequency;
     RetirementSavings: number;
     OtherSavings: number;
-	Home : Loan;
-	Car : Loan;
-	College : Loan;
-	OtherDebts : Loan;
-	MandatoryExpenses : number;
-	OtherExpenses : number;
+    Home: Loan;
+    Car: Loan;
+    College: Loan;
+    OtherDebts: Loan;
+    MandatoryExpenses: number;
+    OtherExpenses: number;
 }
 class Decision {
 	PrimaryGoal : Goal;
@@ -38,7 +38,7 @@ class Decision {
     EverythingHappy: boolean;
 }
 
-function GetGoalMatrix() : any[] {
+function GetGoalMatrix(): any[] {
     var matrix = [];
     matrix["Home"] = { Goal: Goal.Home, Weight: 1.0 };
     matrix.push(matrix["Home"]);
@@ -59,7 +59,7 @@ function GetGoalMatrix() : any[] {
     return matrix;
 }
 
-function MakeDecision(input : BudgetBearInput) : Decision {
+function MakeDecision(input: BudgetBearInput): Decision {
     var result = new Decision();
     var finalGoals = GetGoalMatrix();
     result.EverythingHappy = true;
@@ -150,7 +150,7 @@ function MakeDecision(input : BudgetBearInput) : Decision {
         finalGoals["Other"].Weight *= (input.OtherExpenses * 9 / monthlyIncome);
         result.EverythingHappy = false;
     }
-    
+
     //Things are going well! You don't need to reduce the expenses, what do you need to save toward?
     if (result.EverythingHappy) {
         //A three-month emergency fund is pretty essential. Weight it by how far off from that you are.
@@ -179,77 +179,52 @@ function MakeDecision(input : BudgetBearInput) : Decision {
 	return result;
 }
 
-function SampleInput(): BudgetBearInput {
+
+function GatherInput(): BudgetBearInput {
+    var form = document.forms[0];
     var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1600,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
+        Goals: [],
+        PayAmount: form.PayAmount.value * 1.0,
+        PayFrequency: Frequency[form.Frequency.value],
+        RetirementSavings: form.RetirementSavings.value * 1.0,
+        OtherSavings: form.OtherSavings.value * 1.0,
         Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
+            Payment: form.HomePayment.value * 1.0,
+            IsOwned: $('input[name="HomeIsOwned"]:checked').val() == "true"
         },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
+        Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() == "true" },
+        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() == "true"},
+        OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() == "true" },
+        MandatoryExpenses: (form.Utilities.value * 1.0 + form.Internet.value * 1.0 + form.TV.value * 1.0 + form.Phone.value * 1.0 + form.Insurance.value * 1.0),
+        OtherExpenses: form.OtherStuff.value * 1.0
     };
+    if (form.Home.checked)
+        result.Goals.push(Goal.Home);
+    if (form.Car.checked)
+        result.Goals.push(Goal.Car);
+    if (form.College.checked)
+        result.Goals.push(Goal.College);
+    if (form.Vacation.checked)
+        result.Goals.push(Goal.Vacation);
+    if (form.Retirement.checked)
+        result.Goals.push(Goal.Retirement);
+
+    if (result.Home.IsOwned) {
+        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
+    }
+    if (result.Car.IsOwned) {
+        result.Car.Payment = form.CarPayment.value * 1.0;
+        result.Car.TotalOwed = form.CarTotalOwed.value * 1.0;
+    }
+    if (result.College.IsOwned) {
+        result.College.Payment = form.CollegePayment.value * 1.0;
+        result.College.TotalOwed = form.CollegeTotalOwed.value * 1.0;
+    }
+    if (result.OtherDebts.IsOwned == true) {
+        result.OtherDebts.Payment = form.OtherLoansPayment.value * 1.0;
+        result.OtherDebts.TotalOwed = form.OtherLoansTotalOwed.value * 1.0;
+    }
+
     return result;
 }
 
-function GatherInput() {
-    var result = {
-        Goals: [Goal.Home],
-        PayAmount: 1000,
-        PayFrequency: Frequency.Biweekly,
-        RetirementSavings: 10000,
-        OtherSavings: 100,
-        Home: {
-            Payment: 900,
-            TotalOwed: 90000,
-            IsOwned: true
-        },
-        Car: {
-            Payment: 500,
-            TotalOwed: 5000,
-            IsOwned: true
-        },
-        College: {
-            Payment: 0,
-            TotalOwed: 0,
-            IsOwned: false
-        },
-        OtherDebts: {
-            Payment: 100,
-            TotalOwed: 1500,
-            IsOwned: false
-        },
-        MandatoryExpenses: 1000,
-        OtherExpenses: 500
-    };
-    return result;
-};
-
-(function () {
-    var decision = MakeDecision(SampleInput());
-    if (decision.PrimaryGoal != Goal.EmergencyFund) {
-        console.log('fail, primary goal in sample should be emergency fund.');
-    } else if (decision.PrimaryGoal == Goal.EmergencyFund) {
-        console.log('goal chosen correctly');
-    }
-} ());
