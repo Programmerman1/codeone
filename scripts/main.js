@@ -96,14 +96,14 @@ var submitSurvey = function () {
     $('#survey').hide();
     $('#results').show();
 
-    document.getElementById('tweetLink').href = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '. http://budgetbear.azurewebsites.net/');
+    document.getElementById('tweetLink').href = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.', 'http://budgetbear.azurewebsites.net/', 'codeoneomaha,dontarguewiththebear');
 
     location.hash = "#results";
     return false;
 };
 
-function getTweetLink(message) {
-    return "https://twitter.com/intent/tweet?text=" + encodeURI(message);
+function getTweetLink(message, url, hashtags) {
+    return "https://twitter.com/intent/tweet?text=" + encodeURI(message) + "&url=" + encodeURI(url) + "&hashtags=" + encodeURI(hashtags);
 }
 
 var prettyGoal = function (goal) {
