@@ -147,6 +147,7 @@
                     <p>Budget Bear is here to help you create and reach your financial goals.</p>
                     <p>As a young adult new to the world of adulting, figuring out your budget can be difficult and intimidating. How can you balance goals like going to college, paying off student loans, acquiring a car or home, saving money for emergencies, and fun things like going on vacation?</p>
                     <p>Budget Bear wants to help you discover what's important. Just enter some basic information about yourself and how you spend your money, and Budget Bear will make recommendations on where to focus, based on what you like and your life situation.</p>
+                    <p>You can be completely honest with Budget Bear&ndash; the whole budgeting algorithm runs entirely within your web browser. Your information is NEVER sent to our servers.</p>
                 </div>
             </div>
         </section>
@@ -167,35 +168,35 @@
                         <div class="column-inner">
                             <h4>A Home</h4>
                             <label for="chkHome"><i class="bb bb-house"></i></label>
-                            <input id="chkHome" type="checkbox" name="Home" data-type="goal" />
+                            <input id="chkHome" type="checkbox" name="Home" />
                         </div>
                     </div>
                     <div class="column xs-span6 md-span4 lg-span2point4">
                         <div class="column-inner">
                             <h4>A Car</h4>
                             <label for="chkCar"><i class="bb bb-car"></i></label>
-                            <input id="chkCar" type="checkbox" name="Car" data-type="goal" />
+                            <input id="chkCar" type="checkbox" name="Car" />
                         </div>
                     </div>
                     <div class="column xs-span6 md-span4 lg-span2point4">
                         <div class="column-inner">
                             <h4>College</h4>
                             <label for="chkCollege"><i class="bb bb-graduation-cap"></i></label>
-                            <input id="chkCollege" type="checkbox" name="College" data-type="goal" />
+                            <input id="chkCollege" type="checkbox" name="College" />
                         </div>
                     </div>
                     <div class="column xs-span6 md-span4 md-left2 lg-span2point4 lg-left0">
                         <div class="column-inner">
                             <h4>Vacation</h4>
                             <label for="chkVacation"><i class="bb bb-palm-tree"></i></label>
-                            <input id="chkVacation" type="checkbox" name="Vacation" data-type="goal" />
+                            <input id="chkVacation" type="checkbox" name="Vacation" />
                         </div>
                     </div>
                     <div class="column xs-span6 xs-left3 xs-right3 md-span4 md-left0 md-right2 lg-span2point4 lg-right0">
                         <div class="column-inner">
                             <h4>Retirement</h4>
                             <label for="chkRetirement"><i class="bb bb-sapling"></i></label>
-                            <input id="chkRetirement" type="checkbox" name="Retirement" data-type="goal" />
+                            <input id="chkRetirement" type="checkbox" name="Retirement" />
                         </div>
                     </div>
                 </div>
@@ -284,19 +285,6 @@
                         </div>
                         <div class="row">
                             <div class="column xs-span12 lg-span4">
-                                <label>Do you own your own home?</label>
-                            </div>
-                            <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="HomeIsOwned" value="true" />
-                                Yes
-                            </div>
-                            <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="HomeIsOwned" value="false" />
-                                No
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="column xs-span12 lg-span4">
                                 <label for="numHousing">About how much do you pay for rent/mortgage?</label>
                             </div>
                             <div class="column xs-span12 lg-span8">
@@ -318,6 +306,19 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="column xs-span12 lg-span4">
+                                <label>Do you own your own home?</label>
+                            </div>
+                            <div class="column xs-span6 lg-span1">
+                                <input type="radio" name="HomeIsOwned" value="true" data-toggle="toggleMortgage" />
+                                Yes
+                            </div>
+                            <div class="column xs-span6 lg-span1">
+                                <input type="radio" name="HomeIsOwned" value="false" data-toggle="toggleMortgage" />
+                                No
+                            </div>
+                        </div>
+                        <div class="row toggleMortgage">
                             <div class="column xs-span12 lg-span4">
                                 <label for="numMortgageOwed">About how much do you still owe on your home?</label>
                             </div>
@@ -345,13 +346,13 @@
                         <div class="row">
                             <div class="column xs-span12 lg-span4"><label>Do you own a car?</label></div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="CarIsOwned" value="true" />Yes
+                                <input type="radio" name="CarIsOwned" value="true" data-toggle="toggleCar" />Yes
                             </div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="CarIsOwned" value="false" />No
+                                <input type="radio" name="CarIsOwned" value="false" data-toggle="toggleCar" />No
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row toggleCar">
                             <div class="column xs-span12 lg-span4">
                                 <label for="numCar">About how much do you pay for your car each month?</label>
                             </div>
@@ -373,7 +374,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row toggleCar">
                             <div class="column xs-span4"><label for="numCarOwed">About how much do you still owe on your car?</label></div>
                             <div class="column xs-span8">
                                 <div onclick="adjustAmount(event, 'numCarOwed')">
@@ -399,13 +400,13 @@
                         <div class="row">
                             <div class="column xs-span12 lg-span4"><label>Do you have college loans?</label></div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="CollegeIsOwned" value="true" />Yes
+                                <input type="radio" name="CollegeIsOwned" value="true" data-toggle="toggleCollege" />Yes
                             </div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="CollegeIsOwned" value="false" />No
+                                <input type="radio" name="CollegeIsOwned" value="false" data-toggle="toggleCollege" />No
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row toggleCollege">
                             <div class="column xs-span12 lg-span4"><label for="numCollege">About how much do you pay on them each month?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numCollege')">
@@ -423,7 +424,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row toggleCollege">
                             <div class="column xs-span12 lg-span4"><label for="numCollegeAmountOwed">About how much do you still owe on them?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numCollegeAmountOwed')">
@@ -540,13 +541,13 @@
                         <div class="row">
                             <div class="column xs-span12 lg-span4"><label>Do you have any other outstanding loans?</label></div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="OtherLoansIsOwned" value="true" />Yes
+                                <input type="radio" name="OtherLoansIsOwned" value="true" data-toggle="toggleLoans" />Yes
                             </div>
                             <div class="column xs-span6 lg-span1">
-                                <input type="radio" name="OtherLoansIsOwned" value="false" />No
+                                <input type="radio" name="OtherLoansIsOwned" value="false" data-toggle="toggleLoans" />No
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row toggleLoans">
                             <div class="column xs-span12 lg-span4">
                                 <label for="numOtherLoans">About how much do you pay on them each month?</label>
                             </div>
@@ -566,7 +567,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row toggleLoans">
                             <div class="column xs-span12 lg-span4"><label for="numOtherLoansAmountOwed">About how much do you still owe on them?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numOtherLoansAmountOwed')">
@@ -738,8 +739,8 @@
             <div class="column xs-span12">
                 <disclaimer>
                     <h4>Disclaimer</h4>
-                    <p>The Budget Bear is not a real financial analyst; he just plays one on the internet. <strong>These recommendations should absolutely not be mistaken for actual, financial advice.</strong> Take the Budget Bear's overly simple suggestions with a whole shaker of salt.</p>
-                    <p>(But also note: The Budget Bear's best friend is Dr. Corgi, who will probably warn you about your sodium intake.)</p>
+                    <small>The Budget Bear is not a real financial analyst; he just plays one on the internet. <strong>These recommendations should absolutely not be mistaken for actual, financial advice.</strong> Take the Budget Bear's overly simple suggestions with a whole shaker of salt.</small>
+                    <small>(But also note: The Budget Bear's best friend, Dr. Corgi, will probably warn you about your sodium intake.)</small>
                 </disclaimer>
             </div>
         </div>

@@ -1,5 +1,9 @@
 ﻿var load = function () {
     console.log('hi folks');
+    $('.toggleMortgage').hide();
+    $('.toggleCar').hide();
+    $('.toggleCollege').hide();
+    $('.toggleLoans').hide();
 }();
 var adjustAmount = function (event, targetFieldId) {
     event = event || window.event;
@@ -19,3 +23,13 @@ var submitSurvey = function () {
     alert(JSON.stringify(decide));
     return false;
 };
+
+$('input[type="radio"]').click(function () {
+    var controlClass = this.dataset.toggle;
+    if (controlClass != null) {
+        if ($(this).val() == "true")
+            $('.' + controlClass).show("slow");
+        else
+            $('.' + controlClass).hide("slow");
+    }
+});
