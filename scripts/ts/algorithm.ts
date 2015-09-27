@@ -233,17 +233,17 @@ function GatherInput(): BudgetBearInput {
 
 var getRecommendationClass = function (goal: Goal) {
     switch (goal) {
-        case 0:
+        case Goal.Home:
             return 'bb bb-house';
             break;
         case Goal.Car:
             return 'bb bb-car';
             break;
         case Goal.Retirement:
-            return 'bb bb-sapling';
+            return 'bb bb-palm-tree';
             break;
         case Goal.Vacation:
-            return 'bb bb-palm-tree';
+            return 'bb bb-suitcase';
             break;
         case Goal.College:
             return 'bb bb-graduation-cap';
