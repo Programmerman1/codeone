@@ -25,11 +25,11 @@ var submitSurvey = function () {
 
     $('#primaryRecommendation').removeClass().addClass(getRecommendationClass(decide.PrimaryGoal));
 
-    $('#lblPrimaryGoal').text(Goal[decide.PrimaryGoal]);
+    $('#lblPrimaryGoal').text(prettyGoal(decide.PrimaryGoal));
     $('#lblPrimaryGoalExplanation').empty().append(getExplanation(decide).PrimaryGoalExplanation);
 
     $('#secondRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[1]));
-    $('#lblSecondaryGoal').text(Goal[decide.GoalOrder[1]]);
+    $('#lblSecondaryGoal').text(prettyGoal(decide.GoalOrder[1]));
     $('#lblSecondaryGoalExplanation').empty().append(getExplanation(decide).SecondaryGoalExplanation);
 
     $('#thirdRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[2]));
@@ -37,6 +37,21 @@ var submitSurvey = function () {
     $('#fifthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[4]));
     $('#sixthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[5]));
 
+    $('#resultGoalHome').removeClass('active');
+    $('#resultGoalCar').removeClass('active');
+    $('#resultGoalCollege').removeClass('active');
+    $('#resultGoalVacation').removeClass('active');
+    $('#resultGoalRetirement').removeClass('active');
+    if (decide.OriginalInput.Goals.indexOf(Goal.Home) > -1)
+        $('#resultGoalHome').addClass('active');
+    if (decide.OriginalInput.Goals.indexOf(Goal.Car) > -1)
+        $('#resultGoalCar').addClass('active');
+    if (decide.OriginalInput.Goals.indexOf(Goal.College) > -1)
+        $('#resultGoalCollege').addClass('active');
+    if (decide.OriginalInput.Goals.indexOf(Goal.Vacation) > -1)
+        $('#resultGoalVacation').addClass('active');
+    if (decide.OriginalInput.Goals.indexOf(Goal.Retirement) > -1)
+        $('#resultGoalRetirement').addClass('active');
     $('#resultAnnual').text('$' + decide.AnnualIncome);
     $('#resultMonthly').text('$' + decide.MonthlyIncome);
     $('#resultRetirement').text('$' + decide.OriginalInput.RetirementSavings);
@@ -83,6 +98,18 @@ var submitSurvey = function () {
     location.hash = "#results";
     return false;
 };
+
+var prettyGoal = function (goal) {
+    switch (goal)
+    {
+        case Goal.EmergencyFund:
+            return "Emergency Fund";
+        case Goal.Other:
+            return "Other Expenses";
+        default:
+            return Goal[goal];
+    }
+}
 
 $('#btnBack').click(function () {
     $('#introduction').show();
