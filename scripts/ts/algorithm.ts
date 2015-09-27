@@ -38,6 +38,9 @@ class Decision {
     EverythingHappy: boolean;
     OriginalInput: BudgetBearInput;
     GoalMatrix: any[];
+    MonthlyIncome: number;
+    MonthlyExpenses: number;
+    AnnualIncome: number;
 }
 
 function GetGoalMatrix(): any[] {
@@ -84,6 +87,8 @@ function MakeDecision(input: BudgetBearInput): Decision {
     } else {
         annualIncome = monthlyIncome * 12;
     }
+    result.MonthlyIncome = monthlyIncome;
+    result.AnnualIncome = annualIncome;
 
     //If you spend more than you make, you need to fix that first.
     var monthlyExpenses = input.Home.Payment + input.Car.Payment + input.College.Payment + input.OtherDebts.Payment + input.MandatoryExpenses + input.OtherExpenses;
@@ -91,6 +96,7 @@ function MakeDecision(input: BudgetBearInput): Decision {
         finalGoals["Income"].Weight *= 100;
         result.EverythingHappy = false;
     }
+    result.MonthlyExpenses = monthlyExpenses;
 
     //If you have 0 "liquid savings," you need some liquid savings.
     // $1000 is a good starting point. Don't go into debt when you have to call a plumber or a car repair place.
