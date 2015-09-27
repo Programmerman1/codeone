@@ -13,12 +13,25 @@ jQuery('document').ready(function($){
     
     var fixTheBear = function() {
         var bearOriginalTop = $survey.offset().top,
-            scrollTop = $window.scrollTop();
+            bearHeight = $calculatingBear.find('.calculating-bear-inner-inner').height(),
+            surveyBottom = bearOriginalTop + $survey.outerHeight(),
+            scrollTop = $window.scrollTop(),
+            threshold = scrollTop + bearHeight + 60;
             
         if (scrollTop > bearOriginalTop && !$calculatingBear.hasClass('fixed-bear')) {
             $calculatingBear.addClass('fixed-bear');
         } else if (scrollTop <= bearOriginalTop && $calculatingBear.hasClass('fixed-bear')) {
             $calculatingBear.removeClass('fixed-bear');
+        }
+        
+        if (threshold > surveyBottom) {
+            $calculatingBear.css({
+                'position': 'absolute',
+                'bottom': bearHeight,
+                'top': 'auto'
+            });
+        } else {
+            $calculatingBear.removeAttr('style');
         }
     };
     

@@ -1054,6 +1054,9 @@ section {
 #goals input {
   display: none; }
 
+#survey > .row {
+  position: relative; }
+
 .survey-questions {
   padding: 0; }
   .survey-questions .row {
