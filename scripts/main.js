@@ -99,7 +99,8 @@ var submitSurvey = function () {
     
     adviceLink = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.', 'http://budgetbear.azurewebsites.net/', 'CodeOneOmaha,DontArgueWithTheBear');
 
-    location.hash = "#results";
+    //location.hash = "#results";
+    window.scrollTo(0,0);
     return false;
 };
 
