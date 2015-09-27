@@ -64,12 +64,15 @@ function MakeDecision(input) {
     else {
         annualIncome = monthlyIncome * 12;
     }
+    result.MonthlyIncome = monthlyIncome;
+    result.AnnualIncome = annualIncome;
     //If you spend more than you make, you need to fix that first.
     var monthlyExpenses = input.Home.Payment + input.Car.Payment + input.College.Payment + input.OtherDebts.Payment + input.MandatoryExpenses + input.OtherExpenses;
     if (monthlyExpenses > monthlyIncome) {
         finalGoals["Income"].Weight *= 100;
         result.EverythingHappy = false;
     }
+    result.MonthlyExpenses = monthlyExpenses;
     //If you have 0 "liquid savings," you need some liquid savings.
     // $1000 is a good starting point. Don't go into debt when you have to call a plumber or a car repair place.
     if (input.OtherSavings < 1000) {
@@ -143,6 +146,8 @@ function MakeDecision(input) {
         .sort(function (left, right) { return right.Weight - left.Weight; })
         .map(function (g) { return g.Goal; });
     result.PrimaryGoal = result.GoalOrder[0];
+    result.OriginalInput = input;
+    result.GoalMatrix = finalGoals;
     return result;
 }
 function GatherInput() {
