@@ -226,73 +226,49 @@
                             <div class="column xs-span12 lg-span4"><label for="numPayAmount">About how much do you take home each time?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numPayAmount')">
+                                    <div>
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+                                    </div>
                                     <input type="number" id="numPayAmount" value="500" name="PayAmount" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div><div class="column xs-span4"><label for="numRetirementAmount">About how much do you have saved for retirement?</label></div>
                             <div class="column xs-span8">
                                 <div onclick="adjustAmount(event, 'numRetirementAmount')">
+                                    <div>
+                                        <input type="button" data-amount="10000" value="+$10000" />
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                    </div>
                                     <input type="number" id="numRetirementAmount" value="5000" name="RetirementSavings" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="10000" value="+" />
-                                            <p>$10,000</p>
-                                            <input type="button" data-amount="-10000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-10000" value="-$10000" />
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
                                     </div>
                                 </div>
                             </div>
                             <div class="column xs-span4"><label for="numSavingsAmount">About how much do you have in your savings accounts?</label></div>
                             <div class="column xs-span8">
                                 <div onclick="adjustAmount(event, 'numSavingsAmount')">
+                                    <div>
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                        <input type="button" data-amount="25" value="+$25" />
+                                    </div>
                                     <input type="number" id="numSavingsAmount" value="500" name="OtherSavings" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
+                                        <input type="button" data-amount="-25" value="-$25" />
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +278,7 @@
                                 <h2>Monthly Expenses</h2>
                             </div>
                         </div>
-                        <div class="row section-subhead">
+                        <div class="row">
                             <div class="column xs-span12">
                                 <h3>Housing</h3>
                             </div>
@@ -313,28 +289,18 @@
                             </div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numHousing')">
+                                    <div>
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+                                    </div>
                                     <input type="number" id="numHousing" value="750" name="HomePayment" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
@@ -358,28 +324,21 @@
                             </div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numMortgageOwed')">
+                                    <div>
+                                        <input type="button" data-amount="10000" value="+$10000" />
+                                        <input type="button" data-amount="5000" value="+$5000" />
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                    </div>
                                     <input type="number" id="numMortgageOwed" value="70000" name="HomeTotalOwed" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="10000" value="+" />
-                                            <p>$10,000</p>
-                                            <input type="button" data-amount="-10000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5000" value="+" />
-                                            <p>$5000</p>
-                                            <input type="button" data-amount="-5000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-10000" value="-$10000" />
+                                        <input type="button" data-amount="-5000" value="-$5000" />
+                                        <input type="button" data-amount="-1000" value="-$1000" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row section-subhead">
+                        <div class="row">
                             <div class="column xs-span12">
                                 <h3>Car</h3>
                             </div>
@@ -399,28 +358,18 @@
                             </div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numCar')">
+                                    <div>
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+                                    </div>
                                     <input type="number" id="numCar" value="200" name="CarPayment" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
@@ -429,28 +378,21 @@
                             <div class="column xs-span4"><label for="numCarOwed">About how much do you still owe on your car?</label></div>
                             <div class="column xs-span8">
                                 <div onclick="adjustAmount(event, 'numCarOwed')">
+                                    <div>
+                                        <input type="button" data-amount="5000" value="+$5000" />
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="500" value="+$500" />
+                                    </div>
                                     <input type="number" id="numCarOwed" value="6000" name="CarTotalOwed" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5000" value="+" />
-                                            <p>$5000</p>
-                                            <input type="button" data-amount="-5000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="500" value="+" />
-                                            <p>$500</p>
-                                            <input type="button" data-amount="-500" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-5000" value="-$5000" />
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-500" value="-$500" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row section-subhead">
+                        <div class="row">
                             <div class="column xs-span12">
                                 <h3>Education</h3>
                             </div>
@@ -468,23 +410,16 @@
                             <div class="column xs-span12 lg-span4"><label for="numCollege">About how much do you pay on them each month?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numCollege')">
+                                    <div>
+                                        <input type="button" data-amount="500" value="+$500" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                        <input type="button" data-amount="25" value="+$25" />
+                                    </div>
                                     <input type="number" id="numCollege" value="200" name="CollegePayment" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="500" value="+" />
-                                            <p>$500</p>
-                                            <input type="button" data-amount="-500" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-500" value="-$500" />
+                                        <input type="button" data-amount="-100" value="-$100" />
+                                        <input type="button" data-amount="-25" value="-$25" />
                                     </div>
                                 </div>
                             </div>
@@ -493,28 +428,21 @@
                             <div class="column xs-span12 lg-span4"><label for="numCollegeAmountOwed">About how much do you still owe on them?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numCollegeAmountOwed')">
+                                    <div>
+                                        <input type="button" data-amount="5000" value="+$5000" />
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                    </div>
                                     <input type="number" id="numCollegeAmountOwed" value="29000" name="CollegeTotalOwed" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5000" value="+" />
-                                            <p>$5000</p>
-                                            <input type="button" data-amount="-5000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="500" value="+" />
-                                            <p>$500</p>
-                                            <input type="button" data-amount="-500" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-5000" value="-$5000" />
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row section-subhead">
+                        <div class="row">
                             <div class="column xs-span12">
                                 <h3>Other Expenses</h3>
                             </div>
@@ -523,54 +451,45 @@
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Gas / Water / Elect.</p>
                                 <div onclick="adjustAmount(event, 'numUtilities')">
+                                    <div>
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+
+                                    </div>
                                     <input type="number" id="numUtilities" name="Utilities" value="200" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Phone</p>
                                 <div onclick="adjustAmount(event, 'numPhone')">
+                                    <div>
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+
+                                    </div>
                                     <input type="number" id="numPhone" name="Phone" value="70" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Internet</p>
                                 <div onclick="adjustAmount(event, 'numInternet')">
+                                    <div>
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+
+                                    </div>
                                     <input type="number" id="numInternet" name="Internet" value="30" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
@@ -579,54 +498,44 @@
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>TV</p>
                                 <div onclick="adjustAmount(event, 'numTV')">
+                                    <div>
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+                                    </div>
                                     <input type="number" id="numTV" name="TV" value="20" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Insurance</p>
                                 <div onclick="adjustAmount(event, 'numInsurance')">
+                                    <div>
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+
+                                    </div>
                                     <input type="number" id="numInsurance" name="Insurance" value="100" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Other Stuff</p>
                                 <div onclick="adjustAmount(event, 'numMisc')">
+                                    <div>
+                                        <input type="button" data-amount="25" value="+$25" />
+                                        <input type="button" data-amount="5" value="+$5" />
+
+                                    </div>
                                     <input type="number" id="numMisc" name="OtherStuff" value="10" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="5" value="+" />
-                                            <p>$5</p>
-                                            <input type="button" data-amount="-5" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-25" value="-$25" />
+                                        <input type="button" data-amount="-5" value="-$5" />
                                     </div>
                                 </div>
                             </div>
@@ -646,23 +555,16 @@
                             </div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numOtherLoans')">
+                                    <div>
+                                        <input type="button" data-amount="500" value="+$500" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                        <input type="button" data-amount="25" value="+$25" />
+                                    </div>
                                     <input type="number" id="numOtherLoans" value="200" name="OtherLoansPayment" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="500" value="+" />
-                                            <p>$500</p>
-                                            <input type="button" data-amount="-500" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="25" value="+" />
-                                            <p>$25</p>
-                                            <input type="button" data-amount="-25" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-500" value="-$500" />
+                                        <input type="button" data-amount="-100" value="-$100" />
+                                        <input type="button" data-amount="-25" value="-$25" />
                                     </div>
                                 </div>
                             </div>
@@ -671,18 +573,14 @@
                             <div class="column xs-span12 lg-span4"><label for="numOtherLoansAmountOwed">About how much do you still owe on them?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numOtherLoansAmountOwed')">
+                                    <div>
+                                        <input type="button" data-amount="1000" value="+$1000" />
+                                        <input type="button" data-amount="100" value="+$100" />
+                                    </div>
                                     <input type="number" id="numOtherLoansAmountOwed" value="5000" name="OtherLoansTotalOwed" />
-                                    <div class="up-and-down-buttons">
-                                        <div class="button-area">
-                                            <input type="button" data-amount="1000" value="+" />
-                                            <p>$1000</p>
-                                            <input type="button" data-amount="-1000" value="-" />
-                                        </div>
-                                        <div class="button-area">
-                                            <input type="button" data-amount="100" value="+" />
-                                            <p>$100</p>
-                                            <input type="button" data-amount="-100" value="-" />
-                                        </div>
+                                    <div>
+                                        <input type="button" data-amount="-1000" value="-$1000" />
+                                        <input type="button" data-amount="-100" value="-$100" />
                                     </div>
                                 </div>
                             </div>
@@ -862,7 +760,7 @@
                 <div class="row section-main-content center">
                     <div class="column xs-span10">
                         <i id="primaryRecommendation" class="bb"></i>
-                        <p id="lblPrimaryGoalExplanation">[<dalekvoice>EXPLAIN!</dalekvoice>]</p>
+                        <p id="lblPrimaryGoalExplanation">[You did exactly what you had to do. You considered all your options, you tried every alternative and then you made the hard choice. Then maybe you should consider this: if anything happens to them, Starfleet is going to want a full investigation. Some days you get the bear, and some days the bear gets you. Maybe if we felt any human loss as keenly as we feel one of those close to us, human history would be far less bloody. Did you come here for something in particular or just general Riker-bashing? Travel time to the nearest starbase? I guess it's better to be lucky than good.]</p>
                     </div>
                 </div>
                 <div class="row section-main-content center">
@@ -875,7 +773,7 @@
                         <i id="secondRecommendation" class="bb"></i>
                     </div>
                     <div class="column xs-span6">
-                        <p id="lblSecondaryGoalExplanation">[<dalekvoice>EXPLAIN!</dalekvoice>]</p>
+                        <p id="lblSecondaryGoalExplanation">[You're going to be an interesting companion, Mr. Data. Why don't we just give everybody a promotion and call it a night - 'Commander'? Now we know what they mean by 'advanced' tactical training. Wait a minute - you've been declared dead. You can't give orders around here. Yes, absolutely, I do indeed concur, wholeheartedly! Commander William Riker of the Starship Enterprise. I guess it's better to be lucky than good. I will obey your orders. I will serve this ship as First Officer. And in an attack against the Enterprise, I will die with this crew. But I will not break my oath of loyalty to Starfleet. Ensign Babyface! The look in your eyes, I recognize it. You used to have it for me.]</p>
                     </div>
                 </div>
                 <div class="row section-main-content center">
