@@ -725,4 +725,7 @@ th, td {
 .primary-recommendation-content .column {
   width: 100%; }
 
+.tertiary-recommendations, table {
+  page-break-inside: avoid; }
+
 /*# sourceMappingURL=print.css.map */
