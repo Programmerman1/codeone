@@ -79,7 +79,7 @@
     align-self: $align;
 }
 
-%display-flex {
+@mixin display-flex {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;

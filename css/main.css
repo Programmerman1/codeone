@@ -136,6 +136,47 @@ a img {
     border-color: #fff;
     color: #fff; }
 
+.up-and-down-buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center; }
+  .up-and-down-buttons .button-area {
+    -webkit-flex: 0 1 80px;
+    -ms-flex: 0 1 80px;
+    flex: 0 1 80px;
+    margin-left: 10px;
+    text-align: center; }
+    .up-and-down-buttons .button-area:first-child {
+      margin-left: 0; }
+    .up-and-down-buttons .button-area p {
+      margin: 0;
+      border-left: solid 1px #eee;
+      border-right: solid 1px #eee;
+      font-size: 1.6rem; }
+  .up-and-down-buttons input[type='button'] {
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    border-color: #eee;
+    background-color: #eee;
+    color: #4e8452;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1; }
+    .up-and-down-buttons input[type='button']:first-child {
+      border-radius: 10px 10px 0 0; }
+      .up-and-down-buttons input[type='button']:first-child:hover {
+        border-color: #afdbb0;
+        background-color: #afdbb0; }
+    .up-and-down-buttons input[type='button']:last-child {
+      border-radius: 0 0 10px 10px; }
+      .up-and-down-buttons input[type='button']:last-child:hover {
+        border-color: #ecc7d1;
+        background-color: #ecc7d1; }
+
 /*-------------*/
 /* Grid System */
 /*-------------*/
@@ -1016,7 +1057,11 @@ section {
 .survey-questions {
   padding: 0; }
   .survey-questions .row {
-    padding: 10px 0; }
+    padding: 20px 0; }
+    .survey-questions .row.section-subhead {
+      padding-bottom: 0; }
+      .survey-questions .row.section-subhead .column > *:last-child {
+        margin-bottom: 0; }
   .survey-questions .column {
     padding-top: 0;
     padding-bottom: 0; }

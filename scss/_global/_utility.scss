@@ -54,3 +54,55 @@
 .button {
     @extend %button;
 }
+
+.up-and-down-buttons {
+    @include display-flex;
+    @include justify-content(center);
+    
+    .button-area {
+        @include flex(0 1 80px);
+        margin-left: 10px;
+        text-align: center;
+        
+        &:first-child {
+            margin-left: 0;
+        }
+        
+        p {
+            margin: 0;
+            border-left: solid 1px $light-gray;
+            border-right: solid 1px $light-gray;
+            font-size: 1.6rem;
+        }
+    }
+    
+    input[type='button'] {
+        width: 100%;
+        margin: 0;
+        padding: 5px;
+        border-color: $light-gray;
+        background-color: $light-gray;
+        color: $primary-color;
+        font-size: 2rem;
+        font-weight: $semibold;
+        line-height: 1;
+        
+        &:first-child {
+            border-radius: 10px 10px 0 0;
+            
+            &:hover {
+                border-color: $light-primary-color;
+                background-color: $light-primary-color;
+            }
+        }
+        
+        &:last-child {
+            border-radius: 0 0 10px 10px;
+            
+            &:hover {
+                border-color: #ecc7d1;
+                background-color: #ecc7d1;
+            }
+        }
+    }
+}
