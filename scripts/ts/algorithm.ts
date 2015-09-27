@@ -1,18 +1,18 @@
 enum Goal {
-	Home,
-	Car,
-	Retirement,
-	Vacation,
+    Home,
+    Car,
+    Retirement,
+    Vacation,
     College,
     EmergencyFund,
     Other,
     Income
 }
 enum Frequency {
-	Weekly,
-	Biweekly,
-	TwiceAMonth,
-	Monthly
+    Weekly,
+    Biweekly,
+    TwiceAMonth,
+    Monthly
 }
 interface Loan {
     Payment: number;
@@ -33,7 +33,7 @@ interface BudgetBearInput {
     OtherExpenses: number;
 }
 class Decision {
-	PrimaryGoal : Goal;
+    PrimaryGoal: Goal;
     GoalOrder: Goal[];
     EverythingHappy: boolean;
     OriginalInput: BudgetBearInput;
@@ -181,12 +181,12 @@ function MakeDecision(input: BudgetBearInput): Decision {
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight })
         .map(function (g) { return g.Goal });
-    
+
     result.PrimaryGoal = result.GoalOrder[0];
 
     result.OriginalInput = input;
     result.GoalMatrix = finalGoals;
-	return result;
+    return result;
 }
 
 
@@ -203,7 +203,7 @@ function GatherInput(): BudgetBearInput {
             IsOwned: $('input[name="HomeIsOwned"]:checked').val() == "true"
         },
         Car: { IsOwned: $('input[name="CarIsOwned"]:checked').val() == "true" },
-        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() == "true"},
+        College: { IsOwned: $('input[name="CollegeIsOwned"]:checked').val() == "true" },
         OtherDebts: { IsOwned: $('input[name="OtherLoansIsOwned"]:checked').val() == "true" },
         MandatoryExpenses: (form.Utilities.value * 1.0 + form.Internet.value * 1.0 + form.TV.value * 1.0 + form.Phone.value * 1.0 + form.Insurance.value * 1.0),
         OtherExpenses: form.OtherStuff.value * 1.0
@@ -219,21 +219,14 @@ function GatherInput(): BudgetBearInput {
     if (form.Retirement.checked)
         result.Goals.push(Goal.Retirement);
 
-    if (result.Home.IsOwned) {
-        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
-    }
-    if (result.Car.IsOwned) {
-        result.Car.Payment = form.CarPayment.value * 1.0;
-        result.Car.TotalOwed = form.CarTotalOwed.value * 1.0;
-    }
-    if (result.College.IsOwned) {
-        result.College.Payment = form.CollegePayment.value * 1.0;
-        result.College.TotalOwed = form.CollegeTotalOwed.value * 1.0;
-    }
-    if (result.OtherDebts.IsOwned == true) {
-        result.OtherDebts.Payment = form.OtherLoansPayment.value * 1.0;
-        result.OtherDebts.TotalOwed = form.OtherLoansTotalOwed.value * 1.0;
-    }
+    result.Home.TotalOwed = result.Home.IsOwned ? form.HomeTotalOwed.value * 1.0 : 0.0;
+    result.Car.Payment = result.Car.IsOwned ? form.CarPayment.value * 1.0 : 0.0;
+    result.Car.TotalOwed = result.Car.IsOwned ? form.CarTotalOwed.value * 1.0 : 0.0;
+    result.College.Payment = result.College.IsOwned ? form.CollegePayment.value * 1.0 : 0.0;
+    result.College.TotalOwed = result.College.IsOwned ? form.CollegeTotalOwed.value * 1.0 : 0.0;
+    result.OtherDebts.Payment = result.OtherDebts.IsOwned ? form.OtherLoansPayment.value * 1.0 : 0.0;
+    result.OtherDebts.TotalOwed = result.OtherDebts.IsOwned ? form.OtherLoansTotalOwed.value * 1.0 : 0.0;
+
 
     return result;
 }

@@ -178,21 +178,13 @@ function GatherInput() {
         result.Goals.push(Goal.Vacation);
     if (form.Retirement.checked)
         result.Goals.push(Goal.Retirement);
-    if (result.Home.IsOwned) {
-        result.Home.TotalOwed = form.HomeTotalOwed.value * 1.0;
-    }
-    if (result.Car.IsOwned) {
-        result.Car.Payment = form.CarPayment.value * 1.0;
-        result.Car.TotalOwed = form.CarTotalOwed.value * 1.0;
-    }
-    if (result.College.IsOwned) {
-        result.College.Payment = form.CollegePayment.value * 1.0;
-        result.College.TotalOwed = form.CollegeTotalOwed.value * 1.0;
-    }
-    if (result.OtherDebts.IsOwned == true) {
-        result.OtherDebts.Payment = form.OtherLoansPayment.value * 1.0;
-        result.OtherDebts.TotalOwed = form.OtherLoansTotalOwed.value * 1.0;
-    }
+    result.Home.TotalOwed = result.Home.IsOwned ? form.HomeTotalOwed.value * 1.0 : 0.0;
+    result.Car.Payment = result.Car.IsOwned ? form.CarPayment.value * 1.0 : 0.0;
+    result.Car.TotalOwed = result.Car.IsOwned ? form.CarTotalOwed.value * 1.0 : 0.0;
+    result.College.Payment = result.College.IsOwned ? form.CollegePayment.value * 1.0 : 0.0;
+    result.College.TotalOwed = result.College.IsOwned ? form.CollegeTotalOwed.value * 1.0 : 0.0;
+    result.OtherDebts.Payment = result.OtherDebts.IsOwned ? form.OtherLoansPayment.value * 1.0 : 0.0;
+    result.OtherDebts.TotalOwed = result.OtherDebts.IsOwned ? form.OtherLoansTotalOwed.value * 1.0 : 0.0;
     return result;
 }
 var getRecommendationClass = function (goal) {
