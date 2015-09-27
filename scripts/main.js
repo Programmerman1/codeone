@@ -39,6 +39,7 @@ var submitSurvey = function () {
     $('#goals').hide();
     $('#survey').hide();
     $('#results').show();
+    location.hash = "#results";
     return false;
 };
 
@@ -47,6 +48,7 @@ $('#btnBack').click(function () {
     $('#goals').show();
     $('#survey').show();
     $('#results').hide();
+    location.hash = "#goals";
     return false;
 });
 
