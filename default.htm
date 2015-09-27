@@ -148,7 +148,7 @@
                     <h3>Budget Bear is here to help you create and reach your financial goals.</h3>
                     <p>As a young adult new to the world of adulting, figuring out your budget can be difficult and intimidating. How can you balance goals like going to college, paying off student loans, acquiring a car or home, saving money for emergencies, and fun things like going on vacation?</p>
                     <p>Budget Bear wants to help you discover what's important. Just enter some basic information about yourself and how you spend your money, and Budget Bear will make recommendations on where to focus, based on what you like and your life situation.</p>
-                    <p>You can be completely honest with Budget Bear&ndash; the whole budgeting algorithm runs entirely within your web browser. Your information is NEVER sent to our servers.</p>
+                    <p>You can be completely honest with Budget Bear&ndash; the whole budgeting algorithm runs entirely within your web browser. <strong>Your information is NEVER sent to our servers.</strong></p>
                 </div>
             </div>
         </section>
@@ -288,6 +288,11 @@
                                 <div onclick="adjustAmount(event, 'numSavingsAmount')">
                                     <input type="number" id="numSavingsAmount" value="500" name="OtherSavings" />
                                     <div class="up-and-down-buttons">
+                                        <div class="button-area">
+                                            <input type="button" data-amount="10000" value="+" />
+                                            <p>$10,000</p>
+                                            <input type="button" data-amount="-10000" value="-" />
+                                        </div>
                                         <div class="button-area">
                                             <input type="button" data-amount="1000" value="+" />
                                             <p>$1000</p>
@@ -863,7 +868,7 @@
                     <div class="column xs-span5">
                         <!-- thumbs up bear goes here-->
                     </div>
-                    <div class="column xs-span5">
+                    <div id="HappyContainer" class="column xs-span5">
                         <!-- top recommendation goes here-->
                         <i id="primaryRecommendation" class="bb"></i>
                         <h3 id="lblPrimaryGoal">[Recommendation]</h3>
@@ -893,6 +898,12 @@
                     <div class="column xs-span3">4th<i id="fourthRecommendation" class="bb"></i></div>
                     <div class="column xs-span3">5th<i id="fifthRecommendation" class="bb"></i></div>
                     <div class="column xs-span3">6th<i id="sixthRecommendation" class="bb"></i></div>
+                </div>
+                <div class="row">
+                    <div class="column xs-span12">
+                        <button id="btnBack" class="button-large">Back</button>
+                        <button id="btnPrint" class="button-large">Print</button>
+                    </div>
                 </div>
             </section>
         </form>

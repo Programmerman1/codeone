@@ -4,6 +4,7 @@
     $('.toggleCar').hide();
     $('.toggleCollege').hide();
     $('.toggleLoans').hide();
+    $('#results').hide();
 }();
 var adjustAmount = function (event, targetFieldId) {
     event = event || window.event;
@@ -21,10 +22,9 @@ var submitSurvey = function () {
     var decide = MakeDecision(input);
     console.log('budget bear picked for you the berry (bear-y) best pick');
     console.log('decision time! ' + JSON.stringify(decide));
-    if (decide.EverythingHappy)
-        $('#primaryRecommendation')
 
     $('#primaryRecommendation').removeClass().addClass(getRecommendationClass(decide.PrimaryGoal));
+    
     $('#lblPrimaryGoal').text(Goal[decide.PrimaryGoal]);
     $('#lblPrimaryGoalExplanation').text(getExplanation(decide).PrimaryGoalExplanation);
 
@@ -35,10 +35,26 @@ var submitSurvey = function () {
     $('#fourthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[3]));
     $('#fifthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[4]));
     $('#sixthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[5]));
+    $('#introduction').hide();
+    $('#goals').hide();
+    $('#survey').hide();
+    $('#results').show();
+    location.hash = "#results";
     return false;
 };
 
+$('#btnBack').click(function () {
+    $('#introduction').show();
+    $('#goals').show();
+    $('#survey').show();
+    $('#results').hide();
+    location.hash = "#goals";
+    return false;
+});
 
+$('#btnPrint').click(function () {
+    window.print();
+});
 
 $('input[type="radio"]').click(function () {
     var controlClass = this.dataset.toggle;
