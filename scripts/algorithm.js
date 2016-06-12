@@ -124,7 +124,7 @@ function MakeDecision(input) {
         result.EverythingHappy = false;
     }
     //Mandatory expenses 15%. But like house. But goes to "Other."
-    if (input.MandatoryExpenses * 15 > monthlyIncome) {
+    if (input.MandatoryExpenses * (20 / 3) > monthlyIncome) {
         finalGoals["Other"].Weight *= Math.log(input.MandatoryExpenses - (monthlyIncome / 10)) / Math.log(2);
         finalGoals["Other"].Happy = false;
         result.EverythingHappy = false;
