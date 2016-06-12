@@ -18,7 +18,7 @@
 }
 
 .primary-recommendation-content, .secondary-recommendation {
-    padding-bottom: 30px;
+    padding-bottom: $space-unit;
 }
 
 .secondary-recommendation {
@@ -32,7 +32,7 @@
 }
 
 .tertiary-recommendations {
-    padding-bottom: 60px;
+    padding-bottom: $space-unit * 2;
     text-align: center;
     
     .bb {

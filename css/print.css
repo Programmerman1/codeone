@@ -714,11 +714,13 @@ body, p, label {
   display: none; }
 
 th, td {
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
   margin: 0;
   font-size: 10pt;
   border: solid 1px #ddd; }
 
+.primary-recommendation p, .secondary-recommendation p {
+  page-break-inside: avoid; }
 .primary-recommendation .bb, .secondary-recommendation .bb {
   font-size: 100px; }
 

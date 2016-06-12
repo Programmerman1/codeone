@@ -19,7 +19,7 @@ main {
     display: block;
     
     ul, ol {
-        margin-left: 30px;
+        margin-left: $text-space-unit * 3;
     }
 }
 
