@@ -20,7 +20,7 @@ var Decision = (function () {
     function Decision() {
     }
     return Decision;
-})();
+}());
 function GetGoalMatrix() {
     var matrix = [];
     matrix["Home"] = { Goal: Goal.Home, Weight: 1.0 };

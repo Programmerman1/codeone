@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "outFile": "scripts/algorithm.js",
+        "sourceMap": false
+    },
+    "files": [
+        "scripts/ts/algorithm.ts"
+    ]
+}
