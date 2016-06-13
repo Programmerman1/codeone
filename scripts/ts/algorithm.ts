@@ -188,6 +188,14 @@ function MakeDecision(input: BudgetBearInput): Decision {
 
         //At this point we want to figure out how your current position makes the other values adjust.
     }
+    
+    //If the user has no income, we have some nulls/infinities to fix in the goal weights.
+    if (monthlyIncome <= 0) {
+        for (var g of finalGoals) {
+            if (!g.Weight || !isFinite(g.Weight)) g.Weight = 1;
+        }
+        finalGoals["Other"].Weight = 50;
+    }
 
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight })

@@ -52,19 +52,21 @@ var negativeExplanations = function(goalFocus, decision) {
         case "Other":
             output += "<p>Budget Bear is worried about your expenses in general. It seems as though expenses such as monthly bills and miscellaneous debt are particularly overwhelming.</p>"
             
-            if (decision.OriginalInput.OtherDebts.Payment * 10 > decision.MonthlyIncome) {
-                var debtPercent = roundOffNum(decision.OriginalInput.OtherDebts.Payment / decision.MonthlyIncome * 100);
-                output += "<p>Your miscellaneous debt is <strong>$" + commafy(decision.OriginalInput.OtherDebts.TotalOwed) + "</strong>. You pay <strong>$" + commafy(decision.OriginalInput.OtherDebts.Payment) + "</strong> per month, which is <strong>" + debtPercent + "%</strong> of your income. Budget Bear recommends that your debt payments not excede <strong>10%</strong>, and that you should try to negotiate lower payments with your creditors if debt is bogging you down.</p>";
-            }
+            if (decision.MonthlyIncome > 0) {
+                if (decision.OriginalInput.OtherDebts.Payment * 10 > decision.MonthlyIncome) {
+                    var debtPercent = roundOffNum(decision.OriginalInput.OtherDebts.Payment / decision.MonthlyIncome * 100);
+                    output += "<p>Your miscellaneous debt is <strong>$" + commafy(decision.OriginalInput.OtherDebts.TotalOwed) + "</strong>. You pay <strong>$" + commafy(decision.OriginalInput.OtherDebts.Payment) + "</strong> per month, which is <strong>" + debtPercent + "%</strong> of your income. Budget Bear recommends that your debt payments not excede <strong>10%</strong> of your income, and that you should try to negotiate lower payments with your creditors if debt is bogging you down.</p>";
+                }
             
-            if (decision.OriginalInput.MandatoryExpenses * (20/3) > decision.MonthlyIncome) {
-                var mandatoryExpensesPercent = roundOffNum(decision.OriginalInput.MandatoryExpenses / decision.MonthlyIncome * 100);
-                output += "<p>Your monthly bills such as utilities, phone, internet, TV, insurance, etc. total to about <strong>$" + commafy(decision.OriginalInput.MandatoryExpenses) + "</strong>, which is <strong>" + mandatoryExpensesPercent + "%</strong> of your income. Budget Bear's opinion is that your mandatory monthly bills should be about <strong>10&ndash;15%</strong> of your income instead.</p>";
-            }
+                if (decision.OriginalInput.MandatoryExpenses * (20/3) > decision.MonthlyIncome) {
+                    var mandatoryExpensesPercent = roundOffNum(decision.OriginalInput.MandatoryExpenses / decision.MonthlyIncome * 100);
+                    output += "<p>Your monthly bills such as utilities, phone, internet, TV, insurance, etc. total to about <strong>$" + commafy(decision.OriginalInput.MandatoryExpenses) + "</strong>, which is <strong>" + mandatoryExpensesPercent + "%</strong> of your income. Budget Bear's opinion is that your mandatory monthly bills should be about <strong>10&ndash;15%</strong> of your income instead.</p>";
+                }
             
-            if (decision.OriginalInput.OtherExpenses * 10 > decision.MonthlyIncome) {
-                var otherExpensesPercent = roundOffNum(decision.OriginalInput.OtherExpenses / decision.MonthlyIncome * 100);
-                output += "<p>Your miscellaneous monthly expenses are <strong>$" + commafy(decision.OriginalInput.OtherExpenses) + "</strong>, which is <strong>" + otherExpensesPercent + "%</strong> of your income, and Budget Bear thinks this shouldn't be higher than <strong>10%</strong>.</p>";
+                if (decision.OriginalInput.OtherExpenses * 10 > decision.MonthlyIncome) {
+                    var otherExpensesPercent = roundOffNum(decision.OriginalInput.OtherExpenses / decision.MonthlyIncome * 100);
+                    output += "<p>Your miscellaneous monthly expenses are <strong>$" + commafy(decision.OriginalInput.OtherExpenses) + "</strong>, which is <strong>" + otherExpensesPercent + "%</strong> of your income, and Budget Bear thinks this shouldn't be higher than <strong>10%</strong>.</p>";
+                }
             }
             
             output += "<p>Focus on paying off debts, cut up credit cards, cut services you don't use (Netflix and Hulu are a lot cheaper than cable and you probably don't really use all of those), and you'll open up funds to focus on other goals.</p>";

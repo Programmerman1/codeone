@@ -98,6 +98,10 @@
             document.getElementById('testresults').innerHTML += message;
         }
         
+        function primaryGoalMessage(decision) {
+            return 'Primary Goal returned ' + Goal[decision.PrimaryGoal] + ' with a ' + (decision.PrimaryGoalHappy ? 'positive' : 'negative') + ' explanation.';
+        }
+        
         // Begin Tests!
         
         // General Tests
@@ -139,13 +143,51 @@
             }
         }());
         
+        // Negative primary goal explanation with a positive secondary goal explanation
+        (function () {
+            var headline = 'It should allow the secondary goal to be positive even if the primary goal is addressing a concern.';
+            
+            var input = AllHappyInput();
+            input.Goals = [Goal.College];
+            input.Home.Payment = input.PayAmount / 3 + 100;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoalHappy == false &&
+                       decision.SecondaryGoal == Goal.College &&
+                       decision.SecondaryGoalHappy == true;
+            
+            logTestResult(pass, headline, 'Primary Goal returned ' + Goal[decision.PrimaryGoal] + ' with a ' + (decision.PrimaryGoalHappy ? 'positive' : 'negative') + ' explanation, and Secondary Goal returned ' + Goal[decision.SecondaryGoal] + ' with a ' + (decision.SecondaryGoalHappy ? 'positive' : 'negative') + ' explanation.');
+            logExplanation('<h4>Primary Goal: ' + Goal[decision.PrimaryGoal] + '</h4>' + getExplanation(decision).PrimaryGoalExplanation);
+            logExplanation('<h4>Secondary Goal: ' + Goal[decision.SecondaryGoal] + '</h4>' + getExplanation(decision).SecondaryGoalExplanation);
+        }());
+        
+        // If the user has no income, their goals should be Income and Other
+        (function () {
+            var headline = 'It should return the goals Income and Other if the user has no income.';
+            
+            var input = DefaultInput();
+            input.Goals = [Goal.Home, Goal.Vacation, Goal.Retirement, Goal.College, Goal.Car];
+            input.PayAmount = 0;
+            input.Home.TotalOwed = 70000;
+            input.Home.IsOwned = true;
+            input.College.Payment = 200;
+            input.College.TotalOwed = 29000;
+            input.College.IsOwned = true;
+            input.OtherDebts.Payment = 200;
+            input.OtherDebts.TotalOwed = 5000;
+            input.OtherDebts.IsOwned = true;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Income && decision.SecondaryGoal == Goal.Other;
+            
+            logTestResult(pass, headline, 'Primary Goal returned ' + Goal[decision.PrimaryGoal] + ' and Secondary Goal returned ' + Goal[decision.SecondaryGoal]);
+            logExplanation('<h4>Primary Goal: ' + Goal[decision.PrimaryGoal] + '</h4>' + getExplanation(decision).PrimaryGoalExplanation);
+            logExplanation('<h4>Secondary Goal: ' + Goal[decision.SecondaryGoal] + '</h4>' + getExplanation(decision).SecondaryGoalExplanation);
+        }());
+        
         // Goal Tests
         
         document.getElementById('testresults').innerHTML += '<h2>Goal Tests</h2>';
-        
-        function primaryGoalMessage(decision) {
-            return 'Primary Goal returned ' + Goal[decision.PrimaryGoal] + ' with a ' + (decision.PrimaryGoalHappy ? 'positive' : 'negative') + ' explanation.';
-        }
         
         // Primary Goal Home
         

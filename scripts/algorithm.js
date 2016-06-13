@@ -150,6 +150,15 @@ function MakeDecision(input) {
             finalGoals["Retirement"].Weight *= 1.6;
         }
     }
+    //If the user has no income, we have some nulls/infinities to fix in the goal weights.
+    if (monthlyIncome <= 0) {
+        for (var _i = 0, finalGoals_1 = finalGoals; _i < finalGoals_1.length; _i++) {
+            var g = finalGoals_1[_i];
+            if (!g.Weight || !isFinite(g.Weight))
+                g.Weight = 1;
+        }
+        finalGoals["Other"].Weight = 50;
+    }
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight; })
         .map(function (g) { return g.Goal; });
