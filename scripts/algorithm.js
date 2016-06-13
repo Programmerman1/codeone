@@ -112,7 +112,7 @@ function MakeDecision(input) {
     //This is like the car - you don't want it to get bigger. If this ends up being your goal, you can 
     //refinance.
     if (input.College.Payment * 5 > monthlyIncome) {
-        finalGoals["College"].Weight *= (input.Car.Payment * 4 / monthlyIncome);
+        finalGoals["College"].Weight *= (input.College.Payment * 7 / monthlyIncome);
         finalGoals["College"].Happy = false;
         result.EverythingHappy = false;
     }

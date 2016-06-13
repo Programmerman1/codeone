@@ -972,13 +972,13 @@ input[type='radio'] {
   -webkit-appearance: radio; }
 
 input[type='button'], input[type='submit'], button {
+  height: auto;
+  font-weight: 400;
   text-transform: uppercase;
   white-space: normal;
   cursor: pointer; }
 
 input[type='submit'] {
-  min-width: 150px;
-  max-width: 250px;
   font-size: 2.4rem; }
 
 select {
@@ -1312,6 +1312,21 @@ section {
   #resultGoals .active .bb {
     background-color: rgba(175, 219, 176, 0.5);
     color: #4e8452; }
+
+/*-------*/
+/* Tests */
+/*-------*/
+#testresults {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem;
+  color: #000; }
+
+.test-pass {
+  background-color: #e4f3e4; }
+
+.test-fail {
+  background-color: #ffeaea; }
 
 /*--------*/
 /* Footer */

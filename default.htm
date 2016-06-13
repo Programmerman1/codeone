@@ -217,7 +217,7 @@
                             <div class="column xs-span12 lg-span8">
                                 <select id="ddlFrequency" name="Frequency">
                                     <option value="Weekly">Weekly</option>
-                                    <option value="Biweekly">Every 2 weeks</option>
+                                    <option value="Biweekly" selected>Every 2 weeks</option>
                                     <option value="TwiceAMonth">Twice a month</option>
                                     <option value="Monthly">Monthly</option>
                                 </select>
@@ -227,7 +227,7 @@
                             <div class="column xs-span12 lg-span4"><label for="numPayAmount">About how much do you take home each time?</label></div>
                             <div class="column xs-span12 lg-span8">
                                 <div onclick="adjustAmount(event, 'numPayAmount')">
-                                    <input type="number" id="numPayAmount" value="500" name="PayAmount" />
+                                    <input type="number" id="numPayAmount" value="800" name="PayAmount" />
                                     <div class="up-and-down-buttons">
                                         <div class="button-area">
                                             <input type="button" data-amount="1000" value="+" />
@@ -584,7 +584,7 @@
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Internet</p>
                                 <div onclick="adjustAmount(event, 'numInternet')">
-                                    <input type="number" id="numInternet" name="Internet" value="30" />
+                                    <input type="number" id="numInternet" name="Internet" value="60" />
                                     <div class="up-and-down-buttons">
                                         <div class="button-area">
                                             <input type="button" data-amount="25" value="+" />
@@ -640,7 +640,7 @@
                             <div class="column xs-span12 md-span6 lg-span4">
                                 <p>Other Stuff</p>
                                 <div onclick="adjustAmount(event, 'numMisc')">
-                                    <input type="number" id="numMisc" name="OtherStuff" value="10" />
+                                    <input type="number" id="numMisc" name="OtherStuff" value="100" />
                                     <div class="up-and-down-buttons">
                                         <div class="button-area">
                                             <input type="button" data-amount="25" value="+" />

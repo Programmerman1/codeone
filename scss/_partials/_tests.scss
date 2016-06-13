@@ -1,0 +1,18 @@
+/*-------*/
+/* Tests */
+/*-------*/
+
+#testresults {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $space-unit;
+    color: #000;
+}
+
+.test-pass {
+    background-color: lighten($light-primary-color, 15%);
+}
+
+.test-fail {
+    background-color: #ffeaea;
+}

@@ -1,30 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-	<meta charset="utf-8" />
+    <title>Budget Bear Tests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic" type="text/css" media="all">
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="all">
+    <meta charset="utf-8" />
 </head>
 <body>
-    <pre id="testresults"></pre>
+    <div id="testresults"></div>
     <script type="text/javascript" src="scripts/algorithm.js"></script>
     <script type="text/javascript" src="scripts/explanations.js"></script>
     <script type="text/javascript">
-
-        function SampleInput() {
+        
+        // This input is identical to the live site form.
+        function DefaultInput() {
             var result = {
                 Goals: [Goal.Home],
                 PayAmount: 1600,
-                PayFrequency: Frequency.Biweekly,
-                RetirementSavings: 10000,
-                OtherSavings: 100,
+                PayFrequency: Frequency.Monthly,
+                RetirementSavings: 5000,
+                OtherSavings: 500,
                 Home: {
-                    Payment: 900,
-                    TotalOwed: 90000,
-                    IsOwned: true
+                    Payment: 750,
+                    TotalOwed: 0,
+                    IsOwned: false
                 },
                 Car: {
-                    Payment: 500,
-                    TotalOwed: 5000,
+                    Payment: 200,
+                    TotalOwed: 6000,
                     IsOwned: true
                 },
                 College: {
@@ -33,82 +38,340 @@
                     IsOwned: false
                 },
                 OtherDebts: {
-                    Payment: 100,
-                    TotalOwed: 1500,
+                    Payment: 0,
+                    TotalOwed: 0,
                     IsOwned: false
                 },
-                MandatoryExpenses: 1000,
-                OtherExpenses: 500
+                MandatoryExpenses: 450,
+                OtherExpenses: 100
             };
             return result;
         }
-
-        function logTestResult(message) {
-            document.getElementById('testresults').appendChild(document.createTextNode(message + '\r\n'));
+        
+        // A default "all good" input
+        function AllHappyInput() {
+            var result = {
+                Goals: [Goal.Home],
+                PayAmount: 3000,
+                PayFrequency: Frequency.Monthly,
+                RetirementSavings: 1500 * 26,
+                OtherSavings: 1500 * 6,
+                Home: {
+                    Payment: 0,
+                    TotalOwed: 0,
+                    IsOwned: true
+                },
+                Car: {
+                    Payment: 0,
+                    TotalOwed: 0,
+                    IsOwned: true
+                },
+                College: {
+                    Payment: 0,
+                    TotalOwed: 0,
+                    IsOwned: false
+                },
+                OtherDebts: {
+                    Payment: 0,
+                    TotalOwed: 0,
+                    IsOwned: false
+                },
+                MandatoryExpenses: 450,
+                OtherExpenses: 100
+            };
+            return result;
         }
-        //Basic test:
+        
+        // Appends test results to the page
+        function logTestResult(pass, headline, message) {
+            var testResult = (pass ? 'pass' : 'fail');
+            
+            var content = '<h4>' + headline + '</h4>' +
+                          '<pre class="test-' + testResult + '">' +
+                          '<strong>' + testResult.toUpperCase() + ':</strong> ' + message +
+                          '</pre>';
+            
+            document.getElementById('testresults').innerHTML += content;
+        }
+        
+        function logExplanation(message) {
+            document.getElementById('testresults').innerHTML += message;
+        }
+        
+        // Begin Tests!
+        
+        // General Tests
+        
+        document.getElementById('testresults').innerHTML += '<h2>General Tests</h2>';
+        
+        // Empty selected goal array doesn't break anything.
         (function () {
-            var decision = MakeDecision(SampleInput());
-            if (decision.PrimaryGoal != Goal.EmergencyFund) {
-                logTestResult('fail: basic test did not return emergency fund goal, returned ' + Goal[decision.PrimaryGoal] + '.');
-            } else if (decision.PrimaryGoal == Goal.EmergencyFund) {
-                logTestResult('pass: sample test returned emergency fund goal');
-            }
-        }());
-
-        //Empty selected goal array doesn't break anything.
-        (function () {
+            var headline = 'It should allow the user to select no goals.';
+            
             try {
-                var input = SampleInput();
+                var input = DefaultInput();
                 input.Goals = [];
                 var decision = MakeDecision(input);
-                logTestResult("pass: empty array test");
+                logTestResult(true, headline, 'User can choose to select zero goals.');
             } catch (e) {
-                logTestResult("fail: empty goal array threw exception");
+                logTestResult(false, headline, 'Test threw exception: ' + e);
             }
         }());
 
-        //Weird Rich Person
+        // Weird Rich Person
         (function () {
+            var headline = 'It should return Vacation or Retirement as the primary goal for a rich user who picks those goals.';
+            
             try {
-                var input = SampleInput();
+                var input = AllHappyInput();
                 input.Goals = [Goal.Vacation, Goal.Retirement];
                 input.PayAmount = 12000;
                 input.PayFrequency = Frequency.Monthly;
                 input.RetirementSavings = 70000000000;
                 input.OtherSavings = 80000000;
-                input.Home.Payment = 0;
-                input.Home.IsOwned = true;
-                input.Home.TotalOwed = 0;
-                input.Car.Payment = 0;
-                input.Car.IsOwned = true;
-                input.Car.TotalOwed = 0;
-                input.College.Payment = 0;
-                input.College.IsOwned = true;
-                input.College.TotalOwed = 0;
-                input.OtherDebts.Payment = 0;
-                input.OtherDebts.IsOwned = true;
-                input.OtherDebts.TotalOwed = 0;
-                input.OtherExpenses = 420;
-                input.MandatoryExpenses = 0;
 
                 var decision = MakeDecision(input);
-                if (decision.PrimaryGoal == Goal.Retirement || decision.PrimaryGoal == Goal.Vacation) {
-                    logTestResult("pass: weird rich person, primary goal is " + Goal[decision.PrimaryGoal]);
-                } else {
-                    logTestResult("fail: weird rich person's primary goal is " + Goal[decision.PrimaryGoal]);
-                }
+                var pass = decision.PrimaryGoal == Goal.Retirement || decision.PrimaryGoal == Goal.Vacation;
+                
+                logTestResult(pass, headline, 'Rich user\'s primary goal is ' + Goal[decision.PrimaryGoal] + '.');
             } catch (e) {
-                logTestResult("fail: empty goal array threw exception");
+                logTestResult(false, headline, "Test threw exception: " + e);
             }
         }());
-
-        //make sure explanation works
+        
+        // Goal Tests
+        
+        document.getElementById('testresults').innerHTML += '<h2>Goal Tests</h2>';
+        
+        function primaryGoalMessage(decision) {
+            return 'Primary Goal returned ' + Goal[decision.PrimaryGoal] + ' with a ' + (decision.PrimaryGoalHappy ? 'positive' : 'negative') + ' explanation.';
+        }
+        
+        // Primary Goal Home
+        
+        document.getElementById('testresults').innerHTML += '<h3>Home</h3>';
+        
         (function () {
-            var input = SampleInput();
+            var headline = 'It should return Home as the primary goal with a negative explanation if payments are high.';
+            
+            var input = AllHappyInput();
+            input.Goals = [Goal.Vacation];
+            input.Home.Payment = input.PayAmount / 3 + 100;
+            
             var decision = MakeDecision(input);
-            logTestResult(getExplanation(decision).PrimaryGoalExplanation);
-            logTestResult(getExplanation(decision).SecondaryGoalExplanation);
+            var pass = decision.PrimaryGoal == Goal.Home && decision.PrimaryGoalHappy == false;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return Home as the primary goal with a positive explanation if the user\'s financial situation is good and their goal is Home.';
+            
+            var decision = MakeDecision(AllHappyInput());
+            var pass = decision.PrimaryGoal == Goal.Home && decision.PrimaryGoalHappy == true;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal Car
+        
+        document.getElementById('testresults').innerHTML += '<h3>Car</h3>';
+        
+        (function () {
+            var headline = 'It should return Car as the primary goal with a negative explanation if payments are high.';
+            
+            var input = AllHappyInput();
+            input.Car.Payment = input.PayAmount / 5;
+            input.Car.TotalOwed = 15000;
+            input.Car.IsOwned = true;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Car && decision.PrimaryGoalHappy == false;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return Car as the primary goal with a positive explanation if the user\'s financial situation is good and their goal is Car.';
+            
+            var input = AllHappyInput();
+            input.Goals = [Goal.Car]
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Car && decision.PrimaryGoalHappy == true;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal Retirement
+        
+        document.getElementById('testresults').innerHTML += '<h3>Retirement</h3>';
+        
+        (function () {
+            var headline = 'It should return Retirement as the primary goal with a positive explanation if the user is doing everything right but does not have a year\'s worth of salary in their retirement savings.';
+            
+            var input = AllHappyInput();
+            input.RetirementSavings = input.PayAmount;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Retirement;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return Retirement as the primary goal with a positive explanation if the user is doing everything right and their goal is Retirement.';
+            
+            var input = AllHappyInput();
+            input.Goals = [Goal.Retirement]
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Retirement;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal Vacation
+        
+        document.getElementById('testresults').innerHTML += '<h3>Vacation</h3>';
+        
+        (function () {
+            var headline = 'It should return Vacation as the primary goal if the user\'s financial situation is good and their goal is Vacation.';
+            
+            var input = AllHappyInput();
+            input.Goals = [Goal.Vacation];
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Vacation;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal College
+        
+        document.getElementById('testresults').innerHTML += '<h3>College</h3>';
+        
+        (function () {
+            var headline = 'It should return College as the primary goal with a negative explanation if payments are high.';
+            
+            var input = AllHappyInput();
+            input.College.Payment = input.PayAmount / 4;
+            input.College.TotalOwed = 30000;
+            input.College.IsOwned = true;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.College && decision.PrimaryGoalHappy == false;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return College as the primary goal with a positive explanation if the user\'s financial situation is good and their goal is College.';
+            
+            var input = AllHappyInput();
+            input.Goals = [Goal.College];
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.College && decision.PrimaryGoalHappy == true;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal Emergency Fund
+        
+        document.getElementById('testresults').innerHTML += '<h3>Emergency Fund</h3>';
+        
+        (function () {
+            var headline = 'It should return Emergency Fund as the primary goal with a negative explanation if savings is less than $1000.';
+            var decision = MakeDecision(DefaultInput());
+            var pass = decision.PrimaryGoal == Goal.EmergencyFund && decision.PrimaryGoalHappy == false;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return Emergency Fund as the primary goal with a positive explanation if the user is doing everything right and has some savings but not three months worth.';
+            
+            var input = AllHappyInput();
+            input.OtherSavings = 1000;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.EmergencyFund && decision.PrimaryGoalHappy == true;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal Other
+        
+        document.getElementById('testresults').innerHTML += '<h3>Other</h3>';
+        
+        (function () {
+            var headline = 'It should return Other as the primary goal if the user had high miscellaneous debt payments.'
+            
+            var input = AllHappyInput();
+            input.OtherDebts.Payment = input.PayAmount / 5;
+            input.OtherDebts.TotalOwed = 10000;
+            input.OtherDebts.IsOwned = true;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Other;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return Other as the primary goal if the user had high mandatory bills (internet, TV, etc.).'
+            
+            var input = AllHappyInput();
+            input.MandatoryExpenses = input.PayAmount / 5;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Other;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        (function () {
+            var headline = 'It should return Other as the primary goal if the user had high miscellaneous expenses.'
+            
+            var input = AllHappyInput();
+            input.OtherExpenses = input.PayAmount / 5;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Other;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
+        }());
+        
+        // Primary Goal Income
+        
+        document.getElementById('testresults').innerHTML += '<h3>Income</h3>';
+        
+        (function () {
+            var headline = 'It should return Income as the primary goal if the user spends more than they make.';
+            
+            var input = DefaultInput();
+            input.Home.Payment = input.PayAmount;
+            
+            var decision = MakeDecision(input);
+            var pass = decision.PrimaryGoal == Goal.Income;
+            
+            logTestResult(pass, headline, primaryGoalMessage(decision));
+            logExplanation(getExplanation(decision).PrimaryGoalExplanation);
         }());
     </script>
 </body>

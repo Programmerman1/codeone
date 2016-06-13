@@ -6,6 +6,9 @@ var commafy = function (n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+// Copy for the negative explanations
+// Goals that are never negative: Retirement, Vacation
+// Goals that can only be triggered if negative: Other, Income
 var negativeExplanations = function(goalFocus, decision) {
     var output = "";
     
@@ -18,7 +21,7 @@ var negativeExplanations = function(goalFocus, decision) {
         case "Car":
             var carPaymentPercent = roundOffNum(decision.OriginalInput.Car.Payment / decision.MonthlyIncome * 100);
             
-            output += "<p>Budget Bear is worried about the cost of your car. You should aim for your car payments being <strong>10% or less</strong> of your income, and yours is " + carPaymentPercent + "% of your income. Try to pay off your car as soon as you can so you can free up those funds for other things.";
+            output += "<p>Budget Bear is worried about the cost of your car. You should aim for your car payments being <strong>10% or less</strong> of your income, and yours is <strong>" + carPaymentPercent + "%</strong> of your income. Try to pay off your car as soon as you can so you can free up those funds for other things.";
             
             if (decision.OriginalInput.OtherExpenses > 100) {
                 output += " It looks like you have $" + commafy(decision.OriginalInput.OtherExpenses) + " in other expenses. If any of those expenses aren't mandatory, consider putting that towards your car payments.";
@@ -30,16 +33,10 @@ var negativeExplanations = function(goalFocus, decision) {
             
             output += '</p>';
             break;
-        case "Retirement":
-            output += "<p>Budget Bear highly recommends that you prepare for retirement. Retirement is a long-term goal and the sooner you start, the better shape you'll be in. Having a percent or two set aside automatically will get you started and you'll hardly notice it. Ask your workplace about retirement savings options such as a 401k.</p>";
-            break;
-        case "Vacation":
-            output += "<p>Budget Bear approves of saving for that vacation. Afraid you'll tap into the funds for other expenses? Open a savings account just for your vacation fund and have your employer deposit a portion of your check straight into that account. You'll get your vacation funded in no time!</p>";
-            break;
         case "College":
             var collegePaymentPercent = roundOffNum(decision.OriginalInput.College.Payment / decision.MonthlyIncome * 100);
             
-            output += "<p>Budget Bear is worried about your college loans. Budget Bear knows that college loans can be intimidating and wants to help. You should aim for your monthly payments being around <strong>15% or less</strong> of your income, but it looks like yours is " + collegePaymentPercent + "%. You may be well-served talking to your loan servicer about more affordable repayment options. While you'll pay longer and probably more over the long run, you'll pay less every month. That will give you room enough in your budget to get other things in order.</p>";
+            output += "<p>Budget Bear is worried about your college loans. Budget Bear knows that college loans can be intimidating and wants to help. You should aim for your monthly payments being around <strong>15% or less</strong> of your income, but it looks like yours is <strong>" + collegePaymentPercent + "%</strong>. You may be well-served talking to your loan servicer about more affordable repayment options. While you'll pay longer and probably more over the long run, you'll pay less every month. That will give you room enough in your budget to get other things in order.</p>";
             break;
         case "EmergencyFund":
             var idealSavingsAmount = decision.MonthlyIncome * 3;
@@ -78,7 +75,7 @@ var negativeExplanations = function(goalFocus, decision) {
             output += "<p>Budget Bear is very worried about you!";
             
             if (decision.MonthlyIncome > 0) {
-                output += " Your cost of living is " + monthlyExpensesPercent + "% higher than your income, and that's not sustainable. Consider looking for secondary income, looking for a better paying job, or if you really love your work, ask for a raise. Work to reduce your expenses.";
+                output += " Your cost of living is <strong>" + monthlyExpensesPercent + "%</strong> higher than your income, and that's not sustainable. Consider looking for secondary income, looking for a better paying job, or if you really love your work, ask for a raise. Work to reduce your expenses.";
             } else {
                 output += " You don't have any income to support yourself. Hopefully you are looking for a source of income.";
             }
@@ -102,6 +99,8 @@ var negativeExplanations = function(goalFocus, decision) {
     return output;
 };
 
+// Copy for the positive explanations
+// Goals that are never positive: Other, Income
 var positiveExplanations = function(goalFocus, decision) {
     var output = "<p>";
     
@@ -135,7 +134,7 @@ var positiveExplanations = function(goalFocus, decision) {
             if (decision.PrimaryGoalHappy) {
                 output += "Budget Bear believes your financial situation is generally in order. You aren't falling behind, and your expenses are in check. You can always put more into your retirement savings though.";
             } else {
-                output += "Budget Bear thinks you should focus on your retirement savings."
+                output += "Budget Bear thinks you can focus on your retirement savings."
             }
             
             output += " If you have at least an <strong>entire annual salary in your retirement savings</strong>, in your case, <strong>$" + commafy(decision.AnnualIncome) + "</strong>, what you're doing is probably working. If you're not at this point yet, don't be too stressed, especially if you're young. But don't completely ignore preparing for retirement, either.</p><p>It's better to start early and save often so that you have time for compound interest to do its magic. If you have a retirement plan at work, increase your contribution by 1 percentage point. You'll hardly notice it. Once you've done that, think about your next focus.</p>";
@@ -168,10 +167,6 @@ var positiveExplanations = function(goalFocus, decision) {
             }
             
             output += " thinks you should have more money in savings. Budget Bear is worried about your livelihood and wants you to be safe if you ever have an emergency that threatens your job, health, car, home, or anything else important to you. He wants you to not have to rely on your credit cards or loans if something happens. Budget Bear highly recommends that you have <strong>3 months of paychecks</strong> stowed away for emergencies. In your case, that would be <strong>$" + commafy(idealSavingsAmount) + "</strong>, and you currently have <strong>$" + commafy(decision.OriginalInput.OtherSavings) + "</strong>. Do your best to put <strong>10&ndash;15%</strong> of every paycheck into savings.</p>";
-            break;
-        case "Other": // I don't know if this is possible either?
-            break;
-        case "Income": // I really doubt this will happen, too.
             break;
     }
     
