@@ -235,3 +235,16 @@ var getRecommendationClass = function (goal) {
             break;
     }
 };
+var prettyGoal = function (goal) {
+    switch (goal) {
+        case Goal.EmergencyFund:
+            return "Emergency Fund";
+            break;
+        case Goal.Other:
+            return "General Expenses";
+            break;
+        default:
+            return Goal[goal];
+            break;
+    }
+};

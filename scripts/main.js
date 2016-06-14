@@ -93,18 +93,6 @@ function getTweetLink(message, url, hashtags) {
     return "https://twitter.com/intent/tweet?text=" + encodeURI(message) + "&url=" + encodeURI(url) + "&hashtags=" + encodeURI(hashtags);
 }
 
-var prettyGoal = function (goal) {
-    switch (goal)
-    {
-        case Goal.EmergencyFund:
-            return "Emergency Fund";
-        case Goal.Other:
-            return "General Expenses";
-        default:
-            return Goal[goal];
-    }
-}
-
 $('#btnBack').click(function () {
     $('body').removeClass('results');
     location.hash = "#goals";

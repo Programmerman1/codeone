@@ -871,6 +871,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.1rem; }
   h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
     margin-top: 1rem; }
+  h1 + h1, h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6, h2 + h1, h2 + h2, h2 + h3, h2 + h4, h2 + h5, h2 + h6, h3 + h1, h3 + h2, h3 + h3, h3 + h4, h3 + h5, h3 + h6, h4 + h1, h4 + h2, h4 + h3, h4 + h4, h4 + h5, h4 + h6, h5 + h1, h5 + h2, h5 + h3, h5 + h4, h5 + h5, h5 + h6, h6 + h1, h6 + h2, h6 + h3, h6 + h4, h6 + h5, h6 + h6 {
+    margin-top: 1rem; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none; }
 
@@ -893,7 +895,7 @@ h5 {
   font-size: 2rem; }
 
 h6 {
-  font-size: 2rem; }
+  font-size: 1.6rem; }
 
 p, li {
   font-size: 2rem;

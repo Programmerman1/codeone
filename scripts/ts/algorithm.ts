@@ -211,7 +211,6 @@ function MakeDecision(input: BudgetBearInput): Decision {
     return result;
 }
 
-
 function GatherInput(): BudgetBearInput {
     var form = document.forms[0];
     var result = {
@@ -280,4 +279,18 @@ var getRecommendationClass = function (goal: Goal) {
             return 'bb-dollar';
             break;
     }
-}; 
+};
+
+var prettyGoal = function (goal: Goal) {
+    switch (goal) {
+        case Goal.EmergencyFund:
+            return "Emergency Fund";
+            break;
+        case Goal.Other:
+            return "General Expenses";
+            break;
+        default:
+            return Goal[goal];
+            break;
+    }
+};
