@@ -1,6 +1,6 @@
-/*--------*/
-/* Survey */
-/*--------*/
+/*---------------*/
+/* Home / Survey */
+/*---------------*/
 
 #goals {
     .section-main-content {
@@ -72,6 +72,10 @@
     }
 }
 
+.toggleMortgage, .toggleCar, .toggleCollege, .toggleLoans {
+    display: none;
+}
+
 .submit-survey {
     padding-top: $space-unit * 2;
     text-align: center;
@@ -80,4 +84,8 @@
         padding: 1.5rem 2rem;
         font-size: 2.4rem;
     }
+}
+
+#results {
+    display: none;
 }

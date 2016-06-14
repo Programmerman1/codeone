@@ -1,10 +1,5 @@
 ﻿var load = function () {
     console.log('hi folks');
-    $('.toggleMortgage').hide();
-    $('.toggleCar').hide();
-    $('.toggleCollege').hide();
-    $('.toggleLoans').hide();
-    $('#results').hide();
     adviceLink = '';
 }();
 var adjustAmount = function (event, targetFieldId) {
@@ -92,11 +87,7 @@ var submitSurvey = function () {
     $('#resultInsuranceMonth').text('$' + $('#numInsurance').val());
     $('#resultMiscMonth').text('$' + $('#numMisc').val());
     
-    $('.main-header').addClass('results-header');
-    $('#introduction').hide();
-    $('#goals').hide();
-    $('#survey').hide();
-    $('#results').show();
+    $('body').addClass('results');
     
     adviceLink = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.', 'http://budgetbear.azurewebsites.net/', 'CodeOneOmaha,DontArgueWithTheBear');
 
@@ -122,11 +113,7 @@ var prettyGoal = function (goal) {
 }
 
 $('#btnBack').click(function () {
-    $('.main-header').removeClass('results-header');
-    $('#introduction').show();
-    $('#goals').show();
-    $('#survey').show();
-    $('#results').hide();
+    $('body').removeClass('results');
     location.hash = "#goals";
     return false;
 });
@@ -134,10 +121,12 @@ $('#btnBack').click(function () {
 $('#btnPrint').click(function () {
     window.print();
 });
+
 $('#btnTweet').click(function () {
     window.open(adviceLink, '_blank');
     return false;
 })
+
 $('input[type="radio"]').click(function () {
     var controlClass = this.dataset.toggle;
     if (controlClass != null) {

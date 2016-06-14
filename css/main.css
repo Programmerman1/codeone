@@ -1035,14 +1035,6 @@ td, th {
   padding: 3rem 0; }
   .main-header h1, .main-header h2, .main-header h3 {
     color: #777c79; }
-  .main-header.results-header {
-    max-width: 300px;
-    margin: 0 auto;
-    padding-bottom: 0; }
-    .main-header.results-header .row:first-child {
-      display: none; }
-    .main-header.results-header h2 {
-      display: none; }
 
 .logo-container {
   position: relative;
@@ -1226,8 +1218,21 @@ section {
     -webkit-transform: translate(5%, 0);
     transform: translate(5%, 0); } }
 /*--------*/
-/* Survey */
+/* Footer */
 /*--------*/
+.main-footer {
+  padding: 3rem 0;
+  background-color: #555; }
+  .main-footer h1, .main-footer h2, .main-footer h3, .main-footer h4, .main-footer h5, .main-footer h6 {
+    color: #afdbb0; }
+  .main-footer, .main-footer p, .main-footer li, .main-footer th, .main-footer td, .main-footer a {
+    color: #fff; }
+  .main-footer a:hover {
+    color: rgba(255, 255, 255, 0.75); }
+
+/*---------------*/
+/* Home / Survey */
+/*---------------*/
 #goals .section-main-content {
   text-align: center; }
   #goals .section-main-content h4 {
@@ -1270,6 +1275,9 @@ section {
     padding-top: 0;
     padding-bottom: 0; }
 
+.toggleMortgage, .toggleCar, .toggleCollege, .toggleLoans {
+  display: none; }
+
 .submit-survey {
   padding-top: 6rem;
   text-align: center; }
@@ -1277,9 +1285,25 @@ section {
     padding: 1.5rem 2rem;
     font-size: 2.4rem; }
 
+#results {
+  display: none; }
+
 /*---------*/
 /* Results */
 /*---------*/
+body.results .main-header {
+  max-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 0; }
+  body.results .main-header .row:first-child {
+    display: none; }
+  body.results .main-header h2 {
+    display: none; }
+body.results #introduction, body.results #goals, body.results #survey {
+  display: none; }
+body.results #results {
+  display: block; }
+
 .primary-recommendation, .secondary-recommendation {
   text-align: center; }
   .primary-recommendation .bb, .secondary-recommendation .bb {
@@ -1317,9 +1341,9 @@ section {
     background-color: rgba(175, 219, 176, 0.5);
     color: #4e8452; }
 
-/*-------*/
-/* Tests */
-/*-------*/
+/*-------------*/
+/* Tests Page  */
+/*-------------*/
 #testoverview, #testresults {
   max-width: 1000px;
   margin: 0 auto;
@@ -1335,19 +1359,6 @@ section {
 
 .test-fail {
   background-color: #ffeaea; }
-
-/*--------*/
-/* Footer */
-/*--------*/
-.main-footer {
-  padding: 3rem 0;
-  background-color: #555; }
-  .main-footer h1, .main-footer h2, .main-footer h3, .main-footer h4, .main-footer h5, .main-footer h6 {
-    color: #afdbb0; }
-  .main-footer, .main-footer p, .main-footer li, .main-footer th, .main-footer td, .main-footer a {
-    color: #fff; }
-  .main-footer a:hover {
-    color: rgba(255, 255, 255, 0.75); }
 
 /*---------------*/
 /* Media Queries */

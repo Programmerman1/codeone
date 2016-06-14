@@ -2,6 +2,30 @@
 /* Results */
 /*---------*/
 
+body.results {
+    .main-header {
+        max-width: 300px;
+        margin: 0 auto;
+        padding-bottom: 0;
+
+        .row:first-child {
+            display: none;
+        }
+
+        h2 {
+            display: none;
+        }
+    }
+    
+    #introduction, #goals, #survey {
+        display: none;
+    }
+    
+    #results {
+        display: block;
+    }
+}
+
 .primary-recommendation, .secondary-recommendation {
     text-align: center;
     
