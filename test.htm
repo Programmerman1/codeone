@@ -9,10 +9,23 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <div id="testresults"></div>
+    <section id="testoverview">
+        <h2>Test Overview</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <section id="testresults"></section>
     <script type="text/javascript" src="scripts/algorithm.js"></script>
     <script type="text/javascript" src="scripts/explanations.js"></script>
     <script type="text/javascript">
+        var testCount = 0;
         
         // This input is identical to the live site form.
         function DefaultInput() {
@@ -84,14 +97,23 @@
         
         // Appends test results to the page
         function logTestResult(pass, headline, message) {
+            testCount++;
             var testResult = (pass ? 'pass' : 'fail');
             
-            var content = '<h4>' + headline + '</h4>' +
+            var content = '<h4 id="test' + testCount + '">' + headline + '</h4>' +
                           '<pre class="test-' + testResult + '">' +
-                          '<strong>' + testResult.toUpperCase() + ':</strong> ' + message +
+                            '<strong>' + testResult.toUpperCase() + ':</strong> ' + message +
                           '</pre>';
             
+            var tableRow = '<tr>' + 
+                             '<td>' + 
+                               testCount + '. ' + '<a href="#test' + testCount + '">' + headline + '</a>' +
+                             '</td>' + 
+                             '<th class="test-' + testResult + '">' + testResult.toUpperCase() + '</th>' +
+                           '</tr>';
+            
             document.getElementById('testresults').innerHTML += content;
+            document.getElementById('testoverview').getElementsByTagName('tbody')[0].innerHTML += tableRow;
         }
         
         function logExplanation(message) {
@@ -149,7 +171,7 @@
             
             var input = AllHappyInput();
             input.Goals = [Goal.College];
-            input.Home.Payment = input.PayAmount / 3 + 100;
+            input.Home.Payment = input.PayAmount * 0.45;
             
             var decision = MakeDecision(input);
             var pass = decision.PrimaryGoalHappy == false &&
@@ -186,6 +208,7 @@
         }());
         
         // Goal Tests
+        // These tests are mostly so we can see all the copy in one place.
         
         document.getElementById('testresults').innerHTML += '<h2>Goal Tests</h2>';
         

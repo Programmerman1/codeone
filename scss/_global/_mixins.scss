@@ -8,6 +8,13 @@
     animation: $animation;
 }
 
+// usage: @include breakpoint(480px) { your styles here }
+@mixin breakpoint($point) {
+    @media all and (min-width: $point) {
+        @content;
+    }
+}
+
 @mixin box-shadow($shadow...) {
     -webkit-box-shadow: $shadow;
     -moz-box-shadow: $shadow;

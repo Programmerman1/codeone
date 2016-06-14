@@ -2,11 +2,20 @@
 /* Tests */
 /*-------*/
 
-#testresults {
+#testoverview, #testresults {
     max-width: $max-width;
     margin: 0 auto;
-    padding: $space-unit;
     color: #000;
+}
+
+#testoverview {
+    table {
+        table-layout: auto;
+    }
+    
+    th, td {
+        font-size: 1.6rem;
+    }
 }
 
 .test-pass {

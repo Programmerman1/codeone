@@ -85,5 +85,11 @@ hr {
 }
 
 a {
+    color: $primary-color;
+    text-decoration: none;
     @include transition(all 0.4s ease);
+    
+    &:hover {
+        color: $dark-primary-color;
+    }
 }

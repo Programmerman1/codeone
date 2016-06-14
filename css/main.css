@@ -922,8 +922,12 @@ hr {
   border-bottom: solid 1px #aaa; }
 
 a {
+  color: #4e8452;
+  text-decoration: none;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease; }
+  a:hover {
+    color: #2e5630; }
 
 /*-------*/
 /* Forms */
@@ -1316,11 +1320,15 @@ section {
 /*-------*/
 /* Tests */
 /*-------*/
-#testresults {
+#testoverview, #testresults {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem;
   color: #000; }
+
+#testoverview table {
+  table-layout: auto; }
+#testoverview th, #testoverview td {
+  font-size: 1.6rem; }
 
 .test-pass {
   background-color: #e4f3e4; }
