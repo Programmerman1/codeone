@@ -210,28 +210,28 @@ function GatherInput() {
 var getRecommendationClass = function (goal) {
     switch (goal) {
         case Goal.Home:
-            return 'bb bb-house';
+            return 'bb-house';
             break;
         case Goal.Car:
-            return 'bb bb-car';
+            return 'bb-car';
             break;
         case Goal.Retirement:
-            return 'bb bb-palm-tree';
+            return 'bb-palm-tree';
             break;
         case Goal.Vacation:
-            return 'bb bb-suitcase';
+            return 'bb-suitcase';
             break;
         case Goal.College:
-            return 'bb bb-graduation-cap';
+            return 'bb-graduation-cap';
             break;
         case Goal.EmergencyFund:
-            return 'bb bb-piggy-bank';
+            return 'bb-piggy-bank';
             break;
         case Goal.Other:
-            return 'bb bb-credit-cards';
+            return 'bb-credit-cards';
             break;
         case Goal.Income:
-            return 'bb bb-dollar';
+            return 'bb-dollar';
             break;
     }
 };

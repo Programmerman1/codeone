@@ -1010,6 +1010,8 @@ table {
 
 thead {
   background-color: #d5d5d5; }
+  thead, thead h1, thead h2, thead h3, thead h4, thead h5, thead h6, thead p, thead li, thead th, thead td {
+    color: #525553; }
 
 tr:nth-child(even) {
   background-color: #eee; }
@@ -1331,13 +1333,13 @@ body.results #results {
     color: #afdbb0;
     font-size: 50px; }
 
-#resultGoals {
+.result-table-icons {
   text-align: center; }
-  #resultGoals .bb {
+  .result-table-icons .bb {
     padding: 3px;
     border-radius: 50%;
     color: #aaa; }
-  #resultGoals .active .bb {
+  .result-table-icons .active .bb {
     background-color: rgba(175, 219, 176, 0.5);
     color: #4e8452; }
 

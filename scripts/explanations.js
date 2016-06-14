@@ -2,7 +2,7 @@
     return Math.round(n * 100) / 100;
 }
 
-var commafy = function (n) {
+var commafy = function(n) {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -175,7 +175,7 @@ var positiveExplanations = function(goalFocus, decision) {
     return output;
 };
 
-function getExplanation(decision) { //results: Decision
+function getExplanation(decision) {
     var primaryGoalExplaination = "",
         secondaryGoalExplanation = "";
     

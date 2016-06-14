@@ -18,36 +18,29 @@ var submitSurvey = function () {
     var decide = MakeDecision(input);
     console.log('budget bear picked for you the berry (bear-y) best pick');
     console.log('decision time! ' + JSON.stringify(decide));
-
-    $('#primaryRecommendation').removeClass().addClass(getRecommendationClass(decide.PrimaryGoal));
-
+    
+    // Add icons
+    for (var i = 0; i < decide.GoalOrder.length; i++) {
+        $('.recommendation' + (i+1)).removeClass(function(index, css) {
+            return (css.match (/bb\-[\w\-]+/g) || []).join(' ');
+        }).addClass(getRecommendationClass(decide.GoalOrder[i]));
+    }
+    
+    // Add primary goal headline and details
     $('#lblPrimaryGoal').text(prettyGoal(decide.PrimaryGoal));
-    $('#lblPrimaryGoalExplanation').empty().append(getExplanation(decide).PrimaryGoalExplanation);
-
-    $('#secondRecommendation').removeClass().addClass(getRecommendationClass(decide.SecondaryGoal));
+    $('#lblPrimaryGoalExplanation').html(getExplanation(decide).PrimaryGoalExplanation);
+    
+    // Add secondary goal headline and details
     $('#lblSecondaryGoal').text(prettyGoal(decide.SecondaryGoal));
-    $('#lblSecondaryGoalExplanation').empty().append(getExplanation(decide).SecondaryGoalExplanation);
-
-    $('#thirdRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[2]));
-    $('#fourthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[3]));
-    $('#fifthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[4]));
-    $('#sixthRecommendation').removeClass().addClass(getRecommendationClass(decide.GoalOrder[5]));
-
-    $('#resultGoalHome').removeClass('active');
-    $('#resultGoalCar').removeClass('active');
-    $('#resultGoalCollege').removeClass('active');
-    $('#resultGoalVacation').removeClass('active');
-    $('#resultGoalRetirement').removeClass('active');
-    if (decide.OriginalInput.Goals.indexOf(Goal.Home) > -1)
-        $('#resultGoalHome').addClass('active');
-    if (decide.OriginalInput.Goals.indexOf(Goal.Car) > -1)
-        $('#resultGoalCar').addClass('active');
-    if (decide.OriginalInput.Goals.indexOf(Goal.College) > -1)
-        $('#resultGoalCollege').addClass('active');
-    if (decide.OriginalInput.Goals.indexOf(Goal.Vacation) > -1)
-        $('#resultGoalVacation').addClass('active');
-    if (decide.OriginalInput.Goals.indexOf(Goal.Retirement) > -1)
-        $('#resultGoalRetirement').addClass('active');
+    $('#lblSecondaryGoalExplanation').html(getExplanation(decide).SecondaryGoalExplanation);
+    
+    // Highlight goals in results table
+    $('.result-table-icon').removeClass('active');
+    
+    for (var i = 0; i < decide.OriginalInput.Goals.length; i++) {
+        $('.result-table-icon-' + Goal[decide.OriginalInput.Goals[i]].toLowerCase()).addClass('active');
+    }
+    
     $('#resultAnnual').text('$' + decide.AnnualIncome);
     $('#resultMonthly').text('$' + decide.MonthlyIncome);
     $('#resultRetirement').text('$' + decide.OriginalInput.RetirementSavings);

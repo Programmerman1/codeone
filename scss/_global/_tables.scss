@@ -12,6 +12,10 @@ table {
 
 thead {
     background-color: darken($light-gray, 10%);
+    
+    &, h1, h2, h3, h4, h5, h6, p, li, th, td {
+        color: darken($text-color, 15%);
+    }
 }
 
 tr:nth-child(even) {
