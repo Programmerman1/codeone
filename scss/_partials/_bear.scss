@@ -36,10 +36,6 @@
             opacity: 1;
         }
         
-        .calculation-plus, .calculation-minus, .calculation-multiply, .calculation-divide {
-            @include transform-origin(center center);
-        }
-        
         .calculation-plus {
             @include animation(pluswiggle 1s infinite steps(1));
         }
@@ -56,8 +52,28 @@
             @include animation(dividewiggle 1s infinite steps(1));
         }
         
-        .calculating-bear-eyes {
+        .calculation-eyes {
             @include animation(moveeyes 1s infinite steps(1));
+        }
+        
+        .calculation-calculator {
+            @include animation(movecalculator 1s infinite steps(1));
+        }
+        
+        .calculation-right-thumb {
+            @include animation(moverightthumb 1s infinite steps(1));
+        }
+        
+        .calculation-right-paw {
+            @include animation(moverightpaw 1s infinite steps(1));
+        }
+        
+        .calculation-left-thumb {
+            @include animation(moveleftthumb 1s infinite steps(1));
+        }
+        
+        .calculation-left-paw, .calculation-left-arm  {
+            @include animation(moveleftarm 1s infinite steps(1));
         }
     }
     
@@ -122,8 +138,17 @@
     }
 }
 
-@include make-keyframes(pluswiggle, translate(0,0) rotate(0deg), translate(-10%, -10%) rotate(10deg));
-@include make-keyframes(minuswiggle, translate(0,0) rotate(0deg), translate(10%, 10%) rotate(-10deg));
-@include make-keyframes(multiplywiggle, translate(0,0) rotate(0deg), translate(10%, -10%) rotate(10deg));
-@include make-keyframes(dividewiggle, translate(0,0) rotate(0deg), translate(-10%, -10%) rotate(-10deg));
-@include make-keyframes(moveeyes, translate(0, 0), translate(5%, 0));
+@include make-keyframes(pluswiggle, translate(0, 0), translate(10px, 0));
+@include make-keyframes(minuswiggle, translate(0, 0), translate(10px, -10px));
+@include make-keyframes(multiplywiggle, translate(0, 0), translate(0, -10px));
+@include make-keyframes(dividewiggle, translate(0, 0), translate(-10px, -5px));
+
+@include make-keyframes(moveeyes, translate(0, 0), translate(10px, 0));
+
+@include make-keyframes(movecalculator, translate(-1px, 0), translate(1px, 4px));
+
+@include make-keyframes(moverightthumb, translate(0, 3px), translate(0, -3px));
+@include make-keyframes(moverightpaw, translate(0, 3px), translate(0, 0));
+
+@include make-keyframes(moveleftthumb, translate(0, 0px), translate(0, 8px));
+@include make-keyframes(moveleftarm, translate(0, 0px), translate(0, 3px));
