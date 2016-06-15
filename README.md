@@ -10,9 +10,9 @@ Budget Bear runs entirely in the user's browser, which means sensitive informati
 
 ### Who is behind Budget Bear?
 
-- [Programmerman1](/Programmerman1) (Nick) - algorithm development, copywriting
-- [marcusross](/marcusross) (Marcus) - form interactions and processing
-- [caraheacock](/caraheacock) (Cara) - frontend development, copywriting, graphic design, illustration
+- [Programmerman1](https://github.com/Programmerman1) (Nick) - algorithm development, copywriting
+- [marcusross](https://github.com/marcusross) (Marcus) - form interactions and processing
+- [caraheacock](https://github.com/caraheacock) (Cara) - frontend development, copywriting, graphic design, illustration
 
 ### What technologies were used to create Budget Bear?
 
