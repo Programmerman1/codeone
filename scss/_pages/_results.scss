@@ -69,16 +69,34 @@ body.results {
 .result-table-icons {
     text-align: center;
     
+    .column {
+        padding: 0.5rem 0;
+    }
+    
     .bb {
         padding: 3px;
         border-radius: 50%;
         color: $medium-gray;
+        font-size: 1.6rem;
     }
     
     .active {
         .bb {
             background-color: rgba($light-primary-color, 0.5);
             color: $primary-color;
+        }
+    }
+    
+    @include breakpoint($size-sm) {
+        .bb {
+            padding: 5px;
+            font-size: 2rem;
+        }
+    }
+    
+    @include breakpoint($size-xl) {
+        .bb {
+            font-size: 2.5rem;
         }
     }
 }

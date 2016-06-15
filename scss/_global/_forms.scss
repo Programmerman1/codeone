@@ -9,12 +9,12 @@ label {
 }
 
 label, input, button, select, textarea {
-    font: 20px / 1.5 $font-family-open-sans;
-    font-size: 2rem;
+    font: 14px / 1.5 $font-family-open-sans;
+    font-size: 1.4rem;
 }
 
 label, input, select, textarea {
-    margin: $text-space-unit 0;
+    margin: ($text-space-unit / 2) 0;
 }
 
 button, input, select, textarea {
@@ -92,4 +92,20 @@ select {
 
 textarea {
     max-width: 100%;
+}
+
+@include breakpoint($size-md) {
+    label, input, button, select, textarea {
+        font-size: 1.6rem;
+    }
+    
+    label, input, select, textarea {
+        margin: $text-space-unit 0;
+    }
+}
+
+@include breakpoint($size-lg) {
+    label, input, button, select, textarea {
+        font-size: 2rem;
+    }
 }

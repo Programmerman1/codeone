@@ -43,3 +43,17 @@ td, th {
         line-height: 1.5;
     }
 }
+
+@include breakpoint($size-sm) {
+    th, td {
+        font-size: 1.4rem;
+    }
+}
+
+@include breakpoint($size-lg) {
+    th, td {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        font-size: 2rem;
+    }
+}

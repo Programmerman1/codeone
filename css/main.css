@@ -81,9 +81,15 @@ html {
 body {
   overflow-x: hidden;
   color: #777c79;
-  font: 20px/1.5 "Open Sans", sans-serif;
-  font-size: 2rem;
+  font: 14px/1.5 "Open Sans", sans-serif;
+  font-size: 1.4rem;
   font-weight: 300; }
+  @media all and (min-width: 660px) {
+    body {
+      font-size: 1.6rem; } }
+  @media all and (min-width: 850px) {
+    body {
+      font-size: 2rem; } }
 
 main {
   display: block; }
@@ -871,22 +877,22 @@ h2 {
   font-size: 3rem; }
 
 h3 {
-  font-size: 2.2rem; }
+  font-size: 2rem; }
 
 h4, h5, h6, p, li, th, td {
   color: #777c79; }
 
 h4 {
-  font-size: 2rem; }
-
-h5 {
-  font-size: 2rem; }
-
-h6 {
   font-size: 1.6rem; }
 
+h5 {
+  font-size: 1.4rem; }
+
+h6 {
+  font-size: 1.2rem; }
+
 p, li {
-  font-size: 2rem;
+  font-size: 1.4rem;
   line-height: 2; }
 
 p, li, td {
@@ -919,6 +925,42 @@ a {
   a:hover {
     color: #2e5630; }
 
+@media all and (min-width: 660px) {
+  h1 {
+    font-size: 5rem; }
+
+  h2 {
+    font-size: 4rem; }
+
+  h3 {
+    font-size: 2.2rem; }
+
+  h4 {
+    font-size: 2rem; }
+
+  h5 {
+    font-size: 1.6rem; }
+
+  h6 {
+    font-size: 1.4rem; }
+
+  p, li {
+    font-size: 1.6rem; } }
+@media all and (min-width: 850px) {
+  h3 {
+    font-size: 2.5rem; }
+
+  h4 {
+    font-size: 2.2rem; }
+
+  h5 {
+    font-size: 2rem; }
+
+  h6 {
+    font-size: 1.6rem; }
+
+  p, li {
+    font-size: 2rem; } }
 /*-------*/
 /* Forms */
 /*-------*/
@@ -928,11 +970,11 @@ label {
   line-height: 1.5; }
 
 label, input, button, select, textarea {
-  font: 20px/1.5 "Open Sans", sans-serif;
-  font-size: 2rem; }
+  font: 14px/1.5 "Open Sans", sans-serif;
+  font-size: 1.4rem; }
 
 label, input, select, textarea {
-  margin: 1rem 0; }
+  margin: 0.5rem 0; }
 
 button, input, select, textarea {
   -webkit-appearance: none;
@@ -988,6 +1030,15 @@ select {
 textarea {
   max-width: 100%; }
 
+@media all and (min-width: 660px) {
+  label, input, button, select, textarea {
+    font-size: 1.6rem; }
+
+  label, input, select, textarea {
+    margin: 1rem 0; } }
+@media all and (min-width: 850px) {
+  label, input, button, select, textarea {
+    font-size: 2rem; } }
 /*--------*/
 /* Tables */
 /*--------*/
@@ -1020,6 +1071,14 @@ td, th {
   td, td h1, td h2, td h3, td h4, td h5, td h6, td p, td li, th, th h1, th h2, th h3, th h4, th h5, th h6, th p, th li {
     line-height: 1.5; }
 
+@media all and (min-width: 480px) {
+  th, td {
+    font-size: 1.4rem; } }
+@media all and (min-width: 850px) {
+  th, td {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 2rem; } }
 /*-------*/
 /* Media */
 /*-------*/
@@ -1182,6 +1241,9 @@ section {
     position: absolute;
     top: auto;
     bottom: 0; }
+  @media all and (min-width: 660px) {
+    .calculating-bear {
+      display: block; } }
 
 .calculating-bear-inner-inner {
   padding: 3rem 0; }
@@ -1530,13 +1592,23 @@ body.results #results {
 
 .result-table-icons {
   text-align: center; }
+  .result-table-icons .column {
+    padding: 0.5rem 0; }
   .result-table-icons .bb {
     padding: 3px;
     border-radius: 50%;
-    color: #aaa; }
+    color: #aaa;
+    font-size: 1.6rem; }
   .result-table-icons .active .bb {
     background-color: rgba(175, 219, 176, 0.5);
     color: #4e8452; }
+  @media all and (min-width: 480px) {
+    .result-table-icons .bb {
+      padding: 5px;
+      font-size: 2rem; } }
+  @media all and (min-width: 1024px) {
+    .result-table-icons .bb {
+      font-size: 2.5rem; } }
 
 /*-------------*/
 /* Tests Page  */
@@ -1556,29 +1628,5 @@ body.results #results {
 
 .test-fail {
   background-color: #ffeaea; }
-
-/*---------------*/
-/* Media Queries */
-/*---------------*/
-@media all and (min-width: 480px) {
-  th, td {
-    font-size: 1.4rem; } }
-@media all and (min-width: 660px) {
-  h1 {
-    font-size: 5rem; }
-
-  h2 {
-    font-size: 4rem; }
-
-  h3 {
-    font-size: 2.5rem; }
-
-  .calculating-bear {
-    display: block; } }
-@media all and (min-width: 850px) {
-  th, td {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    font-size: 2rem; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -139,6 +139,10 @@
         top: auto;
         bottom: 0;
     }
+    
+    @include breakpoint($size-md) {
+        display: block;
+    }
 }
 
 .calculating-bear-inner-inner {
