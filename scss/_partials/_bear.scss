@@ -20,18 +20,61 @@
     display: none;
     padding: $space-unit 1rem;
     
-    h4 {
+    h4, h6 {
         visibility: hidden;
+        opacity: 0;
+        @include transition(visibility 2s ease, opacity 2s ease);
+    }
+    
+    h4 {
         margin-top: 0.5rem;
         text-align: center;
-        opacity: 0;
-        @include transition(all 2s ease);
+    }
+    
+    h6 {
+        position: absolute;
+        margin: 0;
+        font-size: 8px;
+        
+        &:first-of-type {
+            top: 41%;
+            left: 3%;
+            @include animation(typing1 1s infinite steps(1));
+        }
+        
+        &:nth-of-type(2) {
+            top: 44%;
+            left: 10%;
+            @include animation(typing2 1s infinite steps(1));
+        }
+        
+        &:last-of-type {
+            top: 47%;
+            left: 7%;
+            @include animation(typing1 1s infinite steps(1));
+        }
+        
+        @include breakpoint($size-lg) {
+            font-size: 12px;
+            
+            &:first-of-type {
+                top: 44%;
+            }
+        
+            &:nth-of-type(2) {
+                top: 48%;
+            }
+        
+            &:last-of-type {
+                top: 51%;
+            }
+        }
     }
     
     &.fixed-bear, &.end-bear {
         right: 0;
         
-        h4 {
+        h4, h6 {
             visibility: visible;
             opacity: 1;
         }
@@ -149,6 +192,8 @@
 
 @include make-keyframes(moverightthumb, translate(0, 3px), translate(0, -3px));
 @include make-keyframes(moverightpaw, translate(0, 3px), translate(0, 0));
-
 @include make-keyframes(moveleftthumb, translate(0, 0px), translate(0, 8px));
 @include make-keyframes(moveleftarm, translate(0, 0px), translate(0, 3px));
+
+@include make-keyframes(typing1, rotate(6deg), rotate(-6deg));
+@include make-keyframes(typing2, rotate(-6deg), rotate(6deg));

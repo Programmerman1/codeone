@@ -5,7 +5,6 @@
 h1, h2, h3, h4, h5, h6, ul, ol {
     margin: $text-space-unit 0;
     font-family: $font-family-open-sans;
-    line-height: 1.75;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -13,6 +12,7 @@ h1, h2, h3, h4, h5, h6 {
     color: $primary-color;
     font-weight: $normal;
     letter-spacing: 0.1rem;
+    line-height: 1.5;
     
     &:first-child {
         margin-top: $text-space-unit;
