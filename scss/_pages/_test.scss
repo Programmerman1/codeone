@@ -1,0 +1,27 @@
+/*-------------*/
+/* Tests Page  */
+/*-------------*/
+
+#testoverview, #testresults {
+    max-width: $max-width;
+    margin: 0 auto;
+    color: #000;
+}
+
+#testoverview {
+    table {
+        table-layout: auto;
+    }
+    
+    th, td {
+        font-size: 1.6rem;
+    }
+}
+
+.test-pass {
+    background-color: lighten($light-primary-color, 15%);
+}
+
+.test-fail {
+    background-color: #ffeaea;
+}

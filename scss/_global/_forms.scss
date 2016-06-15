@@ -8,20 +8,26 @@ label {
     line-height: 1.5;
 }
 
-label, input, select, textarea {
-    margin: 1rem 0;
+label, input, button, select, textarea {
+    font: 14px / 1.5 $font-family-open-sans;
+    font-size: 1.4rem;
 }
 
-input, select, textarea {
+label, input, select, textarea {
+    margin: ($text-space-unit / 2) 0;
+}
+
+button, input, select, textarea {
     -webkit-appearance: none;
+    -moz-appearance: none;
     font-weight: $light;
 }
 
-input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']), select, textarea {
+input, select, textarea {
     @include transition(all 0.4s ease);
     @extend %default-border-radius;
     width: 100%;
-    padding: 5px 10px;
+    padding: 0.5rem 1rem;
     border: solid 1px $medium-gray;
     opacity: 0.75;
     
@@ -30,20 +36,29 @@ input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type
     }
 }
 
-label, input:not([type='submit']), button, select, textarea {
-    font: 20px / 1.5 $font-family-open-sans;
-    font-size: 2rem;
-}
-
-input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']), select {
+input, select {
     height: 4.2rem;
 }
 
 input {
+    &[type='checkbox'], &[type='radio'], &[type='button'], &[type='submit'] {
+        width: auto;
+    }
+
+    &[type='checkbox'], &[type='radio'] {
+        height: auto;
+    }
+
     &[type='checkbox'] {
         -webkit-appearance: checkbox;
     }
-    
+
+    &[type='file'] {
+        padding: 0;
+        border: 0;
+        line-height: 1;
+    }
+
     &[type='radio'] {
         -webkit-appearance: radio;
     }
@@ -51,14 +66,14 @@ input {
 
 input[type='button'], input[type='submit'], button {
     @extend %button;
+    height: auto;
+    font-weight: $normal;
     text-transform: uppercase;
     white-space: normal;
     cursor: pointer;
 }
 
 input[type='submit'] {
-    min-width: 150px;
-    max-width: 250px;
     font-size: 2.4rem;
 }
 
@@ -77,4 +92,20 @@ select {
 
 textarea {
     max-width: 100%;
+}
+
+@include breakpoint($size-md) {
+    label, input, button, select, textarea {
+        font-size: 1.6rem;
+    }
+    
+    label, input, select, textarea {
+        margin: $text-space-unit 0;
+    }
+}
+
+@include breakpoint($size-lg) {
+    label, input, button, select, textarea {
+        font-size: 2rem;
+    }
 }

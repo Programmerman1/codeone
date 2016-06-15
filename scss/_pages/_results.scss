@@ -2,6 +2,30 @@
 /* Results */
 /*---------*/
 
+body.results {
+    .main-header {
+        max-width: 300px;
+        margin: 0 auto;
+        padding-bottom: 0;
+
+        .row:first-child {
+            display: none;
+        }
+
+        h2 {
+            display: none;
+        }
+    }
+    
+    #introduction, #goals, #survey {
+        display: none;
+    }
+    
+    #results {
+        display: block;
+    }
+}
+
 .primary-recommendation, .secondary-recommendation {
     text-align: center;
     
@@ -18,7 +42,7 @@
 }
 
 .primary-recommendation-content, .secondary-recommendation {
-    padding-bottom: 30px;
+    padding-bottom: $space-unit;
 }
 
 .secondary-recommendation {
@@ -32,7 +56,7 @@
 }
 
 .tertiary-recommendations {
-    padding-bottom: 60px;
+    padding-bottom: $space-unit * 2;
     text-align: center;
     
     .bb {
@@ -42,19 +66,37 @@
     }
 }
 
-#resultGoals {
+.result-table-icons {
     text-align: center;
+    
+    .column {
+        padding: 0.5rem 0;
+    }
     
     .bb {
         padding: 3px;
         border-radius: 50%;
         color: $medium-gray;
+        font-size: 1.6rem;
     }
     
     .active {
         .bb {
             background-color: rgba($light-primary-color, 0.5);
             color: $primary-color;
+        }
+    }
+    
+    @include breakpoint($size-sm) {
+        .bb {
+            padding: 5px;
+            font-size: 2rem;
+        }
+    }
+    
+    @include breakpoint($size-xl) {
+        .bb {
+            font-size: 2.5rem;
         }
     }
 }

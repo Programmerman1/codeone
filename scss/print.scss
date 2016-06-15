@@ -53,14 +53,20 @@ body, p, label {
 }
 
 th, td {
-    padding:  0 5px 0 5px;
+    padding: 0 5px;
     margin: 0;
     font-size: 10pt;
     border: solid 1px #ddd;
 }
 
-.primary-recommendation .bb, .secondary-recommendation .bb {
+.primary-recommendation, .secondary-recommendation {
+  p {
+    page-break-inside: avoid;
+  }
+  
+  .bb {
     font-size: 100px;
+  }
 }
 
 .primary-recommendation-content .column {

@@ -10,30 +10,23 @@ html {
 body {
     overflow-x: hidden;
     color: $text-color;
-    font: 20px / 1.5 $font-family-open-sans;
-    font-size: 2rem;
+    font: 14px / 1.5 $font-family-open-sans;
+    font-size: 1.4rem;
     font-weight: $light;
+    
+    @include breakpoint($size-md) {
+        font-size: 1.6rem;
+    }
+    
+    @include breakpoint($size-lg) {
+        font-size: 2rem;
+    }
 }
 
 main {
     display: block;
     
     ul, ol {
-        margin-left: 30px;
+        margin-left: $text-space-unit * 3;
     }
-}
-
-iframe {
-    display: block;
-    max-width: 100%;
-}
-
-img {
-    display: inline-block;
-    max-width: 100%;
-    height: auto;
-}
-
-a img {
-    border: 0;
 }

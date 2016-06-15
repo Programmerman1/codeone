@@ -5,13 +5,17 @@
 table {
     table-layout: fixed;
     width: 100%;
-    margin: 1rem 0;
+    margin: $text-space-unit 0;
     border: solid 1px darken($light-gray, 10%);
     border-collapse: collapse;
 }
 
 thead {
     background-color: darken($light-gray, 10%);
+    
+    &, h1, h2, h3, h4, h5, h6, p, li, th, td {
+        color: darken($text-color, 15%);
+    }
 }
 
 tr:nth-child(even) {
@@ -24,7 +28,7 @@ th {
 }
 
 td, th {
-    padding: 5px;
+    padding: 0.5rem;
     font-size: 1rem;
     
     > *:first-child {
@@ -37,5 +41,19 @@ td, th {
     
     &, h1, h2, h3, h4, h5, h6, p, li {
         line-height: 1.5;
+    }
+}
+
+@include breakpoint($size-sm) {
+    th, td {
+        font-size: 1.4rem;
+    }
+}
+
+@include breakpoint($size-lg) {
+    th, td {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        font-size: 2rem;
     }
 }

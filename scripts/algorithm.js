@@ -20,24 +20,24 @@ var Decision = (function () {
     function Decision() {
     }
     return Decision;
-})();
+}());
 function GetGoalMatrix() {
     var matrix = [];
-    matrix["Home"] = { Goal: Goal.Home, Weight: 1.0 };
+    matrix["Home"] = { Goal: Goal.Home, Happy: true, Weight: 1.0 };
     matrix.push(matrix["Home"]);
-    matrix["Car"] = { Goal: Goal.Car, Weight: 1.0 };
+    matrix["Car"] = { Goal: Goal.Car, Happy: true, Weight: 1.0 };
     matrix.push(matrix["Car"]);
-    matrix["Retirement"] = { Goal: Goal.Retirement, Weight: 1.0 };
+    matrix["Retirement"] = { Goal: Goal.Retirement, Happy: true, Weight: 1.0 };
     matrix.push(matrix["Retirement"]);
-    matrix["Vacation"] = { Goal: Goal.Vacation, Weight: 1.0 };
+    matrix["Vacation"] = { Goal: Goal.Vacation, Happy: true, Weight: 1.0 };
     matrix.push(matrix["Vacation"]);
-    matrix["College"] = { Goal: Goal.College, Weight: 1.0 };
+    matrix["College"] = { Goal: Goal.College, Happy: true, Weight: 1.0 };
     matrix.push(matrix["College"]);
-    matrix["EmergencyFund"] = { Goal: Goal.EmergencyFund, Weight: 1.0 };
+    matrix["EmergencyFund"] = { Goal: Goal.EmergencyFund, Happy: true, Weight: 1.0 };
     matrix.push(matrix["EmergencyFund"]);
-    matrix["Other"] = { Goal: Goal.Other, Weight: 1.0 };
+    matrix["Other"] = { Goal: Goal.Other, Happy: true, Weight: 1.0 };
     matrix.push(matrix["Other"]);
-    matrix["Income"] = { Goal: Goal.Income, Weight: 1.0 };
+    matrix["Income"] = { Goal: Goal.Income, Happy: true, Weight: 1.0 };
     matrix.push(matrix["Income"]);
     return matrix;
 }
@@ -70,6 +70,7 @@ function MakeDecision(input) {
     var monthlyExpenses = input.Home.Payment + input.Car.Payment + input.College.Payment + input.OtherDebts.Payment + input.MandatoryExpenses + input.OtherExpenses;
     if (monthlyExpenses > monthlyIncome) {
         finalGoals["Income"].Weight *= 100;
+        finalGoals["Income"].Happy = false;
         result.EverythingHappy = false;
     }
     result.MonthlyExpenses = monthlyExpenses;
@@ -78,6 +79,7 @@ function MakeDecision(input) {
     if (input.OtherSavings < 1000) {
         result.PrimaryGoal = Goal.EmergencyFund;
         finalGoals["EmergencyFund"].Weight *= 20;
+        finalGoals["EmergencyFund"].Happy = false;
         result.EverythingHappy = false;
     }
     ///#region Car Logic
@@ -90,6 +92,7 @@ function MakeDecision(input) {
     // Why is it *9? Because we're trying to figure out how much off what you should pay you are.
     if (input.Car.Payment * 10 > monthlyIncome) {
         finalGoals["Car"].Weight *= (input.Car.Payment * 9 / monthlyIncome);
+        finalGoals["Car"].Happy = false;
         result.EverythingHappy = false;
     }
     ///#endregion Car Logic
@@ -100,6 +103,7 @@ function MakeDecision(input) {
     //as the car scenario. Let's log-base-2-index it. it's probably wrong but eh.
     if (input.Home.Payment * 3 > monthlyIncome) {
         finalGoals["Home"].Weight *= Math.log((input.Home.Payment - (monthlyIncome / 3))) / Math.log(2);
+        finalGoals["Home"].Happy = false;
         result.EverythingHappy = false;
     }
     ///#endregion House
@@ -108,23 +112,27 @@ function MakeDecision(input) {
     //This is like the car - you don't want it to get bigger. If this ends up being your goal, you can 
     //refinance.
     if (input.College.Payment * 5 > monthlyIncome) {
-        finalGoals["College"].Weight *= (input.Car.Payment * 4 / monthlyIncome);
+        finalGoals["College"].Weight *= (input.College.Payment * 7 / monthlyIncome);
+        finalGoals["College"].Happy = false;
         result.EverythingHappy = false;
     }
     ///#endregion College
     //Your other debt expenses probably shouldn't go over 10%. Like car.
     if (input.OtherDebts.Payment * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= (input.OtherDebts.Payment * 9 / monthlyIncome);
+        finalGoals["Other"].Happy = false;
         result.EverythingHappy = false;
     }
-    //Mandatory expenses 10%. But like house. But goes to "Other."
-    if (input.MandatoryExpenses * 10 > monthlyIncome) {
+    //Mandatory expenses 15%. But like house. But goes to "Other."
+    if (input.MandatoryExpenses * (20 / 3) > monthlyIncome) {
         finalGoals["Other"].Weight *= Math.log(input.MandatoryExpenses - (monthlyIncome / 10)) / Math.log(2);
+        finalGoals["Other"].Happy = false;
         result.EverythingHappy = false;
     }
     //Other expenses 10%. But like car. But goes to "Other."
     if (input.OtherExpenses * 10 > monthlyIncome) {
         finalGoals["Other"].Weight *= (input.OtherExpenses * 9 / monthlyIncome);
+        finalGoals["Other"].Happy = false;
         result.EverythingHappy = false;
     }
     //Things are going well! You don't need to reduce the expenses, what do you need to save toward?
@@ -142,10 +150,22 @@ function MakeDecision(input) {
             finalGoals["Retirement"].Weight *= 1.6;
         }
     }
+    //If the user has no income, we have some nulls/infinities to fix in the goal weights.
+    if (monthlyIncome <= 0) {
+        for (var _i = 0, finalGoals_1 = finalGoals; _i < finalGoals_1.length; _i++) {
+            var g = finalGoals_1[_i];
+            if (!g.Weight || !isFinite(g.Weight))
+                g.Weight = 1;
+        }
+        finalGoals["Other"].Weight = 50;
+    }
     result.GoalOrder = finalGoals
         .sort(function (left, right) { return right.Weight - left.Weight; })
         .map(function (g) { return g.Goal; });
     result.PrimaryGoal = result.GoalOrder[0];
+    result.PrimaryGoalHappy = finalGoals[Goal[result.PrimaryGoal]].Happy;
+    result.SecondaryGoal = result.GoalOrder[1];
+    result.SecondaryGoalHappy = finalGoals[Goal[result.SecondaryGoal]].Happy;
     result.OriginalInput = input;
     result.GoalMatrix = finalGoals;
     return result;
@@ -190,28 +210,41 @@ function GatherInput() {
 var getRecommendationClass = function (goal) {
     switch (goal) {
         case Goal.Home:
-            return 'bb bb-house';
+            return 'bb-house';
             break;
         case Goal.Car:
-            return 'bb bb-car';
+            return 'bb-car';
             break;
         case Goal.Retirement:
-            return 'bb bb-palm-tree';
+            return 'bb-palm-tree';
             break;
         case Goal.Vacation:
-            return 'bb bb-suitcase';
+            return 'bb-suitcase';
             break;
         case Goal.College:
-            return 'bb bb-graduation-cap';
+            return 'bb-graduation-cap';
             break;
         case Goal.EmergencyFund:
-            return 'bb bb-piggy-bank';
+            return 'bb-piggy-bank';
             break;
         case Goal.Other:
-            return 'bb bb-credit-cards';
+            return 'bb-credit-cards';
             break;
         case Goal.Income:
-            return 'bb bb-dollar';
+            return 'bb-dollar';
+            break;
+    }
+};
+var prettyGoal = function (goal) {
+    switch (goal) {
+        case Goal.EmergencyFund:
+            return "Emergency Fund";
+            break;
+        case Goal.Other:
+            return "General Expenses";
+            break;
+        default:
+            return Goal[goal];
             break;
     }
 };

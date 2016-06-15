@@ -9,12 +9,13 @@
 @import '_global/_typography';
 @import '_global/_forms';
 @import '_global/_tables';
+@import '_global/_media';
 
 @import '_partials/_header';
 @import '_partials/_sections';
 @import '_partials/_bear';
-@import '_partials/_survey';
-@import '_partials/_results';
 @import '_partials/_footer';
 
-@import '_global/_media-queries';
+@import '_pages/_home';
+@import '_pages/_results';
+@import '_pages/_test';

@@ -18,32 +18,65 @@
 
 .calculating-bear {
     display: none;
+    padding: $space-unit 1rem;
     
-    &.fixed-bear {
-        position: fixed;
-        top: 30px;
+    h4, h6 {
+        visibility: hidden;
+        opacity: 0;
+        @include transition(visibility 2s ease, opacity 2s ease);
+    }
+    
+    h4 {
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+    
+    h6 {
+        position: absolute;
+        margin: 0;
+        font-size: 8px;
+        
+        &:first-of-type {
+            top: 41%;
+            left: 3%;
+            @include animation(typing1 1s infinite steps(1));
+        }
+        
+        &:nth-of-type(2) {
+            top: 44%;
+            left: 10%;
+            @include animation(typing2 1s infinite steps(1));
+        }
+        
+        &:last-of-type {
+            top: 47%;
+            left: 7%;
+            @include animation(typing1 1s infinite steps(1));
+        }
+        
+        @include breakpoint($size-lg) {
+            font-size: 12px;
+            
+            &:first-of-type {
+                top: 44%;
+            }
+        
+            &:nth-of-type(2) {
+                top: 48%;
+            }
+        
+            &:last-of-type {
+                top: 51%;
+            }
+        }
+    }
+    
+    &.fixed-bear, &.end-bear {
         right: 0;
-        left: 0;
         
-        .calculating-bear-inner {
-            @extend %page-max-width;
-            position: relative;
-        }
-        
-        .calculating-bear-inner-inner {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            left: calc((100% * 2/3) + 10px);
-        }
-        
-        h4 {
+        h4, h6 {
             visibility: visible;
             opacity: 1;
-        }
-        
-        .calculation-plus, .calculation-minus, .calculation-multiply, .calculation-divide {
-            @include transform-origin(center center);
         }
         
         .calculation-plus {
@@ -62,18 +95,58 @@
             @include animation(dividewiggle 1s infinite steps(1));
         }
         
-        .calculating-bear-eyes {
+        .calculation-eyes {
             @include animation(moveeyes 1s infinite steps(1));
+        }
+        
+        .calculation-calculator {
+            @include animation(movecalculator 1s infinite steps(1));
+        }
+        
+        .calculation-right-thumb {
+            @include animation(moverightthumb 1s infinite steps(1));
+        }
+        
+        .calculation-right-paw {
+            @include animation(moverightpaw 1s infinite steps(1));
+        }
+        
+        .calculation-left-thumb {
+            @include animation(moveleftthumb 1s infinite steps(1));
+        }
+        
+        .calculation-left-paw, .calculation-left-arm  {
+            @include animation(moveleftarm 1s infinite steps(1));
         }
     }
     
-    h4 {
-        @include transition(all 2s ease);
-        visibility: hidden;
-        margin-top: 0.5rem;
-        text-align: center;
-        opacity: 0;
+    &.fixed-bear {
+        position: fixed;
+        top: 0;
+        width: (100% / 3);
+        max-width: ($max-width / 3);
+        
+        // Once the page reaches its max width, this positions the bear so it
+        // appears to be held in the same container as the rest of the content.
+        @include breakpoint($max-width) {
+            right: auto;
+            left: calc(50% + #{($max-width / 6)});
+        }
     }
+    
+    &.end-bear {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+    }
+    
+    @include breakpoint($size-md) {
+        display: block;
+    }
+}
+
+.calculating-bear-inner-inner {
+    padding: $space-unit 0;
 }
 
 @mixin make-keyframes($name, $start-transform, $end-transform) {
@@ -112,8 +185,19 @@
     }
 }
 
-@include make-keyframes(pluswiggle, translate(0,0) rotate(0deg), translate(-10%, -10%) rotate(10deg));
-@include make-keyframes(minuswiggle, translate(0,0) rotate(0deg), translate(10%, 10%) rotate(-10deg));
-@include make-keyframes(multiplywiggle, translate(0,0) rotate(0deg), translate(10%, -10%) rotate(10deg));
-@include make-keyframes(dividewiggle, translate(0,0) rotate(0deg), translate(-10%, -10%) rotate(-10deg));
-@include make-keyframes(moveeyes, translate(0, 0), translate(5%, 0));
+@include make-keyframes(pluswiggle, translate(0, 0), translate(10px, 0));
+@include make-keyframes(minuswiggle, translate(0, 0), translate(10px, -10px));
+@include make-keyframes(multiplywiggle, translate(0, 0), translate(0, -10px));
+@include make-keyframes(dividewiggle, translate(0, 0), translate(-10px, -5px));
+
+@include make-keyframes(moveeyes, translate(0, 0), translate(10px, 0));
+
+@include make-keyframes(movecalculator, translate(-1px, 0), translate(1px, 4px));
+
+@include make-keyframes(moverightthumb, translate(0, 3px), translate(0, -3px));
+@include make-keyframes(moverightpaw, translate(0, 3px), translate(0, 0));
+@include make-keyframes(moveleftthumb, translate(0, 0px), translate(0, 8px));
+@include make-keyframes(moveleftarm, translate(0, 0px), translate(0, 3px));
+
+@include make-keyframes(typing1, rotate(6deg), rotate(-6deg));
+@include make-keyframes(typing2, rotate(-6deg), rotate(6deg));

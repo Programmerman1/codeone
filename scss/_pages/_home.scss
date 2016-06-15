@@ -1,6 +1,6 @@
-/*--------*/
-/* Survey */
-/*--------*/
+/*---------------*/
+/* Home / Survey */
+/*---------------*/
 
 #goals {
     .section-main-content {
@@ -16,8 +16,8 @@
     }
     
     .column-inner {
-        padding-top: 20px;
-        padding-bottom: 35px;
+        padding-top: $space-unit - 1rem;
+        padding-bottom: $space-unit;
         
         &.active {
             background-color: rgba($light-primary-color, 0.5);
@@ -48,14 +48,16 @@
 #survey {
     > .row {
         position: relative;
+        
+        > .column {
+            padding: 0;
+        }
     }
 }
 
 .survey-questions {
-    padding: 0;
-    
     .row {
-        padding: 20px 0;
+        padding: ($space-unit / 2) 0;
         
         &.section-subhead {
             padding-bottom: 0;
@@ -72,12 +74,20 @@
     }
 }
 
+.toggleMortgage, .toggleCar, .toggleCollege, .toggleLoans {
+    display: none;
+}
+
 .submit-survey {
-    padding-top: 60px;
+    padding-top: $space-unit * 2;
     text-align: center;
     
     button {
-        padding: 15px 20px;
+        padding: 1.5rem 2rem;
         font-size: 2.4rem;
     }
+}
+
+#results {
+    display: none;
 }
