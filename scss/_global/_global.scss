@@ -22,18 +22,3 @@ main {
         margin-left: $text-space-unit * 3;
     }
 }
-
-iframe {
-    display: block;
-    max-width: 100%;
-}
-
-img {
-    display: inline-block;
-    max-width: 100%;
-    height: auto;
-}
-
-a img {
-    border: 0;
-}

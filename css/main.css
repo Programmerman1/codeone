@@ -58,7 +58,7 @@
 .button, input[type='button'], input[type='submit'], button, .column-inner, input, select, textarea {
   border-radius: 3px; }
 
-.row, .calculating-bear.fixed-bear .calculating-bear-inner {
+.row {
   max-width: 1000px;
   margin: 0 auto; }
 
@@ -89,18 +89,6 @@ main {
   display: block; }
   main ul, main ol {
     margin-left: 3rem; }
-
-iframe {
-  display: block;
-  max-width: 100%; }
-
-img {
-  display: inline-block;
-  max-width: 100%;
-  height: auto; }
-
-a img {
-  border: 0; }
 
 /*-----------------*/
 /* Utility Classes */
@@ -188,7 +176,7 @@ a img {
 .column {
   float: left;
   min-height: 1px;
-  padding: 10px; }
+  padding: 1rem; }
   .column.center {
     float: none;
     margin: 0 auto; }
@@ -1032,6 +1020,22 @@ td, th {
   td, td h1, td h2, td h3, td h4, td h5, td h6, td p, td li, th, th h1, th h2, th h3, th h4, th h5, th h6, th p, th li {
     line-height: 1.5; }
 
+/*-------*/
+/* Media */
+/*-------*/
+iframe, image, svg {
+  max-width: 100%; }
+
+iframe {
+  display: block; }
+
+img {
+  display: inline-block;
+  height: auto; }
+
+a img {
+  border: 0; }
+
 /*--------*/
 /* Header */
 /*--------*/
@@ -1079,52 +1083,59 @@ section {
     left: 0; }
 
 .calculating-bear {
-  display: none; }
-  .calculating-bear.fixed-bear {
-    position: fixed;
-    top: 30px;
-    right: 0;
-    left: 0; }
-    .calculating-bear.fixed-bear .calculating-bear-inner {
-      position: relative; }
-    .calculating-bear.fixed-bear .calculating-bear-inner-inner {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      left: calc((100% * 2/3) + 10px); }
-    .calculating-bear.fixed-bear h4 {
-      visibility: visible;
-      opacity: 1; }
-    .calculating-bear.fixed-bear .calculation-plus, .calculating-bear.fixed-bear .calculation-minus, .calculating-bear.fixed-bear .calculation-multiply, .calculating-bear.fixed-bear .calculation-divide {
-      -webkit-transform-origin: center center;
-      transform-origin: center center; }
-    .calculating-bear.fixed-bear .calculation-plus {
-      -webkit-animation: pluswiggle 1s infinite steps(1);
-      -moz-animation: pluswiggle 1s infinite steps(1);
-      animation: pluswiggle 1s infinite steps(1); }
-    .calculating-bear.fixed-bear .calculation-minus {
-      -webkit-animation: minuswiggle 1s infinite steps(1);
-      -moz-animation: minuswiggle 1s infinite steps(1);
-      animation: minuswiggle 1s infinite steps(1); }
-    .calculating-bear.fixed-bear .calculation-multiply {
-      -webkit-animation: multiplywiggle 1s infinite steps(1);
-      -moz-animation: multiplywiggle 1s infinite steps(1);
-      animation: multiplywiggle 1s infinite steps(1); }
-    .calculating-bear.fixed-bear .calculation-divide {
-      -webkit-animation: dividewiggle 1s infinite steps(1);
-      -moz-animation: dividewiggle 1s infinite steps(1);
-      animation: dividewiggle 1s infinite steps(1); }
-    .calculating-bear.fixed-bear .calculating-bear-eyes {
-      -webkit-animation: moveeyes 1s infinite steps(1);
-      -moz-animation: moveeyes 1s infinite steps(1);
-      animation: moveeyes 1s infinite steps(1); }
+  display: none;
+  padding: 3rem 1rem; }
   .calculating-bear h4 {
-    -webkit-transition: all 2s ease;
-    transition: all 2s ease;
     visibility: hidden;
     margin-top: 0.5rem;
     text-align: center;
-    opacity: 0; }
+    opacity: 0;
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease; }
+  .calculating-bear.fixed-bear, .calculating-bear.end-bear {
+    right: 0; }
+    .calculating-bear.fixed-bear h4, .calculating-bear.end-bear h4 {
+      visibility: visible;
+      opacity: 1; }
+    .calculating-bear.fixed-bear .calculation-plus, .calculating-bear.fixed-bear .calculation-minus, .calculating-bear.fixed-bear .calculation-multiply, .calculating-bear.fixed-bear .calculation-divide, .calculating-bear.end-bear .calculation-plus, .calculating-bear.end-bear .calculation-minus, .calculating-bear.end-bear .calculation-multiply, .calculating-bear.end-bear .calculation-divide {
+      -webkit-transform-origin: center center;
+      transform-origin: center center; }
+    .calculating-bear.fixed-bear .calculation-plus, .calculating-bear.end-bear .calculation-plus {
+      -webkit-animation: pluswiggle 1s infinite steps(1);
+      -moz-animation: pluswiggle 1s infinite steps(1);
+      animation: pluswiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculation-minus, .calculating-bear.end-bear .calculation-minus {
+      -webkit-animation: minuswiggle 1s infinite steps(1);
+      -moz-animation: minuswiggle 1s infinite steps(1);
+      animation: minuswiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculation-multiply, .calculating-bear.end-bear .calculation-multiply {
+      -webkit-animation: multiplywiggle 1s infinite steps(1);
+      -moz-animation: multiplywiggle 1s infinite steps(1);
+      animation: multiplywiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculation-divide, .calculating-bear.end-bear .calculation-divide {
+      -webkit-animation: dividewiggle 1s infinite steps(1);
+      -moz-animation: dividewiggle 1s infinite steps(1);
+      animation: dividewiggle 1s infinite steps(1); }
+    .calculating-bear.fixed-bear .calculating-bear-eyes, .calculating-bear.end-bear .calculating-bear-eyes {
+      -webkit-animation: moveeyes 1s infinite steps(1);
+      -moz-animation: moveeyes 1s infinite steps(1);
+      animation: moveeyes 1s infinite steps(1); }
+  .calculating-bear.fixed-bear {
+    position: fixed;
+    top: 0;
+    width: 33.33333%;
+    max-width: 333.33333px; }
+    @media all and (min-width: 1000px) {
+      .calculating-bear.fixed-bear {
+        right: auto;
+        left: calc(50% + 166.66667px); } }
+  .calculating-bear.end-bear {
+    position: absolute;
+    top: auto;
+    bottom: 0; }
+
+.calculating-bear-inner-inner {
+  padding: 3rem 0; }
 
 @-webkit-keyframes pluswiggle {
   0% {
@@ -1266,18 +1277,18 @@ section {
 
 #survey > .row {
   position: relative; }
+  #survey > .row > .column {
+    padding: 0; }
 
-.survey-questions {
-  padding: 0; }
-  .survey-questions .row {
-    padding: 1.5rem 0; }
-    .survey-questions .row.section-subhead {
-      padding-bottom: 0; }
-      .survey-questions .row.section-subhead .column > *:last-child {
-        margin-bottom: 0; }
-  .survey-questions .column {
-    padding-top: 0;
+.survey-questions .row {
+  padding: 1.5rem 0; }
+  .survey-questions .row.section-subhead {
     padding-bottom: 0; }
+    .survey-questions .row.section-subhead .column > *:last-child {
+      margin-bottom: 0; }
+.survey-questions .column {
+  padding-top: 0;
+  padding-bottom: 0; }
 
 .toggleMortgage, .toggleCar, .toggleCollege, .toggleLoans {
   display: none; }

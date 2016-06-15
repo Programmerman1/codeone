@@ -41,36 +41,38 @@ var submitSurvey = function () {
         $('.result-table-icon-' + Goal[decide.OriginalInput.Goals[i]].toLowerCase()).addClass('active');
     }
     
+    // Fill in table
     $('#resultAnnual').text('$' + decide.AnnualIncome);
     $('#resultMonthly').text('$' + decide.MonthlyIncome);
     $('#resultRetirement').text('$' + decide.OriginalInput.RetirementSavings);
     $('#resultSavings').text('$' + decide.OriginalInput.OtherSavings);
     $('#resultHomeMonth').text('$' + decide.OriginalInput.Home.Payment + ' / ' + (decide.OriginalInput.Home.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
     $('#resultHomeTotal').text((decide.OriginalInput.Home.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.Home.TotalOwed : 'N/A');
+    
     if (decide.OriginalInput.Car.IsOwned) {
         $('#resultCarMonth').text('$' + decide.OriginalInput.Car.Payment + ' / ' + (decide.OriginalInput.Car.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
         $('#resultCarTotal').text((decide.OriginalInput.Car.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.Car.TotalOwed : 'N/A');
-    }
-    else {
+    } else {
         $('#resultCarMonth').text('N/A');
         $('#resultCarTotal').text('N/A');
     }
+    
     if (decide.OriginalInput.College.IsOwned) {
         $('#resultCollegeMonth').text('$' + decide.OriginalInput.College.Payment + ' / ' + (decide.OriginalInput.College.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
         $('#resultCollegeTotal').text((decide.OriginalInput.College.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.College.TotalOwed : 'N/A');
-    }
-    else {
+    } else {
         $('#resultCollegeMonth').text('N/A');
         $('#resultCollegeTotal').text('N/A');
     }
+    
     if (decide.OriginalInput.OtherDebts.IsOwned) {
         $('#resultLoansMonth').text('$' + decide.OriginalInput.OtherDebts.Payment + ' / ' + (decide.OriginalInput.OtherDebts.Payment / decide.MonthlyIncome * 100.0).toFixed(2) + '%');
         $('#resultLoansTotal').text((decide.OriginalInput.OtherDebts.TotalOwed || 0.0) > 0 ? '$' + decide.OriginalInput.OtherDebts.TotalOwed : 'N/A');
-    }
-    else {
+    } else {
         $('#resultLoansMonth').text('N/A');
         $('#resultLoansTotal').text('N/A');
     }
+    
     $('#resultMonthExp').text('$' + decide.MonthlyExpenses + ' / ' + ((decide.MonthlyExpenses / decide.MonthlyIncome) * 100.0).toFixed(2) + '%');
 
     $('#resultUtilityMonth').text('$' + $('#numUtilities').val());
@@ -80,12 +82,13 @@ var submitSurvey = function () {
     $('#resultInsuranceMonth').text('$' + $('#numInsurance').val());
     $('#resultMiscMonth').text('$' + $('#numMisc').val());
     
+    // Add class to body to show/hide appropriate sections
     $('body').addClass('results');
-    
-    adviceLink = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.', 'http://budgetbear.azurewebsites.net/', 'CodeOneOmaha,DontArgueWithTheBear');
-
-    //location.hash = "#results";
     window.scrollTo(0,0);
+    
+    // Set Twitter link
+    adviceLink = getTweetLink('Budget Bear looked at my budget and thinks I should focus on my ' + prettyGoal(decide.PrimaryGoal) + '.', 'http://budgetbear.azurewebsites.net/', 'CodeOneOmaha,DontArgueWithTheBear');
+    
     return false;
 };
 
@@ -125,36 +128,37 @@ $goalIcons.click(function() {
     $(this).parents('.column-inner').toggleClass('active');
 });
 
-jQuery('document').ready(function($){
+jQuery('document').ready(function($) {
     /* Fixed position calculating bear */
     var $window = $(window),
         $survey = $('#survey'),
         $calculatingBear = $('.calculating-bear');
     
     var fixTheBear = function() {
-        var bearOriginalTop = $survey.offset().top,
-            bearHeight = $calculatingBear.find('.calculating-bear-inner-inner').height(),
-            surveyBottom = bearOriginalTop + $survey.outerHeight(),
+        var surveyTop = $survey.offset().top + parseInt($survey.css('padding-top')),
+            bearHeight = $('.calculating-bear').outerHeight(),
+            surveyBottom = $survey.offset().top + $survey.height() + parseInt($survey.css('padding-bottom')),
             scrollTop = $window.scrollTop(),
-            threshold = scrollTop + bearHeight + 60;
-            
-        if (scrollTop > bearOriginalTop && !$calculatingBear.hasClass('fixed-bear')) {
+            bearScrollBottom = scrollTop + bearHeight;
+        
+        // If the user has scrolled past the top of the survey, fix the bear so
+        // he scrolls with the user. Else, let him stay where he usually is.
+        if (scrollTop > surveyTop && !$calculatingBear.hasClass('fixed-bear')) {
             $calculatingBear.addClass('fixed-bear');
-        } else if (scrollTop <= bearOriginalTop && $calculatingBear.hasClass('fixed-bear')) {
+        } else if (scrollTop <= surveyTop && $calculatingBear.hasClass('fixed-bear')) {
             $calculatingBear.removeClass('fixed-bear');
         }
         
-        if (threshold > surveyBottom) {
-            $calculatingBear.css({
-                'position': 'absolute',
-                'bottom': bearHeight,
-                'top': 'auto'
-            });
-        } else {
-            $calculatingBear.removeAttr('style');
+        // If the user scrolls past the bottom of the survey, make sure the
+        // bear stops at the bottom of the survey and doesn't, say, keep going
+        // into the footer.
+        if (bearScrollBottom >= surveyBottom && !$calculatingBear.hasClass('end-bear')) {
+            $calculatingBear.addClass('end-bear');
+        } else if (bearScrollBottom < surveyBottom && $calculatingBear.hasClass('end-bear')) {
+            $calculatingBear.removeClass('end-bear');
         }
     };
     
     fixTheBear();
-    $window.scroll(fixTheBear);
+    $window.on('scroll resize', fixTheBear);
 });

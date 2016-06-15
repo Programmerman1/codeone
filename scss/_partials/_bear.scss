@@ -18,24 +18,18 @@
 
 .calculating-bear {
     display: none;
+    padding: $space-unit 1rem;
     
-    &.fixed-bear {
-        position: fixed;
-        top: 30px;
+    h4 {
+        visibility: hidden;
+        margin-top: 0.5rem;
+        text-align: center;
+        opacity: 0;
+        @include transition(all 2s ease);
+    }
+    
+    &.fixed-bear, &.end-bear {
         right: 0;
-        left: 0;
-        
-        .calculating-bear-inner {
-            @extend %page-max-width;
-            position: relative;
-        }
-        
-        .calculating-bear-inner-inner {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            left: calc((100% * 2/3) + 10px);
-        }
         
         h4 {
             visibility: visible;
@@ -67,13 +61,29 @@
         }
     }
     
-    h4 {
-        @include transition(all 2s ease);
-        visibility: hidden;
-        margin-top: 0.5rem;
-        text-align: center;
-        opacity: 0;
+    &.fixed-bear {
+        position: fixed;
+        top: 0;
+        width: (100% / 3);
+        max-width: ($max-width / 3);
+        
+        // Once the page reaches its max width, this positions the bear so it
+        // appears to be held in the same container as the rest of the content.
+        @include breakpoint($max-width) {
+            right: auto;
+            left: calc(50% + #{($max-width / 6)});
+        }
     }
+    
+    &.end-bear {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+    }
+}
+
+.calculating-bear-inner-inner {
+    padding: $space-unit 0;
 }
 
 @mixin make-keyframes($name, $start-transform, $end-transform) {

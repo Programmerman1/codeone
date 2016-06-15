@@ -16,7 +16,7 @@
 .column {
   float: left;
   min-height: 1px;
-  padding: 10px; }
+  padding: 1rem; }
   .column.center {
     float: none;
     margin: 0 auto; }

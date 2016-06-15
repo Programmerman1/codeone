@@ -48,12 +48,14 @@
 #survey {
     > .row {
         position: relative;
+        
+        > .column {
+            padding: 0;
+        }
     }
 }
 
 .survey-questions {
-    padding: 0;
-    
     .row {
         padding: ($space-unit / 2) 0;
         
