@@ -10,13 +10,13 @@ Budget Bear runs entirely in the user's browser, which means sensitive informati
 
 ### Who is behind Budget Bear?
 
-[Programmerman1](/Programmerman1) (Nick) - algorithm development, copywriting
-[marcusross](/marcusross) (Marcus) - form interactions and processing
-[caraheacock](/caraheacock) (Cara) - frontend development, copywriting, graphic design, illustration
+- [Programmerman1](/Programmerman1) (Nick) - algorithm development, copywriting
+- [marcusross](/marcusross) (Marcus) - form interactions and processing
+- [caraheacock](/caraheacock) (Cara) - frontend development, copywriting, graphic design, illustration
 
 ### What technologies were used to create Budget Bear?
 
-Budget Bear is mostly just HTML, CSS, and JavaScript. There is no "backend" really, which is nice for the user because their information isn't being submitted anywhere.
+Budget Bear is just HTML, CSS, and JavaScript. There is no "backend" really, which is nice for the user because their information isn't being submitted anywhere.
 
 We do use [SASS](http://sass-lang.com/) and [TypeScript](https://www.typescriptlang.org/) which compile into CSS and JavaScript, respectively. We also used [IcoMoon](https://icomoon.io/) for the custom icon font.
 
